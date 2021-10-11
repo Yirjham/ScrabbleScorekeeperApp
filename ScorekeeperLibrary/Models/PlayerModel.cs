@@ -9,22 +9,47 @@ namespace ScorekeeperLibrary.Models
     public class PlayerModel
     {
         public string PlayerName { get; set; }
-        private int _currentScore;
+        private int _roundScore = 0;
+        private int _scoreSubtotal = 0;
 
-        public int MyProperty
+        public int CurrentScore
         {
-            get { return _currentScore; }
+            get { return _roundScore; }
             set
             {
                 if (value < 0 || value > 130)
                 {
-                    throw new ArgumentOutOfRangeException("_currentScore", _currentScore, "Invalid current score value");
+                    throw new ArgumentOutOfRangeException("_currentScore", _roundScore, "Invalid entry for current score value");
                 }
-                _currentScore = value; 
+                else
+                {
+                    _roundScore = value;  
+                }
             }
         }
+        public int ScoreSubTotal
+        {
+            get { return _scoreSubtotal; }
+            private set
+            {
+                if (_roundScore < 0)
+                {
+                    throw new ArgumentOutOfRangeException("_scoreSubtotal", _scoreSubtotal, "Invalid current subtotal value");
+                }
+                else
+                {
+                    _scoreSubtotal = currentSubtotalCalculator(_roundScore, _scoreSubtotal);
 
-        public int CurrentScore { get; set; } = 0;
-        public int Subtotal { get; set; } = 0;
+                }
+            }
+        }
+        private int currentSubtotalCalculator(int _roundScore, int _scoreSubtotal)
+        {
+            int output = _scoreSubtotal + _roundScore;
+
+            return output;
+        }
+
+        
     }
 }
