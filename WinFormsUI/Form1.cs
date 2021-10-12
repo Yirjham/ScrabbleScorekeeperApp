@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WinFormsUI
 {
-    public partial class Form1 : Form
+    public partial class frmWelcomeWindow : Form
     {
-        public Form1()
+        public frmWelcomeWindow()
         {
             InitializeComponent();
         }
