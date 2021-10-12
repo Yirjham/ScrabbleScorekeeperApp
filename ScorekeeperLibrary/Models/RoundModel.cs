@@ -11,5 +11,6 @@ namespace ScorekeeperLibrary.Models
         public List<PlayerModel> Players { get; set; }
         public int RoundNumber { get; set; }
         public PlayerModel RoundWinner { get; set; }
+        public PlayerModel currentWinner { get; set; }
     }
 }

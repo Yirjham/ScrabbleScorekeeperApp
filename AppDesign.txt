@@ -1,0 +1,76 @@
+Scrabble Scoreboard App
+
+**********Design************
+
+W - Walk thhrough - Requirements and the big picture
+
+1. Menu where you can choose the amount of players, then allow to enter the players' names
+2. Another window should allow to play rounds in which we enter the amount of points scored 
+by each player during that round.
+3. This second window should allow to visualise the subtotal in a pop up window if desired
+4. There should be a button that allows to end the game and display all scores and congratulate the winner.
+
+Extension goals: 
+1. Allow players to save their users history: name, amounts of games won and the scores in each game.
+2. Keep records in a database so we can retrieve a history of games won by each player
+3. Allow a random picker to tell which user starts first. This user should be the first to the left and organise
+   the other users according to their random number score.
+4. A tailored message to display who the winner was and give messages depending upon score gap between the winner
+   and the other users, such as "that was close", "Player 1 is killed it".
+5. Add message generator based on current round scores. Such as, killed it!!!!. or Savage score.
+6. Use some more advanced UI, could be winforms videos with plug ins, or maybe make it web based with Razor pages.
+
+O - Open up requirements - Ask questions about the details
+
+1. Is there a limit of players? 2-4 players as per Scrabble rules
+2. Where do we keep the info? List of round and player, perhaps
+3. How many windows do we need? Three main windows
+4. Are we going to use TDD? Yes, adding a unit test project and TDD from the start
+5. Are we going to need a library? ClassLibrary as it might be used with other UI later on.
+6. Are going to need data validation? Yes, we don't want the program to crash unnecessarily
+7. Is there a minimum amount of players? 2
+8. Minimum score per round? 0
+9. Maximum score per round? 130 as the highest bingo for 7 letter scrabble has been 128, so unlikely amateurs get 
+more
+10. Can we undo a round if the scores entered were wrong? Maybe, depends on how we keep count of the scores.
+
+U - User interface design
+
+1. Initial window welcoming to the app, asking for the amount of players.
+2. Second window asking for the name of the players
+3. Third window is the round window. We need four 2-4 labels and 2-4 textboxes where we can type the scores. This 
+   window should show at the top which round it is. There should be a button for finishing the game, at which point
+   a pop up window shows the that the final scores and congratulates the winner.
+
+L - Logic - 
+
+1. A class library:
+	a. Player class: prop {Name: string, Current Score: int > 0, Subtotal Score: int > 0}
+	b. Game class: prop {Amount of Players: Player} We need three forms, for 2, 3 and 4 players, we load the
+	one required.
+	c. Round class {CurrentRound: int} {CurrentTopPlayer} {CurrentScores}
+	d. Final message class: {text: string} {Winner: Player} {Score} 
+
+2. Main methods logic:
+***Method 1***
+score = 0
+while (game is playing)
+{
+score = score +roundScore
+}
+***Method2***
+private static displayScoreMethod --> This is a winform method
+
+3. UI Project:
+	a. Initial Form
+	b. Form for entering players names
+	c. Round form
+	d. Two pop windows. One for temporary subtotal and one for total of the game
+
+D - Data design 
+For now, no database so we will use a List to store the players' info including rounds scores and hence
+the final score.
+
+
+
+
