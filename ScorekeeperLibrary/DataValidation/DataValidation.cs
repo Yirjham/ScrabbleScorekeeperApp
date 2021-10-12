@@ -25,9 +25,7 @@ namespace ScorekeeperLibrary.DataValidation
 
         public static bool isValidNumericData(string userInputText)
         {
-            int userInputInt = 0;
-
-            bool isValid = int.TryParse(userInputText, out userInputInt);
+            bool isValid = int.TryParse(userInputText, out _);
             if (isValid)
             {
                 return true;
