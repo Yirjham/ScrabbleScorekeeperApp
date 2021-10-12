@@ -9,10 +9,18 @@ namespace ScorekeeperLibrary
 {
     public static class Calculations
     {
-       
         public static PlayerModel DetermineRoundWinnerTwoPlayers(PlayerModel player, PlayerModel anotherPlayer)
         {
-            throw new NotImplementedException();
+            PlayerModel roundWinner = null;
+            if (player.RoundScore > anotherPlayer.RoundScore)
+            {
+                roundWinner = player;
+            }
+            else
+            {
+                roundWinner = anotherPlayer;
+            }
+            return roundWinner;
         }
         public static PlayerModel DetermineRoundWinnerThreePlayers(PlayerModel player1, PlayerModel player2, PlayerModel player3)
         {
