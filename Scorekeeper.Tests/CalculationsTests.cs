@@ -20,7 +20,7 @@ namespace Scorekeeper.Tests
             PlayerModel expected = player2;
 
             // Act
-            PlayerModel roundWinner = Calculations.DetermineRoundWinnerTwoPlayers(player1, player2);
+            PlayerModel roundWinner = Calculations.DeterminesRoundHighestScorerForTwoPlayerGame(player1, player2);
             PlayerModel actual = roundWinner;
 
             // Assert 
@@ -37,7 +37,7 @@ namespace Scorekeeper.Tests
             PlayerModel expected = player1;
 
             // Act
-            PlayerModel roundWinner = Calculations.DetermineRoundWinnerThreePlayers(player1, player2, player3);
+            PlayerModel roundWinner = Calculations.DeterminesRoundHighestScorerForThreePlayerGame(player1, player2, player3);
             PlayerModel actual = roundWinner;
 
             // Assert
@@ -57,7 +57,7 @@ namespace Scorekeeper.Tests
             PlayerModel expected = player4;
 
             // Act
-            PlayerModel roundWinner = Calculations.DetermineRoundWinnerFourPlayers(player1, player2, player3, player4);
+            PlayerModel roundWinner = Calculations.DeterminesRoundHighestScorerForFourPlayerGame(player1, player2, player3, player4);
             PlayerModel actual = roundWinner;
 
             // Assert
@@ -75,7 +75,7 @@ namespace Scorekeeper.Tests
             PlayerModel expected = player1;
 
             // Act
-            PlayerModel gameWinner = Calculations.CalculateGameWinnerTwoPlayers(player1, player2);
+            PlayerModel gameWinner = Calculations.DeterminesWinnerTwoPlayerGame(player1, player2);
             PlayerModel actual = gameWinner;
 
             // Assert
@@ -91,7 +91,7 @@ namespace Scorekeeper.Tests
             PlayerModel expected = player2;
 
             // Act
-            PlayerModel gameWinner = Calculations.CalculateGameWinnerThreePlayers(player1, player2, player3);
+            PlayerModel gameWinner = Calculations.DeterminesWinnerThreePlayerGame(player1, player2, player3);
             PlayerModel actual = gameWinner;
 
             // Assert
@@ -108,7 +108,7 @@ namespace Scorekeeper.Tests
             PlayerModel expected = player4;
 
             // Act
-            PlayerModel gameWinner = Calculations.CalculateGameWinnerFourPlayers(player1, player2, player3, player4);
+            PlayerModel gameWinner = Calculations.DeterminesWinnerFourPlayerGame(player1, player2, player3, player4);
             PlayerModel actual = gameWinner;
 
             // Assert
