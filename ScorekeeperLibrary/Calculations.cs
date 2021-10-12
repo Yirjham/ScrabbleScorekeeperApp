@@ -48,6 +48,12 @@ namespace ScorekeeperLibrary
             gameWinner = CalculateGameWinnerTwoPlayers(gameWinner, player3);
             return gameWinner;
         }
+        public static PlayerModel CalculateGameWinnerFourPlayers(PlayerModel player1, PlayerModel player2, PlayerModel player3, PlayerModel player4)
+        {
+            PlayerModel tempWinner = CalculateGameWinnerThreePlayers(player1, player2, player3);
+            PlayerModel winner = CalculateGameWinnerTwoPlayers(tempWinner, player4);
+            return winner;
+        }
 
 
         private static PlayerModel ScoreComparer(PlayerModel player1, PlayerModel player2, int scorePlayer1, int scorePlayer2)

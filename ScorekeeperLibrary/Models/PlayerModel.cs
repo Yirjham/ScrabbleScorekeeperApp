@@ -19,6 +19,7 @@ namespace ScorekeeperLibrary.Models
         public void UpdateRoundSubtotal()
         {
             ScoreSubtotal = ScoreSubtotal + RoundScore;
+            RoundScore = 0;
         }
         
     }

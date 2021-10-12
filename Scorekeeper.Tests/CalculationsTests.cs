@@ -96,7 +96,23 @@ namespace Scorekeeper.Tests
 
             // Assert
             Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void ShouldReturnTheWinnerOfTheGameAtAnyStageForFourPlayers()
+        {
+            // Arrange
+            PlayerModel player1 = new PlayerModel("testUser1") { RoundScore = 13, ScoreSubtotal = 154 }; //167
+            PlayerModel player2 = new PlayerModel("testUser2") { RoundScore = 20, ScoreSubtotal = 200 }; //220
+            PlayerModel player3 = new PlayerModel("testUser3") { RoundScore = 1, ScoreSubtotal = 218 }; //219
+            PlayerModel player4 = new PlayerModel("testUser4") { RoundScore = 30, ScoreSubtotal = 191 }; // 221
+            PlayerModel expected = player4;
 
+            // Act
+            PlayerModel gameWinner = Calculations.CalculateGameWinnerFourPlayers(player1, player2, player3, player4);
+            PlayerModel actual = gameWinner;
+
+            // Assert
+            Assert.Equal(expected, actual);
         }
 
 
