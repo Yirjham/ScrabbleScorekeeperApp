@@ -10,5 +10,12 @@ namespace ScorekeeperLibrary.Models
     {
         public string RoundWinnerMessage { get; set; }
         public string GameWinnerMessage { get; set; }
+
+        public static void SetHighestScorerRoundMessage()
+        {
+
+        }
     }
+
+    
 }

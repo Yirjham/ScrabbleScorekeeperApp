@@ -11,7 +11,7 @@ namespace ScorekeeperLibrary
     {
         // returns null if the two players have the same round score
         // The three methods below determine the round highest scorer
-        public static PlayerModel DeterminesRoundHighestScorerForTwoPlayerGame(PlayerModel player1, PlayerModel player2)
+        public static PlayerModel DeterminesRoundHighestScorer(PlayerModel player1, PlayerModel player2)
         {
             PlayerModel roundWinner = null;
 
@@ -20,21 +20,21 @@ namespace ScorekeeperLibrary
             return roundWinner;
  
         }
-        public static PlayerModel DeterminesRoundHighestScorerForThreePlayerGame(PlayerModel player1, PlayerModel player2, PlayerModel player3)
+        public static PlayerModel DeterminesRoundHighestScorer(PlayerModel player1, PlayerModel player2, PlayerModel player3)
         {
-            PlayerModel tempWinner = DeterminesRoundHighestScorerForTwoPlayerGame(player1, player2);
-            PlayerModel winner = DeterminesRoundHighestScorerForTwoPlayerGame(tempWinner, player3);
+            PlayerModel tempWinner = DeterminesRoundHighestScorer(player1, player2);
+            PlayerModel winner = DeterminesRoundHighestScorer(tempWinner, player3);
             return winner;
         }
-        public static PlayerModel DeterminesRoundHighestScorerForFourPlayerGame(PlayerModel player1, PlayerModel player2, PlayerModel player3, PlayerModel player4)
+        public static PlayerModel DeterminesRoundHighestScorer(PlayerModel player1, PlayerModel player2, PlayerModel player3, PlayerModel player4)
         {
-            PlayerModel tempWinner = DeterminesRoundHighestScorerForThreePlayerGame(player1, player2, player3);
-            PlayerModel winner = DeterminesRoundHighestScorerForTwoPlayerGame(tempWinner, player4);
+            PlayerModel tempWinner = DeterminesRoundHighestScorer(player1, player2, player3);
+            PlayerModel winner = DeterminesRoundHighestScorer(tempWinner, player4);
             return winner;
         }
 
         // The 3 Methods below determine the winner of the game at any stage
-        public static PlayerModel DeterminesWinnerTwoPlayerGame(PlayerModel player1, PlayerModel player2)
+        public static PlayerModel DeterminesWinner(PlayerModel player1, PlayerModel player2)
         {
 
             PlayerModel gameWinner = null;
@@ -45,16 +45,16 @@ namespace ScorekeeperLibrary
             return gameWinner;
 
         }
-        public static PlayerModel DeterminesWinnerThreePlayerGame(PlayerModel player1, PlayerModel player2, PlayerModel player3)
+        public static PlayerModel DeterminesWinner(PlayerModel player1, PlayerModel player2, PlayerModel player3)
         {
-            PlayerModel gameWinner = DeterminesWinnerTwoPlayerGame(player1, player2);
-            gameWinner = DeterminesWinnerTwoPlayerGame(gameWinner, player3);
+            PlayerModel gameWinner = DeterminesWinner(player1, player2);
+            gameWinner = DeterminesWinner(gameWinner, player3);
             return gameWinner;
         }
-        public static PlayerModel DeterminesWinnerFourPlayerGame(PlayerModel player1, PlayerModel player2, PlayerModel player3, PlayerModel player4)
+        public static PlayerModel DeterminesWinner(PlayerModel player1, PlayerModel player2, PlayerModel player3, PlayerModel player4)
         {
-            PlayerModel tempWinner = DeterminesWinnerThreePlayerGame(player1, player2, player3);
-            PlayerModel winner = DeterminesWinnerTwoPlayerGame(tempWinner, player4);
+            PlayerModel tempWinner = DeterminesWinner(player1, player2, player3);
+            PlayerModel winner = DeterminesWinner(tempWinner, player4);
             return winner;
         }
 
