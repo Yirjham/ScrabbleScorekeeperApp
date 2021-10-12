@@ -9,7 +9,7 @@ using Xunit;
 
 namespace Scorekeeper.Tests
 {
-    public class CalculationTests
+    public class CalculationsTests
     {
         [Fact]
         public void ShouldReturnRoundWinnerForTwoPlayers()
@@ -63,8 +63,42 @@ namespace Scorekeeper.Tests
             // Assert
 
             Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void ShouldReturnTheWinnerOfTheGameAtAnyStageForTwoPlayers()
+        {
+            // Arrange 
+            PlayerModel player1 = new PlayerModel("testUser1") { RoundScore = 0 , ScoreSubtotal = 154};
+            PlayerModel player2 = new PlayerModel("testUser2") { RoundScore = 9, ScoreSubtotal = 90 };
+           
+            PlayerModel expected = player1;
+
+            // Act
+            PlayerModel gameWinner = Calculations.CalculateGameWinnerTwoPlayers(player1, player2);
+            PlayerModel actual = gameWinner;
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void ShouldReturnTheWinnerOfTheGameAtAnyStageForThreePlayers()
+        {
+            // Arrange
+            PlayerModel player1 = new PlayerModel("testUser1") { RoundScore = 13, ScoreSubtotal = 154 };
+            PlayerModel player2 = new PlayerModel("testUser2") { RoundScore = 20, ScoreSubtotal = 200 };
+            PlayerModel player3 = new PlayerModel("testUser3") { RoundScore = 1, ScoreSubtotal = 218 };
+            PlayerModel expected = player2;
+
+            // Act
+            PlayerModel gameWinner = Calculations.CalculateGameWinnerThreePlayers(player1, player2, player3);
+            PlayerModel actual = gameWinner;
+
+            // Assert
+            Assert.Equal(expected, actual);
 
         }
+
 
 
     }
