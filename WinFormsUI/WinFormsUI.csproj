@@ -46,17 +46,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="PlayersNamesWindowFourPlayers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="PlayersNamesWindowFourPlayers.Designer.cs">
+      <DependentUpon>PlayersNamesWindowFourPlayers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayersNamesWindowsThreePlayers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlayersNamesWindowsThreePlayers.Designer.cs">
+      <DependentUpon>PlayersNamesWindowsThreePlayers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WelcomeWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WelcomeWindow.Designer.cs">
+      <DependentUpon>WelcomeWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayersNamesWindowTwoPlayers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlayersNamesWindowTwoPlayers.Designer.cs">
+      <DependentUpon>PlayersNamesWindowTwoPlayers.cs</DependentUpon>
     </Compile>
     <Compile Include="UIMessages.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="PlayersNamesWindowFourPlayers.resx">
+      <DependentUpon>PlayersNamesWindowFourPlayers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlayersNamesWindowsThreePlayers.resx">
+      <DependentUpon>PlayersNamesWindowsThreePlayers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlayersNamesWindowTwoPlayers.resx">
+      <DependentUpon>PlayersNamesWindowTwoPlayers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WelcomeWindow.resx">
+      <DependentUpon>WelcomeWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
