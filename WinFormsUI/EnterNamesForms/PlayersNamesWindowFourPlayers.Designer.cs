@@ -1,7 +1,7 @@
 ﻿
 namespace WinFormsUI
 {
-    partial class PlayerNamesWindowThreePlayers
+    partial class PlayerNamesWindowFourPlayers
     {
         /// <summary>
         /// Required designer variable.

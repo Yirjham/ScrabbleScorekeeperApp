@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WinFormsUI
 {
-    public partial class PlayersNamesWindowTwoPlayers : Form
+    public partial class PlayerNamesWindowFourPlayers : Form
     {
-        public PlayersNamesWindowTwoPlayers()
+        public PlayerNamesWindowFourPlayers()
         {
             InitializeComponent();
         }

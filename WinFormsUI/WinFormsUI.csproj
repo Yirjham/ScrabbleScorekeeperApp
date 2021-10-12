@@ -46,17 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PlayersNamesWindowFourPlayers.cs">
+    <Compile Include="EnterNamesForms\PlayersNamesWindowFourPlayers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PlayersNamesWindowFourPlayers.Designer.cs">
+    <Compile Include="EnterNamesForms\PlayersNamesWindowFourPlayers.Designer.cs">
       <DependentUpon>PlayersNamesWindowFourPlayers.cs</DependentUpon>
     </Compile>
-    <Compile Include="PlayersNamesWindowsThreePlayers.cs">
+    <Compile Include="EnterNamesForms\PlayersNamesWindowsThreePlayers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PlayersNamesWindowsThreePlayers.Designer.cs">
+    <Compile Include="EnterNamesForms\PlayersNamesWindowsThreePlayers.Designer.cs">
       <DependentUpon>PlayersNamesWindowsThreePlayers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RoundForms\RoundFormsTwoPlayers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoundForms\RoundFormsTwoPlayers.Designer.cs">
+      <DependentUpon>RoundFormsTwoPlayers.cs</DependentUpon>
     </Compile>
     <Compile Include="WelcomeWindow.cs">
       <SubType>Form</SubType>
@@ -64,23 +70,26 @@
     <Compile Include="WelcomeWindow.Designer.cs">
       <DependentUpon>WelcomeWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="PlayersNamesWindowTwoPlayers.cs">
+    <Compile Include="EnterNamesForms\PlayersNamesWindowTwoPlayers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PlayersNamesWindowTwoPlayers.Designer.cs">
+    <Compile Include="EnterNamesForms\PlayersNamesWindowTwoPlayers.Designer.cs">
       <DependentUpon>PlayersNamesWindowTwoPlayers.cs</DependentUpon>
     </Compile>
     <Compile Include="UIMessages.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="PlayersNamesWindowFourPlayers.resx">
+    <EmbeddedResource Include="EnterNamesForms\PlayersNamesWindowFourPlayers.resx">
       <DependentUpon>PlayersNamesWindowFourPlayers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PlayersNamesWindowsThreePlayers.resx">
+    <EmbeddedResource Include="EnterNamesForms\PlayersNamesWindowsThreePlayers.resx">
       <DependentUpon>PlayersNamesWindowsThreePlayers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PlayersNamesWindowTwoPlayers.resx">
+    <EmbeddedResource Include="EnterNamesForms\PlayersNamesWindowTwoPlayers.resx">
       <DependentUpon>PlayersNamesWindowTwoPlayers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoundForms\RoundFormsTwoPlayers.resx">
+      <DependentUpon>RoundFormsTwoPlayers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WelcomeWindow.resx">
       <DependentUpon>WelcomeWindow.cs</DependentUpon>
