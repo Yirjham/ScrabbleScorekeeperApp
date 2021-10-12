@@ -12,7 +12,7 @@ namespace Scorekeeper.Tests
     public class CalculationTests
     {
         [Fact]
-        public void DetermineRoundWinnerForTwoPlayers()
+        public void ShouldReturnRoundWinnerForTwoPlayers()
         {
             // Arrange
             PlayerModel player1 = new PlayerModel("testUser1") { RoundScore = 14 };
@@ -27,7 +27,25 @@ namespace Scorekeeper.Tests
             Assert.Equal(expected, actual);
 
         }
-        
-        
+        [Fact]
+        public void ShouldReturnRoundWinnerForThreePlayers()
+        {
+            // Arrange
+            PlayerModel player1 = new PlayerModel("testUser1") { RoundScore = 13 };
+            PlayerModel player2 = new PlayerModel("testUser2") { RoundScore = 2 };
+            PlayerModel player3 = new PlayerModel("testUser3") { RoundScore = 7 };
+            PlayerModel expected = player1;
+
+            // Act
+            PlayerModel roundWinner = Calculations.DetermineRoundWinnerThreePlayers(player1, player2, player3);
+            PlayerModel actual = roundWinner;
+
+            // Assert
+
+            Assert.Equal(expected, actual);
+
+        }
+
+
     }
 }

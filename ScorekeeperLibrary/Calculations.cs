@@ -24,7 +24,9 @@ namespace ScorekeeperLibrary
         }
         public static PlayerModel DetermineRoundWinnerThreePlayers(PlayerModel player1, PlayerModel player2, PlayerModel player3)
         {
-            throw new NotImplementedException();
+            PlayerModel winner = DetermineRoundWinnerTwoPlayers(player1, player2);
+            winner = DetermineRoundWinnerTwoPlayers(winner, player3);
+            return winner;
         }
         public static PlayerModel DetermineRoundWinnerFourPlayers(PlayerModel player1, PlayerModel player2, PlayerModel player3, PlayerModel player4)
         {
