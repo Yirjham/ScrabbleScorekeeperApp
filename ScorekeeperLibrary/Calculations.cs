@@ -9,6 +9,7 @@ namespace ScorekeeperLibrary
 {
     public static class Calculations
     {
+        // returns null if the two players have the same round score
         public static PlayerModel DetermineRoundWinnerTwoPlayers(PlayerModel player, PlayerModel anotherPlayer)
         {
             PlayerModel roundWinner = null;
@@ -30,7 +31,9 @@ namespace ScorekeeperLibrary
         }
         public static PlayerModel DetermineRoundWinnerFourPlayers(PlayerModel player1, PlayerModel player2, PlayerModel player3, PlayerModel player4)
         {
-            throw new NotImplementedException();
+            PlayerModel winner = DetermineRoundWinnerThreePlayers(player1, player2, player3);
+            winner = DetermineRoundWinnerTwoPlayers(winner, player4);
+            return winner;
         }
 
     }
