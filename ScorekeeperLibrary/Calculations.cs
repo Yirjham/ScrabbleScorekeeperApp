@@ -9,10 +9,7 @@ namespace ScorekeeperLibrary
 {
     public static class Calculations
     {
-        public static void CalculateCurrentScore(PlayerModel player, int score)
-        {
-            throw new NotImplementedException();
-        }
+       
         public static PlayerModel DetermineRoundWinnerTwoPlayers(PlayerModel player, PlayerModel anotherPlayer)
         {
             throw new NotImplementedException();

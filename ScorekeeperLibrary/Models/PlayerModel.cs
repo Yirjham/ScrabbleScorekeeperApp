@@ -15,6 +15,11 @@ namespace ScorekeeperLibrary.Models
         public string PlayerName { get; set; }
         public int RoundScore { get; set; } = 0;
         public int ScoreSubtotal { get; set; } = 0;
+
+        public void UpdateRoundSubtotal()
+        {
+            this.ScoreSubtotal = this.ScoreSubtotal + this.RoundScore;
+        }
         
     }
 }
