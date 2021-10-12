@@ -18,7 +18,7 @@ namespace ScorekeeperLibrary.Models
 
         public void UpdateRoundSubtotal()
         {
-            this.ScoreSubtotal = this.ScoreSubtotal + this.RoundScore;
+            //ScoreSubtotal = ScoreSubtotal + RoundScore;
         }
         
     }
