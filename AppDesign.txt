@@ -49,17 +49,44 @@ L - Logic -
 	b. Game class: prop {Amount of Players: Player} We need three forms, for 2, 3 and 4 players, we load the
 	one required.
 	c. Round class {CurrentRound: int} {CurrentTopPlayer} {CurrentScores}
-	d. Final message class: {text: string} {Winner: Player} {Score} 
+	d. Messages class: {text: string} {Winner: Player} {Score} 
 
-2. Main methods logic:
-***Method 1***
-score = 0
-while (game is playing)
-{
+2. List of Methods
+
+- Method 1 -> Sums the scores done!!!
+ 
+
 score = score +roundScore
-}
-***Method2***
-private static displayScoreMethod --> This is a winform method
+
+
+- Method2: -> Decide the round winner done!!!
+
+For 2 players:
+
+if (player1.Score > player2.Score)
+winner = player1
+	
+else
+winner = player2
+
+return winner;
+
+For 3 players: use Method 2 and compare with player 3 score done!!!
+
+For 4 players: use Method 2 for player1 and player and again for player 3 and 4, then compare the two winners using 
+the same method done!!!
+
+- Method 3: method for creating a player -> we can use the constructor done!!!
+- Methods 4, 5, 6: determine winner for 2, 3 and 4 players 
+- Method 5: display the round scores
+- Method 6: display the winner
+
+****Validation Methods 
+
+Method 1: validates against an empty string
+Method 2: validates for the correct range of numbers
+Method 3: validates for allowing integers only
+
 
 3. UI Project:
 	a. Initial Form
