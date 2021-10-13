@@ -43,7 +43,7 @@ namespace ScorekeeperLibrary.DataValidation
             {
                 userInputNumber = int.Parse(userInputText);
 
-                if (userInputNumber >= 0 && userInputNumber < 130)
+                if (userInputNumber >= 0 && userInputNumber <= 130)
                 {
                     return true;
                 }

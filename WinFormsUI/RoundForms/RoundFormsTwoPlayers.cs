@@ -25,22 +25,42 @@ namespace WinFormsUI.RoundForms
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
+            bool isEmptyScoreP1 = DataValidation.isEmpty(txtScorePlayer1.Text);
+            bool isEmptyScoreP2 = DataValidation.isEmpty(txtScorePlayer2.Text);
             bool isValidEntryScoreP1 = DataValidation.isValidNumericData(txtScorePlayer1.Text);
             bool isValidEntryScoreP2 = DataValidation.isValidNumericData(txtScorePlayer2.Text);
-            if (isValidEntryScoreP1 == true && isValidEntryScoreP2 == true)
+            bool isValidRangeScoreP1 = DataValidation.isValidRange(txtScorePlayer1.Text);
+            bool isValidRangeScoreP2 = DataValidation.isValidRange(txtScorePlayer2.Text);
+
+            if (isEmptyScoreP1 == false & isEmptyScoreP2 == false)
             {
-                game.Players[0].RoundScore = int.Parse(txtScorePlayer1.Text);
-                game.Players[1].RoundScore = int.Parse(txtScorePlayer2.Text);
+                
+                if (isValidEntryScoreP1 == true && isValidEntryScoreP2 == true)
+                {
+                    if (isValidRangeScoreP1 == true && isValidRangeScoreP2 == true)
+                    {
+                        game.Players[0].RoundScore = int.Parse(txtScorePlayer1.Text);
+                        game.Players[1].RoundScore = int.Parse(txtScorePlayer2.Text);
 
-                game.Players[0].UpdateRoundSubtotal();
-                game.Players[1].UpdateRoundSubtotal();
+                        game.Players[0].UpdateRoundSubtotal();
+                        game.Players[1].UpdateRoundSubtotal();
 
-                txtSubtotalPlayer1.Text = game.Players[0].ScoreSubtotal.ToString();
-                txtSubtotalPlayer2.Text = game.Players[1].ScoreSubtotal.ToString();
+                        txtSubtotalPlayer1.Text = game.Players[0].ScoreSubtotal.ToString();
+                        txtSubtotalPlayer2.Text = game.Players[1].ScoreSubtotal.ToString(); 
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid range. Please try whole numbers between 0 and 130");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid entry. Please try whole numbers");
+                } 
             }
             else
             {
-                MessageBox.Show("Invalid entry. Please try again");
+                MessageBox.Show("Empty entry. Please try again");
             }
         }
     }

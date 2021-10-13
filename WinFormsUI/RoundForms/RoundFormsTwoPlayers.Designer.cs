@@ -84,19 +84,20 @@ namespace WinFormsUI.RoundForms
             this.txtScorePlayer1.Location = new System.Drawing.Point(238, 177);
             this.txtScorePlayer1.Name = "txtScorePlayer1";
             this.txtScorePlayer1.Size = new System.Drawing.Size(100, 35);
-            this.txtScorePlayer1.TabIndex = 4;
+            this.txtScorePlayer1.TabIndex = 1;
             // 
             // txtScorePlayer2
             // 
             this.txtScorePlayer2.Location = new System.Drawing.Point(238, 284);
             this.txtScorePlayer2.Name = "txtScorePlayer2";
             this.txtScorePlayer2.Size = new System.Drawing.Size(100, 35);
-            this.txtScorePlayer2.TabIndex = 5;
+            this.txtScorePlayer2.TabIndex = 2;
             // 
             // txtSubtotalPlayer1
             // 
             this.txtSubtotalPlayer1.Location = new System.Drawing.Point(391, 177);
             this.txtSubtotalPlayer1.Name = "txtSubtotalPlayer1";
+            this.txtSubtotalPlayer1.ReadOnly = true;
             this.txtSubtotalPlayer1.Size = new System.Drawing.Size(122, 35);
             this.txtSubtotalPlayer1.TabIndex = 6;
             // 
@@ -104,6 +105,7 @@ namespace WinFormsUI.RoundForms
             // 
             this.txtSubtotalPlayer2.Location = new System.Drawing.Point(391, 284);
             this.txtSubtotalPlayer2.Name = "txtSubtotalPlayer2";
+            this.txtSubtotalPlayer2.ReadOnly = true;
             this.txtSubtotalPlayer2.Size = new System.Drawing.Size(122, 35);
             this.txtSubtotalPlayer2.TabIndex = 7;
             // 
@@ -130,7 +132,7 @@ namespace WinFormsUI.RoundForms
             this.btnEnter.Location = new System.Drawing.Point(238, 356);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(111, 38);
-            this.btnEnter.TabIndex = 10;
+            this.btnEnter.TabIndex = 3;
             this.btnEnter.Text = "Enter";
             this.btnEnter.UseVisualStyleBackColor = true;
             this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
@@ -140,7 +142,7 @@ namespace WinFormsUI.RoundForms
             this.btnFinishGame.Location = new System.Drawing.Point(391, 358);
             this.btnFinishGame.Name = "btnFinishGame";
             this.btnFinishGame.Size = new System.Drawing.Size(116, 36);
-            this.btnFinishGame.TabIndex = 11;
+            this.btnFinishGame.TabIndex = 4;
             this.btnFinishGame.Text = "Finish";
             this.btnFinishGame.UseVisualStyleBackColor = true;
             // 
