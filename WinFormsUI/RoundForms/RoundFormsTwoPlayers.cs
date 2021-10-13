@@ -35,7 +35,7 @@ namespace WinFormsUI.RoundForms
             bool isValidRangeScoreP1 = DataValidation.isValidRange(txtScorePlayer1.Text);
             bool isValidRangeScoreP2 = DataValidation.isValidRange(txtScorePlayer2.Text);
 
-            if (isEmptyScoreP1 == false & isEmptyScoreP2 == false)
+            if (isEmptyScoreP1 == false && isEmptyScoreP2 == false)
             {
                 
                 if (isValidEntryScoreP1 == true && isValidEntryScoreP2 == true)

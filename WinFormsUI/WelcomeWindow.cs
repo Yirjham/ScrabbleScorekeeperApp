@@ -24,6 +24,7 @@ namespace WinFormsUI
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
+            
             string namePlayer1 = txtPlayer1.Text;
             string namePlayer2 = txtPlayer2.Text;
             PlayerModel player1 = new PlayerModel(namePlayer1);

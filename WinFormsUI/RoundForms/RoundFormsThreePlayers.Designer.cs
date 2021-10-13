@@ -63,6 +63,7 @@ namespace WinFormsUI.RoundForms
             this.btnEnter.TabIndex = 15;
             this.btnEnter.Text = "Enter";
             this.btnEnter.UseVisualStyleBackColor = true;
+            this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
             // 
             // lblSubtotal
             // 
