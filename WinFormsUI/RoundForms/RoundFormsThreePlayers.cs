@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WinFormsUI
+namespace WinFormsUI.RoundForms
 {
-    public partial class PlayersNamesWindowsThreePlayers : Form
+    public partial class RoundFormsThreePlayers : Form
     {
-        public PlayersNamesWindowsThreePlayers()
+        public RoundFormsThreePlayers()
         {
             InitializeComponent();
         }
