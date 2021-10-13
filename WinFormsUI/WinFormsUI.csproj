@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RoundForms\RoundFormsFourPlayers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoundForms\RoundFormsFourPlayers.Designer.cs">
+      <DependentUpon>RoundFormsFourPlayers.cs</DependentUpon>
+    </Compile>
     <Compile Include="RoundForms\RoundFormsThreePlayers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +73,9 @@
     <Compile Include="UIMessages.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="RoundForms\RoundFormsFourPlayers.resx">
+      <DependentUpon>RoundFormsFourPlayers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RoundForms\RoundFormsThreePlayers.resx">
       <DependentUpon>RoundFormsThreePlayers.cs</DependentUpon>
     </EmbeddedResource>

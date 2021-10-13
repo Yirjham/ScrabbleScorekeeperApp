@@ -69,7 +69,7 @@ namespace WinFormsUI
                 game.Players.Add(player3);
                 game.Players.Add(player4);
 
-                RoundFormsThreePlayers roundForm = new RoundFormsThreePlayers(game);
+                RoundFormsFourPlayers roundForm = new RoundFormsFourPlayers(game);
                 roundForm.Show();
             }
         }
