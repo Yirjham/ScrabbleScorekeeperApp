@@ -19,22 +19,59 @@ namespace WinFormsUI
             InitializeComponent();
             txtPlayer3.ReadOnly = true;
             txtPlayer4.ReadOnly = true;
-
         }
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
-            
-            string namePlayer1 = txtPlayer1.Text;
-            string namePlayer2 = txtPlayer2.Text;
-            PlayerModel player1 = new PlayerModel(namePlayer1);
-            PlayerModel player2 = new PlayerModel(namePlayer2);
-            GameModel game = new GameModel();
-            game.Players.Add(player1);
-            game.Players.Add(player2);
 
-            RoundFormsTwoPlayers roundForm = new RoundFormsTwoPlayers(game);
-            roundForm.Show();
+            if (rbtnTwoPlayers.Checked == true)
+            {
+                string namePlayer1 = txtPlayer1.Text;
+                string namePlayer2 = txtPlayer2.Text;
+                PlayerModel player1 = new PlayerModel(namePlayer1);
+                PlayerModel player2 = new PlayerModel(namePlayer2);
+                GameModel game = new GameModel();
+                game.Players.Add(player1);
+                game.Players.Add(player2);
+
+                RoundFormsTwoPlayers roundForm = new RoundFormsTwoPlayers(game);
+                roundForm.Show(); 
+            }
+            else if (rbtnThreePlayers.Checked == true)
+            {
+                string namePlayer1 = txtPlayer1.Text;
+                string namePlayer2 = txtPlayer2.Text;
+                string namePlayer3 = txtPlayer3.Text;
+                PlayerModel player1 = new PlayerModel(namePlayer1);
+                PlayerModel player2 = new PlayerModel(namePlayer2);
+                PlayerModel player3 = new PlayerModel(namePlayer3);
+                GameModel game = new GameModel();
+                game.Players.Add(player1);
+                game.Players.Add(player2);
+                game.Players.Add(player3);
+
+                RoundFormsThreePlayers roundForm = new RoundFormsThreePlayers(game);
+                roundForm.Show();
+            }
+            else if (rbtnFourPlayers.Checked == true)
+            {
+                string namePlayer1 = txtPlayer1.Text;
+                string namePlayer2 = txtPlayer2.Text;
+                string namePlayer3 = txtPlayer3.Text;
+                string namePlayer4 = txtPlayer4.Text;
+                PlayerModel player1 = new PlayerModel(namePlayer1);
+                PlayerModel player2 = new PlayerModel(namePlayer2);
+                PlayerModel player3 = new PlayerModel(namePlayer3);
+                PlayerModel player4 = new PlayerModel(namePlayer4);
+                GameModel game = new GameModel();
+                game.Players.Add(player1);
+                game.Players.Add(player2);
+                game.Players.Add(player3);
+                game.Players.Add(player4);
+
+                RoundFormsThreePlayers roundForm = new RoundFormsThreePlayers(game);
+                roundForm.Show();
+            }
         }
         private void rbtnThreePlayers_CheckedChanged(object sender, EventArgs e)
         {

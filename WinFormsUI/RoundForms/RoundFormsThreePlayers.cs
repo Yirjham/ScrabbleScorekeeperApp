@@ -22,7 +22,7 @@ namespace WinFormsUI.RoundForms
             InitializeComponent();
             lblPlayer1Name.Text = game.Players[0].PlayerName;
             lblPlayer2Name.Text = game.Players[1].PlayerName;
-            lblPlayer2Name.Text = game.Players[2].PlayerName;
+            lblPlayer3Name.Text = game.Players[2].PlayerName;
             game.TotalRounds = 0;
             lblCurrentRoundNumber.Text = game.TotalRounds.ToString();
         }
@@ -80,6 +80,20 @@ namespace WinFormsUI.RoundForms
                 MessageBox.Show("Empty entry. Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             txtScorePlayer1.Focus();
+        }
+
+        private void btnFinishGame_Click(object sender, EventArgs e)
+        {
+            DialogResult button = MessageBox.Show("Are you sure you want to finish the game?", "Scrabble Scorekeeper",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+            if (button == DialogResult.Yes)
+            {
+                game.GameWinner = Calculations.DeterminesWinner(game.Players[0], game.Players[1], game.Players[2]);
+
+                MessageBox.Show($"After { game.TotalRounds } rounds the winner is { game.GameWinner.PlayerName } with " +
+                    $"{ game.GameWinner.ScoreSubtotal } points. Congratulations!!!", "WINNER!!!", MessageBoxButtons.OK);
+            }
         }
     }
 }

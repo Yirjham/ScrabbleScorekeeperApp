@@ -54,6 +54,7 @@ namespace WinFormsUI.RoundForms
             this.btnFinishGame.TabIndex = 17;
             this.btnFinishGame.Text = "Finish";
             this.btnFinishGame.UseVisualStyleBackColor = true;
+            this.btnFinishGame.Click += new System.EventHandler(this.btnFinishGame_Click);
             // 
             // btnEnter
             // 

@@ -22,7 +22,7 @@ namespace WinFormsUI.RoundForms
             InitializeComponent();
             lblPlayer1Name.Text = game.Players[0].PlayerName;
             lblPlayer2Name.Text = game.Players[1].PlayerName;
-            game.TotalRounds = 1;
+            game.TotalRounds = 0;
             lblCurrentRoundNumber.Text = game.TotalRounds.ToString();
         }
 
