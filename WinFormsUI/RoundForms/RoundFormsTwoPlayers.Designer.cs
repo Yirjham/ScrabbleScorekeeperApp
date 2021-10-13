@@ -100,6 +100,7 @@ namespace WinFormsUI.RoundForms
             this.txtSubtotalPlayer1.ReadOnly = true;
             this.txtSubtotalPlayer1.Size = new System.Drawing.Size(122, 35);
             this.txtSubtotalPlayer1.TabIndex = 6;
+            this.txtSubtotalPlayer1.TabStop = false;
             // 
             // txtSubtotalPlayer2
             // 
@@ -108,6 +109,7 @@ namespace WinFormsUI.RoundForms
             this.txtSubtotalPlayer2.ReadOnly = true;
             this.txtSubtotalPlayer2.Size = new System.Drawing.Size(122, 35);
             this.txtSubtotalPlayer2.TabIndex = 7;
+            this.txtSubtotalPlayer2.TabStop = false;
             // 
             // lblScore
             // 
@@ -145,6 +147,7 @@ namespace WinFormsUI.RoundForms
             this.btnFinishGame.TabIndex = 4;
             this.btnFinishGame.Text = "Finish";
             this.btnFinishGame.UseVisualStyleBackColor = true;
+            this.btnFinishGame.Click += new System.EventHandler(this.btnFinishGame_Click);
             // 
             // RoundFormsTwoPlayers
             // 

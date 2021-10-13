@@ -14,13 +14,15 @@ namespace WinFormsUI.RoundForms
 {
     public partial class RoundFormsTwoPlayers : Form
     {
-        GameModel game;
+        GameModel game;        
         public RoundFormsTwoPlayers(GameModel currentGame)
         {
             game = currentGame;
             InitializeComponent();
             lblPlayer1Name.Text = game.Players[0].PlayerName;
             lblPlayer2Name.Text = game.Players[1].PlayerName;
+            game.TotalRounds = 1;
+            lblCurrentRoundNumber.Text = game.TotalRounds.ToString();
         }
 
         private void btnEnter_Click(object sender, EventArgs e)
@@ -46,21 +48,52 @@ namespace WinFormsUI.RoundForms
                         game.Players[1].UpdateRoundSubtotal();
 
                         txtSubtotalPlayer1.Text = game.Players[0].ScoreSubtotal.ToString();
-                        txtSubtotalPlayer2.Text = game.Players[1].ScoreSubtotal.ToString(); 
+                        txtSubtotalPlayer2.Text = game.Players[1].ScoreSubtotal.ToString();
+
+                        game.TotalRounds++;
+                        lblCurrentRoundNumber.Text = game.TotalRounds.ToString();
+
+                        txtScorePlayer1.Clear();
+                        txtScorePlayer2.Clear();
                     }
                     else
                     {
-                        MessageBox.Show("Invalid range. Please try whole numbers between 0 and 130");
+                        MessageBox.Show("Invalid range. Please try whole numbers between 0 and 130", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Invalid entry. Please try whole numbers");
+                    MessageBox.Show("Invalid entry. Please try whole numbers","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } 
             }
             else
             {
-                MessageBox.Show("Empty entry. Please try again");
+                MessageBox.Show("Empty entry. Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            txtScorePlayer1.Focus();
+        }
+
+        private void btnFinishGame_Click(object sender, EventArgs e)
+        {
+            DialogResult button = MessageBox.Show("Are you sure you want to finish the game?", "Scrabble Scorekeeper", 
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+            if (button == DialogResult.Yes)
+            {
+                game.Players[0].UpdateRoundSubtotal();
+                game.Players[1].UpdateRoundSubtotal();
+
+                if (game.Players[0].ScoreSubtotal > game.Players[1].ScoreSubtotal)
+                {
+                    game.GameWinner = game.Players[0];
+                }
+                else
+                {
+                    game.GameWinner = game.Players[1];
+                }
+
+                MessageBox.Show($"After { game.TotalRounds } rounds the winner is { game.GameWinner.PlayerName } with { game.GameWinner.ScoreSubtotal } points. Congratulations!!!","WINNER!!!",MessageBoxButtons.OK);
+
             }
         }
     }
