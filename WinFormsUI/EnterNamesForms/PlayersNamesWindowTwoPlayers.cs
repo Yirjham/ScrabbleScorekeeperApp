@@ -17,9 +17,7 @@ namespace WinFormsUI
     {
         public PlayersNamesWindowTwoPlayers()
         {
-           
             InitializeComponent();
-            
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)

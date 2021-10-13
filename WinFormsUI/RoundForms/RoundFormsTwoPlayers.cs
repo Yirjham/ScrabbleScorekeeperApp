@@ -1,4 +1,5 @@
-﻿using ScorekeeperLibrary.DataValidation;
+﻿using ScorekeeperLibrary;
+using ScorekeeperLibrary.DataValidation;
 using ScorekeeperLibrary.Models;
 using System;
 using System.Collections.Generic;
@@ -80,20 +81,10 @@ namespace WinFormsUI.RoundForms
 
             if (button == DialogResult.Yes)
             {
-                game.Players[0].UpdateRoundSubtotal();
-                game.Players[1].UpdateRoundSubtotal();
+                game.GameWinner = Calculations.DeterminesWinner(game.Players[0], game.Players[1]);
 
-                if (game.Players[0].ScoreSubtotal > game.Players[1].ScoreSubtotal)
-                {
-                    game.GameWinner = game.Players[0];
-                }
-                else
-                {
-                    game.GameWinner = game.Players[1];
-                }
-
-                MessageBox.Show($"After { game.TotalRounds } rounds the winner is { game.GameWinner.PlayerName } with { game.GameWinner.ScoreSubtotal } points. Congratulations!!!","WINNER!!!",MessageBoxButtons.OK);
-
+                MessageBox.Show($"After { game.TotalRounds } rounds the winner is { game.GameWinner.PlayerName } with " +
+                    $"{ game.GameWinner.ScoreSubtotal } points. Congratulations!!!","WINNER!!!",MessageBoxButtons.OK);
             }
         }
     }
