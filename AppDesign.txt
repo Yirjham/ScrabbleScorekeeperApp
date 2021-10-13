@@ -98,6 +98,14 @@ D - Data design
 For now, no database so we will use a List to store the players' info including rounds scores and hence
 the final score.
 
-
+ToDo:
+1. Finish data validation methods DONE!
+2. Structured exception handling for null when equal scores in Calculations class methods. -> better if done in
+the UI project.
+3. Create initial form with amount of players
+4. Create second form to enter players' names
+5. Round form that updates the round number and lets enter players scores, one button for entering values, another
+   for pop with subtotal values
+6. Final pop with congratulation message
 
 

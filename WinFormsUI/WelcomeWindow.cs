@@ -23,26 +23,18 @@ namespace WinFormsUI
             {
                 PlayersNamesWindowTwoPlayers form = new PlayersNamesWindowTwoPlayers();
                 form.Show();
-                
             }
             else if (rbtmThreePlayers.Checked == true)
             {
                 PlayersNamesWindowsThreePlayers form = new PlayersNamesWindowsThreePlayers();
                 form.Show();
-                this.Close();
             }
-            else if(rbtnFourPlayers.Checked == true)
+            else if (rbtnFourPlayers.Checked == true)
             {
                 PlayerNamesWindowFourPlayers form = new PlayerNamesWindowFourPlayers();
                 form.Show();
-                this.Close();
             }
 
-            CloseCurrentWindow();
-        }
-        private void CloseCurrentWindow()
-        {
-            this.Close();
         }
     }
 }

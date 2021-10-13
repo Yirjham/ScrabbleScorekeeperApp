@@ -8,9 +8,8 @@ namespace ScorekeeperLibrary.Models
 {
     public class GameModel
     {
-        public List<PlayerModel> Players { get; set; }
+        public List<PlayerModel> Players { get; set; } = new List<PlayerModel>();
         public int TotalRounds { get; set; }
         public PlayerModel GameWinner { get; set; }
-        public PlayerModel currentWinner { get; set; }
     }
 }

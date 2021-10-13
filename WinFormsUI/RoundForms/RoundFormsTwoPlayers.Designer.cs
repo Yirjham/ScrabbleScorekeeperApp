@@ -33,10 +33,10 @@ namespace WinFormsUI.RoundForms
             this.lblPlayer2Name = new System.Windows.Forms.Label();
             this.lblCurrentRound = new System.Windows.Forms.Label();
             this.lblCurrentRoundNumber = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtScorePlayer1 = new System.Windows.Forms.TextBox();
+            this.txtScorePlayer2 = new System.Windows.Forms.TextBox();
+            this.txtSubtotalPlayer1 = new System.Windows.Forms.TextBox();
+            this.txtSubtotalPlayer2 = new System.Windows.Forms.TextBox();
             this.lblScore = new System.Windows.Forms.Label();
             this.lblSubtotal = new System.Windows.Forms.Label();
             this.btnEnter = new System.Windows.Forms.Button();
@@ -79,33 +79,33 @@ namespace WinFormsUI.RoundForms
             this.lblCurrentRoundNumber.TabIndex = 3;
             this.lblCurrentRoundNumber.Text = "Number";
             // 
-            // textBox1
+            // txtScorePlayer1
             // 
-            this.textBox1.Location = new System.Drawing.Point(238, 177);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 35);
-            this.textBox1.TabIndex = 4;
+            this.txtScorePlayer1.Location = new System.Drawing.Point(238, 177);
+            this.txtScorePlayer1.Name = "txtScorePlayer1";
+            this.txtScorePlayer1.Size = new System.Drawing.Size(100, 35);
+            this.txtScorePlayer1.TabIndex = 4;
             // 
-            // textBox2
+            // txtScorePlayer2
             // 
-            this.textBox2.Location = new System.Drawing.Point(238, 284);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 35);
-            this.textBox2.TabIndex = 5;
+            this.txtScorePlayer2.Location = new System.Drawing.Point(238, 284);
+            this.txtScorePlayer2.Name = "txtScorePlayer2";
+            this.txtScorePlayer2.Size = new System.Drawing.Size(100, 35);
+            this.txtScorePlayer2.TabIndex = 5;
             // 
-            // textBox3
+            // txtSubtotalPlayer1
             // 
-            this.textBox3.Location = new System.Drawing.Point(391, 177);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(122, 35);
-            this.textBox3.TabIndex = 6;
+            this.txtSubtotalPlayer1.Location = new System.Drawing.Point(391, 177);
+            this.txtSubtotalPlayer1.Name = "txtSubtotalPlayer1";
+            this.txtSubtotalPlayer1.Size = new System.Drawing.Size(122, 35);
+            this.txtSubtotalPlayer1.TabIndex = 6;
             // 
-            // textBox4
+            // txtSubtotalPlayer2
             // 
-            this.textBox4.Location = new System.Drawing.Point(391, 284);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(122, 35);
-            this.textBox4.TabIndex = 7;
+            this.txtSubtotalPlayer2.Location = new System.Drawing.Point(391, 284);
+            this.txtSubtotalPlayer2.Name = "txtSubtotalPlayer2";
+            this.txtSubtotalPlayer2.Size = new System.Drawing.Size(122, 35);
+            this.txtSubtotalPlayer2.TabIndex = 7;
             // 
             // lblScore
             // 
@@ -133,6 +133,7 @@ namespace WinFormsUI.RoundForms
             this.btnEnter.TabIndex = 10;
             this.btnEnter.Text = "Enter";
             this.btnEnter.UseVisualStyleBackColor = true;
+            this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
             // 
             // btnFinishGame
             // 
@@ -152,16 +153,16 @@ namespace WinFormsUI.RoundForms
             this.Controls.Add(this.btnEnter);
             this.Controls.Add(this.lblSubtotal);
             this.Controls.Add(this.lblScore);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtSubtotalPlayer2);
+            this.Controls.Add(this.txtSubtotalPlayer1);
+            this.Controls.Add(this.txtScorePlayer2);
+            this.Controls.Add(this.txtScorePlayer1);
             this.Controls.Add(this.lblCurrentRoundNumber);
             this.Controls.Add(this.lblCurrentRound);
             this.Controls.Add(this.lblPlayer2Name);
             this.Controls.Add(this.lblPlayer1Name);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.Margin = new System.Windows.Forms.Padding(7);
             this.Name = "RoundFormsTwoPlayers";
             this.Text = "RoundFormsTwoPlayers";
             this.ResumeLayout(false);
@@ -175,10 +176,10 @@ namespace WinFormsUI.RoundForms
         private System.Windows.Forms.Label lblPlayer2Name;
         private System.Windows.Forms.Label lblCurrentRound;
         private System.Windows.Forms.Label lblCurrentRoundNumber;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtScorePlayer1;
+        private System.Windows.Forms.TextBox txtScorePlayer2;
+        private System.Windows.Forms.TextBox txtSubtotalPlayer1;
+        private System.Windows.Forms.TextBox txtSubtotalPlayer2;
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.Label lblSubtotal;
         private System.Windows.Forms.Button btnEnter;

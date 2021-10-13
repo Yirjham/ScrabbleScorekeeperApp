@@ -15,20 +15,24 @@ namespace WinFormsUI
 {
     public partial class PlayersNamesWindowTwoPlayers : Form
     {
-        PlayerModel player1 = new PlayerModel("Player 1:");
-        PlayerModel player2 = new PlayerModel("Player 2:");
-
         public PlayersNamesWindowTwoPlayers()
         {
-            
+           
             InitializeComponent();
+            
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            RoundFormsTwoPlayers roundForm = new RoundFormsTwoPlayers();
-            player1.PlayerName = txtPlayer1.Text;
-            player2.PlayerName = txtPlayer2.Text;
+            string namePlayer1 = txtPlayer1.Text;
+            string namePlayer2 = txtPlayer2.Text;
+            PlayerModel player1 = new PlayerModel(namePlayer1);
+            PlayerModel player2 = new PlayerModel(namePlayer2);
+            GameModel game = new GameModel();
+            game.Players.Add(player1);
+            game.Players.Add(player2);
+            
+            RoundFormsTwoPlayers roundForm = new RoundFormsTwoPlayers(game);
             roundForm.Show();
         }
     }
