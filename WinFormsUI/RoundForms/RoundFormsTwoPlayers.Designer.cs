@@ -55,7 +55,7 @@ namespace WinFormsUI.RoundForms
             // lblPlayer2Name
             // 
             this.lblPlayer2Name.AutoSize = true;
-            this.lblPlayer2Name.Location = new System.Drawing.Point(135, 290);
+            this.lblPlayer2Name.Location = new System.Drawing.Point(135, 237);
             this.lblPlayer2Name.Name = "lblPlayer2Name";
             this.lblPlayer2Name.Size = new System.Drawing.Size(106, 29);
             this.lblPlayer2Name.TabIndex = 1;
@@ -88,7 +88,7 @@ namespace WinFormsUI.RoundForms
             // 
             // txtScorePlayer2
             // 
-            this.txtScorePlayer2.Location = new System.Drawing.Point(238, 284);
+            this.txtScorePlayer2.Location = new System.Drawing.Point(238, 231);
             this.txtScorePlayer2.Name = "txtScorePlayer2";
             this.txtScorePlayer2.Size = new System.Drawing.Size(100, 35);
             this.txtScorePlayer2.TabIndex = 2;
@@ -104,7 +104,7 @@ namespace WinFormsUI.RoundForms
             // 
             // txtSubtotalPlayer2
             // 
-            this.txtSubtotalPlayer2.Location = new System.Drawing.Point(391, 284);
+            this.txtSubtotalPlayer2.Location = new System.Drawing.Point(391, 231);
             this.txtSubtotalPlayer2.Name = "txtSubtotalPlayer2";
             this.txtSubtotalPlayer2.ReadOnly = true;
             this.txtSubtotalPlayer2.Size = new System.Drawing.Size(122, 35);
@@ -131,7 +131,7 @@ namespace WinFormsUI.RoundForms
             // 
             // btnEnter
             // 
-            this.btnEnter.Location = new System.Drawing.Point(238, 356);
+            this.btnEnter.Location = new System.Drawing.Point(238, 303);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(111, 38);
             this.btnEnter.TabIndex = 3;
@@ -141,7 +141,7 @@ namespace WinFormsUI.RoundForms
             // 
             // btnFinishGame
             // 
-            this.btnFinishGame.Location = new System.Drawing.Point(391, 358);
+            this.btnFinishGame.Location = new System.Drawing.Point(391, 305);
             this.btnFinishGame.Name = "btnFinishGame";
             this.btnFinishGame.Size = new System.Drawing.Size(116, 36);
             this.btnFinishGame.TabIndex = 4;
