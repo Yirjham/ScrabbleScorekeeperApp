@@ -6,11 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ScorekeeperLibrary
-{
+{/// <summary>
+/// Static methods for round and game calculations
+/// </summary>
     public static class Calculations
     {
-        // returns null if the two players have the same round score
-        // The three methods below determine the round highest scorer
+        /// <summary>
+        /// Determines the round highest scorer, it has 3 overloads: 2, 3 and 4 players
+        /// </summary>
+        /// <param name="player1">First Player</param>
+        /// <param name="player2">Second Player</param>
+        /// <returns>Returns a PlayerModel instance</returns>
         public static PlayerModel DeterminesRoundHighestScorer(PlayerModel player1, PlayerModel player2)
         {
             PlayerModel roundWinner = null;
@@ -33,7 +39,12 @@ namespace ScorekeeperLibrary
             return winner;
         }
 
-        // The 3 Methods below determine the winner of the game at any stage
+        /// <summary>
+        /// Determines the game winner, it has 3 overloads: 2, 3 and 4 players
+        /// </summary>
+        /// <param name="player1">First Player</param>
+        /// <param name="player2">Second Player</param>
+        /// <returns></returns>
         public static PlayerModel DeterminesWinner(PlayerModel player1, PlayerModel player2)
         {
 

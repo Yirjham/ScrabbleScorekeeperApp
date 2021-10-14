@@ -96,29 +96,5 @@ namespace WinFormsUI
             txtPlayer3.ReadOnly = true;
             txtPlayer4.ReadOnly = true;
         }
-        private void groupBoxInitialForm_Enter(object sender, EventArgs e)
-        {
-            //if (rbtnTwoPlayers.Checked == true)
-            //{
-            //    txtPlayer1.ReadOnly = false;
-            //    txtPlayer2.ReadOnly = false;
-            //    txtPlayer3.ReadOnly = true;
-            //    txtPlayer4.ReadOnly = true;
-            //}
-            //else if (rbtnThreePlayers.Checked == true)
-            //{
-            //    txtPlayer1.ReadOnly = false;
-            //    txtPlayer2.ReadOnly = false;
-            //    txtPlayer3.ReadOnly = false;
-            //    txtPlayer4.ReadOnly = true;
-            //}
-            //else if (rbtnFourPlayers.Checked == true)
-            //{
-            //    txtPlayer1.ReadOnly = false;
-            //    txtPlayer2.ReadOnly = false;
-            //    txtPlayer3.ReadOnly = false;
-            //    txtPlayer4.ReadOnly = false;
-            //}
-        }
     }
 }

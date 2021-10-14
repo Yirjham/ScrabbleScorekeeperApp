@@ -78,7 +78,7 @@ namespace WinFormsUI
             this.groupBoxInitialForm.TabIndex = 3;
             this.groupBoxInitialForm.TabStop = false;
             this.groupBoxInitialForm.Text = "Select the Amount of Players:";
-            this.groupBoxInitialForm.Enter += new System.EventHandler(this.groupBoxInitialForm_Enter);
+            
             // 
             // rbtnFourPlayers
             // 
