@@ -25,22 +25,14 @@ namespace WinFormsUI.RoundForms
             game.TotalRounds = 0;
             lblCurrentRoundNumber.Text = game.TotalRounds.ToString();
         }
-
         private void btnEnter_Click(object sender, EventArgs e)
         {
-            bool isEmptyScoreP1 = DataValidation.isEmpty(txtScorePlayer1.Text);
-            bool isEmptyScoreP2 = DataValidation.isEmpty(txtScorePlayer2.Text);
-            bool isValidEntryScoreP1 = DataValidation.isValidNumericData(txtScorePlayer1.Text);
-            bool isValidEntryScoreP2 = DataValidation.isValidNumericData(txtScorePlayer2.Text);
-            bool isValidRangeScoreP1 = DataValidation.isValidRange(txtScorePlayer1.Text);
-            bool isValidRangeScoreP2 = DataValidation.isValidRange(txtScorePlayer2.Text);
-
-            if (isEmptyScoreP1 == false && isEmptyScoreP2 == false)
+            if (IsDataNotEmpty() == true)
             {
                 
-                if (isValidEntryScoreP1 == true && isValidEntryScoreP2 == true)
+                if (isValidNumber() == true)
                 {
-                    if (isValidRangeScoreP1 == true && isValidRangeScoreP2 == true)
+                    if (isValidRange() == true)
                     {
                         game.Players[0].RoundScore = int.Parse(txtScorePlayer1.Text);
                         game.Players[1].RoundScore = int.Parse(txtScorePlayer2.Text);
@@ -93,6 +85,47 @@ namespace WinFormsUI.RoundForms
                 {
                     MessageBox.Show($"After { game.TotalRounds } rounds there is no winner as { game.Players[0].PlayerName } and { game.Players[1].PlayerName } both scored { game.GameWinner.ScoreSubtotal } points.");
                 }
+            }
+        }
+        private bool IsDataNotEmpty()
+        {
+            bool isEmptyScoreP1 = DataValidation.isEmpty(txtScorePlayer1.Text);
+            bool isEmptyScoreP2 = DataValidation.isEmpty(txtScorePlayer2.Text);
+            if (isEmptyScoreP1 == false && isEmptyScoreP2 == false)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        private bool isValidNumber()
+        {
+            bool isValidEntryScoreP1 = DataValidation.isValidNumericData(txtScorePlayer1.Text);
+            bool isValidEntryScoreP2 = DataValidation.isValidNumericData(txtScorePlayer2.Text);
+
+            if (isValidEntryScoreP1 == true && isValidEntryScoreP2 == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        private bool isValidRange()
+        {
+            bool isValidRangeScoreP1 = DataValidation.isValidRange(txtScorePlayer1.Text);
+            bool isValidRangeScoreP2 = DataValidation.isValidRange(txtScorePlayer2.Text);
+
+            if (isValidRangeScoreP1 == true && isValidRangeScoreP2 == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
