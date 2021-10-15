@@ -83,6 +83,17 @@ namespace ScorekeeperLibrary
             }
             return winner;
         }
+        public static bool IsThereAWinner(PlayerModel player1, PlayerModel player2)
+        {
+            if (player1.ScoreSubtotal != player2.ScoreSubtotal)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
     }
 }

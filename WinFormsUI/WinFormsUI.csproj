@@ -73,6 +73,7 @@
     <Compile Include="UIMessages.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GameHelper.cs" />
     <EmbeddedResource Include="RoundForms\RoundFormsFourPlayers.resx">
       <DependentUpon>RoundFormsFourPlayers.cs</DependentUpon>
     </EmbeddedResource>
