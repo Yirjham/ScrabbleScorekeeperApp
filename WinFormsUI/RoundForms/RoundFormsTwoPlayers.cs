@@ -91,6 +91,7 @@ namespace WinFormsUI.RoundForms
         {
             bool isEmptyScoreP1 = DataValidation.isEmpty(txtScorePlayer1.Text);
             bool isEmptyScoreP2 = DataValidation.isEmpty(txtScorePlayer2.Text);
+
             if (isEmptyScoreP1 == false && isEmptyScoreP2 == false)
             {
                 return true;

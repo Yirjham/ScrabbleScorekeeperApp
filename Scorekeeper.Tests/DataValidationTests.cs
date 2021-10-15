@@ -46,7 +46,7 @@ namespace Scorekeeper.Tests
         [InlineData("23", true)]
         [InlineData("0", true)]
         [InlineData("4", true)]
-        [InlineData("130", false)]
+        [InlineData("131", false)]
         [InlineData("-1", false)]
         [InlineData("0.3", false)]
         public void ShouldReturnTrueWhenInValidRange(string input, bool expected)
