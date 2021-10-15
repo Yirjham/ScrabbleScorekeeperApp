@@ -26,16 +26,10 @@ namespace WinFormsUI
 
             if (rbtnTwoPlayers.Checked == true)
             {
-                string namePlayer1 = txtPlayer1.Text;
-                string namePlayer2 = txtPlayer2.Text;
-                PlayerModel player1 = new PlayerModel(namePlayer1);
-                PlayerModel player2 = new PlayerModel(namePlayer2);
-                GameModel game = new GameModel();
-                game.Players.Add(player1);
-                game.Players.Add(player2);
-
-                RoundFormsTwoPlayers roundForm = new RoundFormsTwoPlayers(game);
-                roundForm.Show(); 
+                PlayerModel player1 = CreatePlayer(txtPlayer1.Text);
+                PlayerModel player2 = CreatePlayer(txtPlayer2.Text);
+                GameModel game = CreateGame(player1, player2);
+                InitialiseTwoPlayerForm(game);
             }
             else if (rbtnThreePlayers.Checked == true)
             {
@@ -95,6 +89,40 @@ namespace WinFormsUI
             txtPlayer2.ReadOnly = false;
             txtPlayer3.ReadOnly = true;
             txtPlayer4.ReadOnly = true;
+        }
+        public void InitialiseTwoPlayerForm(GameModel game)
+        {
+            RoundFormsTwoPlayers roundForm = new RoundFormsTwoPlayers(game);
+            roundForm.Show();
+        }
+        private GameModel CreateGame(PlayerModel player1, PlayerModel player2)
+        {
+            GameModel game = new GameModel();
+            AddPlayersToGame(game, player1, player2);
+            return game;
+        }
+        private PlayerModel CreatePlayer(string playerName)
+        {
+            PlayerModel player = new PlayerModel(playerName);
+            return player;
+        }
+        private void AddPlayersToGame(GameModel game, PlayerModel player1, PlayerModel player2)
+        {
+            game.Players.Add(player1);
+            game.Players.Add(player2);
+        }
+        private void AddPlayersToGame(GameModel game, PlayerModel player1, PlayerModel player2, PlayerModel player3)
+        {
+            game.Players.Add(player1);
+            game.Players.Add(player2);
+            game.Players.Add(player3);
+        }
+        private void AddPlayersToGame(GameModel game, PlayerModel player1, PlayerModel player2, PlayerModel player3, PlayerModel player4)
+        {
+            game.Players.Add(player1);
+            game.Players.Add(player2);
+            game.Players.Add(player3);
+            game.Players.Add(player4);
         }
     }
 }
