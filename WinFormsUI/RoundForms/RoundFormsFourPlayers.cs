@@ -97,10 +97,17 @@ namespace WinFormsUI.RoundForms
 
             if (button == DialogResult.Yes)
             {
-                game.GameWinner = Calculations.DeterminesWinner(game.Players[0], game.Players[1], game.Players[2], game.Players[3]);
+                if (Calculations.isThereAWinner(game.Players[0].ScoreSubtotal, game.Players[1].ScoreSubtotal, game.Players[2].ScoreSubtotal, game.Players[3].ScoreSubtotal))
+                {
+                    game.GameWinner = Calculations.DeterminesWinner(game.Players[0], game.Players[1], game.Players[2], game.Players[3]);
 
-                MessageBox.Show($"After { game.TotalRounds } rounds the winner is { game.GameWinner.PlayerName } with " +
-                    $"{ game.GameWinner.ScoreSubtotal } points. Congratulations!!!", "WINNER!!!", MessageBoxButtons.OK);
+                    MessageBox.Show($"After { game.TotalRounds } rounds the winner is { game.GameWinner.PlayerName } with " +
+                        $"{ game.GameWinner.ScoreSubtotal } points. Congratulations!!!", "WINNER!!!", MessageBoxButtons.OK); 
+                }
+                else
+                {
+                    MessageBox.Show($"After { game.TotalRounds } rounds there is no winner as the top score is shared by two or more players.");
+                }
             }
         }
     }

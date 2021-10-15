@@ -81,6 +81,7 @@ namespace WinFormsUI.RoundForms
 
             if (button == DialogResult.Yes)
             {
+                
                 if (Calculations.IsThereAWinner(game.Players[0], game.Players[1]))
                 {
                     game.GameWinner = Calculations.DeterminesWinner(game.Players[0], game.Players[1]);

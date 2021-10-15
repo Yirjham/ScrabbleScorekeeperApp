@@ -94,6 +94,28 @@ namespace ScorekeeperLibrary
                 return false;
             }
         }
+        /// <summary>
+        /// Takes in as many players' scores as needed and compares the top two scores
+        /// </summary>
+        /// <param name="playersScores">Scores go into an array that gets sorted</param>
+        /// <returns>True if there is a winner or false if the top score is shared by at least two players</returns>
+        public static bool isThereAWinner(params int[] playersScores)
+        {
+            Array.Sort(playersScores);
+            int maxScore = playersScores[playersScores.Length - 1];
+            int secondHighestScore = playersScores[playersScores.Length - 2];
+            
+
+            if (maxScore != secondHighestScore)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
 
     }
 }
