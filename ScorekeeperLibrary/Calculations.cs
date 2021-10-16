@@ -56,19 +56,20 @@ namespace ScorekeeperLibrary
             return gameWinner;
 
         }
+
         public static PlayerModel DeterminesWinner(PlayerModel player1, PlayerModel player2, PlayerModel player3)
         {
             PlayerModel gameWinner = DeterminesWinner(player1, player2);
             gameWinner = DeterminesWinner(gameWinner, player3);
             return gameWinner;
         }
+
         public static PlayerModel DeterminesWinner(PlayerModel player1, PlayerModel player2, PlayerModel player3, PlayerModel player4)
         {
             PlayerModel tempWinner = DeterminesWinner(player1, player2, player3);
             PlayerModel winner = DeterminesWinner(tempWinner, player4);
             return winner;
         }
-
 
         private static PlayerModel ReturnsHighestScorer(PlayerModel player1, PlayerModel player2, int scorePlayer1, int scorePlayer2)
         {
@@ -118,27 +119,20 @@ namespace ScorekeeperLibrary
 
         public static void UpdateScoresAllPlayers(GameModel game, IForm form)
         {
-            PlayerModel player1 = game.Players[0];
-            PlayerModel player2 = game.Players[1];
+            form.UpdatePlayersRoundScores();
 
-            player1.RoundScore = int.Parse(form.txtScorePlayer1.Text);
-            player2.RoundScore = int.Parse(form.txtScorePlayer2.Text);
+            foreach (PlayerModel player in game.Players)
+            {
+                player.UpdateRoundSubtotal();
+            }
 
-            player1.UpdateRoundSubtotal();
-            player2.UpdateRoundSubtotal();
-
-            form.txtSubtotalPlayer1.Text = player1.ScoreSubtotal.ToString();
-            form.txtSubtotalPlayer2.Text = player2.ScoreSubtotal.ToString();
+            form.UpdateDisplayedSubtotals();
 
             game.TotalRounds++;
-            form.lblCurrentRoundNumber.Text = game.TotalRounds.ToString();
 
-            form.txtScorePlayer1.Clear();
-            form.txtScorePlayer2.Clear();
+            form.UpdateDisplayedCurrentRound();
 
-            form.txtScorePlayer1.Focus();
+            form.ClearDisplayedScores();
         }
-
-
     }
 }

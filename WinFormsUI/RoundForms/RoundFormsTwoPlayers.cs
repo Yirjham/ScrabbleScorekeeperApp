@@ -51,6 +51,7 @@ namespace WinFormsUI.RoundForms
             else
             {
                 Calculations.UpdateScoresAllPlayers(game, this);
+                txtScorePlayer1.Focus();
             }
         }
         // The event below processes what happens if the user wants to finish the game
@@ -76,32 +77,26 @@ namespace WinFormsUI.RoundForms
                 }
             }
         }
-        // Code for updating the players' subtotal scores after date being validated. Note the int.Parse
-        private static void UpdateScoresAllPlayers(GameModel game, RoundFormsTwoPlayers form)
+        public void UpdatePlayersRoundScores()
         {
-            PlayerModel player1 = game.Players[0];
-            PlayerModel player2 = game.Players[1];
-
-            player1.RoundScore = int.Parse(form.txtScorePlayer1.Text);
-            player2.RoundScore = int.Parse(form.txtScorePlayer2.Text);
-
-            player1.UpdateRoundSubtotal();
-            player2.UpdateRoundSubtotal();
-
-            form.txtSubtotalPlayer1.Text = player1.ScoreSubtotal.ToString();
-            form.txtSubtotalPlayer2.Text = player2.ScoreSubtotal.ToString();
-
-            game.TotalRounds++;
-            form.lblCurrentRoundNumber.Text = game.TotalRounds.ToString();
-
-            form.txtScorePlayer1.Clear();
-            form.txtScorePlayer2.Clear();
-
-            form.txtScorePlayer1.Focus();
+            player1.RoundScore = int.Parse(txtScorePlayer1.Text);
+            player2.RoundScore = int.Parse(txtScorePlayer2.Text);
         }
-        private void UpdateDisplayedScores()
+        public void UpdateDisplayedSubtotals()
         {
+            txtSubtotalPlayer1.Text = player1.ScoreSubtotal.ToString();
+            txtSubtotalPlayer2.Text = player2.ScoreSubtotal.ToString();
+        }
 
+        public void UpdateDisplayedCurrentRound()
+        {
+            lblCurrentRoundNumber.Text = game.TotalRounds.ToString();
+        }
+
+        public void ClearDisplayedScores()
+        {
+            txtScorePlayer1.Clear();
+            txtScorePlayer2.Clear();
         }
     }
 }
