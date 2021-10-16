@@ -41,20 +41,7 @@ namespace WinFormsUI.RoundForms
             }
             else
             {
-                game.Players[0].RoundScore = int.Parse(txtScorePlayer1.Text);
-                game.Players[1].RoundScore = int.Parse(txtScorePlayer2.Text);
-
-                game.Players[0].UpdateRoundSubtotal();
-                game.Players[1].UpdateRoundSubtotal();
-
-                txtSubtotalPlayer1.Text = game.Players[0].ScoreSubtotal.ToString();
-                txtSubtotalPlayer2.Text = game.Players[1].ScoreSubtotal.ToString();
-
-                game.TotalRounds++;
-                lblCurrentRoundNumber.Text = game.TotalRounds.ToString();
-
-                txtScorePlayer1.Clear();
-                txtScorePlayer2.Clear(); 
+                UpdateScoresAllPlayers(game, this);
             }
         }
 
@@ -122,25 +109,22 @@ namespace WinFormsUI.RoundForms
                 return false;
             }
         }
-        public static void UpdataScoresAllPlayers(List<PlayerModel> players, Form roundForm)
+        public static void UpdateScoresAllPlayers(GameModel game, RoundFormsTwoPlayers form)
         {
-            
+            game.Players[0].RoundScore = int.Parse(form.txtScorePlayer1.Text);
+            game.Players[1].RoundScore = int.Parse(form.txtScorePlayer2.Text);
 
+            game.Players[0].UpdateRoundSubtotal();
+            game.Players[1].UpdateRoundSubtotal();
 
-            //game.Players[0].RoundScore = int.Parse(txtScorePlayer1.Text);
-            //game.Players[1].RoundScore = int.Parse(txtScorePlayer2.Text);
+            form.txtSubtotalPlayer1.Text = game.Players[0].ScoreSubtotal.ToString();
+            form.txtSubtotalPlayer2.Text = game.Players[1].ScoreSubtotal.ToString();
 
-            //game.Players[0].UpdateRoundSubtotal();
-            //game.Players[1].UpdateRoundSubtotal();
+            game.TotalRounds++;
+            form.lblCurrentRoundNumber.Text = game.TotalRounds.ToString();
 
-            //txtSubtotalPlayer1.Text = game.Players[0].ScoreSubtotal.ToString();
-            //txtSubtotalPlayer2.Text = game.Players[1].ScoreSubtotal.ToString();
-
-            //game.TotalRounds++;
-            //lblCurrentRoundNumber.Text = game.TotalRounds.ToString();
-
-            //txtScorePlayer1.Clear();
-            //txtScorePlayer2.Clear();
+            form.txtScorePlayer1.Clear();
+            form.txtScorePlayer2.Clear();
         }
     }
 }
