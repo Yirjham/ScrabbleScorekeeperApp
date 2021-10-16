@@ -15,7 +15,7 @@ namespace ScorekeeperLibrary.Models
         public string PlayerName { get; set; }
         public int RoundScore { get; set; } = 0;
         public int ScoreSubtotal { get; set; } = 0;
-        public int GameTotalScore { get; private set; }
+        public int TotalScore { get; private set; }
 
         public void UpdateRoundSubtotal()
         {
@@ -24,9 +24,8 @@ namespace ScorekeeperLibrary.Models
         }
         public void UpdateFinalScore()
         {
-            //throw new NotImplementedException();
             UpdateRoundSubtotal();
-            GameTotalScore = ScoreSubtotal;
+            TotalScore = ScoreSubtotal;
         }
         
     }

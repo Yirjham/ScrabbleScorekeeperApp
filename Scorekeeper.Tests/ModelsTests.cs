@@ -25,7 +25,7 @@ namespace Scorekeeper.Tests
 
             // Act
             player.UpdateFinalScore();
-            int actual = player.GameTotalScore;
+            int actual = player.TotalScore;
 
             // Assert
 

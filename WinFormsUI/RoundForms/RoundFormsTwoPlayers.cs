@@ -64,6 +64,8 @@ namespace WinFormsUI.RoundForms
                 if (Calculations.IsThereAWinner(player1, player2) == true)
                 {
                     game.GameWinner = Calculations.DeterminesWinner(player1, player2);
+                    game.GameWinner.UpdateFinalScore();
+
                     MessageBox.Show(ScorekeeperLibrary.Models.UIMessages.GameWinnerMessage(game, player1, player2), "WINNER!!!", MessageBoxButtons.OK);
                 }
                 // itsATieScore its the final score of either player1 or player2

@@ -30,19 +30,19 @@ namespace ScorekeeperLibrary.Models
         {
             PlayerModel winner = Calculations.DeterminesWinner(player1, player2);
             return $"After { game.TotalRounds } rounds the winner is { winner.PlayerName } with " +
-                        $"{ game.GameWinner.ScoreSubtotal } points. Congratulations!!!";
+                        $"{ game.GameWinner.TotalScore } points. Congratulations!!!";
         }
         public static string GameWinnerMessage(GameModel game, PlayerModel player1, PlayerModel player2, PlayerModel player3)
         {
             PlayerModel winner = Calculations.DeterminesWinner(player1, player2, player3);
             return $"After { game.TotalRounds } rounds the winner is { winner.PlayerName } with " +
-                        $"{ game.GameWinner.ScoreSubtotal } points. Congratulations!!!";
+                        $"{ game.GameWinner.TotalScore } points. Congratulations!!!";
         }
         public static string GameWinnerMessage(GameModel game, PlayerModel player1, PlayerModel player2, PlayerModel player3, PlayerModel player4)
         {
             PlayerModel winner = Calculations.DeterminesWinner(player1, player2, player3, player4);
             return $"After { game.TotalRounds } rounds the winner is { winner.PlayerName } with " +
-                        $"{ game.GameWinner.ScoreSubtotal } points. Congratulations!!!";
+                        $"{ game.GameWinner.TotalScore } points. Congratulations!!!";
         }
     }
 
