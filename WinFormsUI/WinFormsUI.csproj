@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RoundForms\IForm.cs" />
     <Compile Include="RoundForms\RoundFormsFourPlayers.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -115,7 +115,30 @@ namespace ScorekeeperLibrary
                 return false;
             }
         }
-        
+
+        public static void UpdateScoresAllPlayers(GameModel game, IForm form)
+        {
+            PlayerModel player1 = game.Players[0];
+            PlayerModel player2 = game.Players[1];
+
+            player1.RoundScore = int.Parse(form.txtScorePlayer1.Text);
+            player2.RoundScore = int.Parse(form.txtScorePlayer2.Text);
+
+            player1.UpdateRoundSubtotal();
+            player2.UpdateRoundSubtotal();
+
+            form.txtSubtotalPlayer1.Text = player1.ScoreSubtotal.ToString();
+            form.txtSubtotalPlayer2.Text = player2.ScoreSubtotal.ToString();
+
+            game.TotalRounds++;
+            form.lblCurrentRoundNumber.Text = game.TotalRounds.ToString();
+
+            form.txtScorePlayer1.Clear();
+            form.txtScorePlayer2.Clear();
+
+            form.txtScorePlayer1.Focus();
+        }
+
 
     }
 }

@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace WinFormsUI.RoundForms
 {
-    public partial class RoundFormsTwoPlayers : Form
+    public partial class RoundFormsTwoPlayers : Form, IForm
     {
         GameModel game;
         PlayerModel player1;
@@ -50,7 +50,7 @@ namespace WinFormsUI.RoundForms
             }
             else
             {
-                UpdateScoresAllPlayers(game, this);
+                Calculations.UpdateScoresAllPlayers(game, this);
             }
         }
         // The event below processes what happens if the user wants to finish the game
@@ -76,7 +76,7 @@ namespace WinFormsUI.RoundForms
                 }
             }
         }
-        // Code for updating the players' subtotal scores
+        // Code for updating the players' subtotal scores after date being validated. Note the int.Parse
         private static void UpdateScoresAllPlayers(GameModel game, RoundFormsTwoPlayers form)
         {
             PlayerModel player1 = game.Players[0];
@@ -98,6 +98,10 @@ namespace WinFormsUI.RoundForms
             form.txtScorePlayer2.Clear();
 
             form.txtScorePlayer1.Focus();
+        }
+        private void UpdateDisplayedScores()
+        {
+
         }
     }
 }
