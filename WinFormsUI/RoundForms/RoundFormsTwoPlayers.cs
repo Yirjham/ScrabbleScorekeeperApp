@@ -15,16 +15,24 @@ namespace WinFormsUI.RoundForms
 {
     public partial class RoundFormsTwoPlayers : Form
     {
-        GameModel game;        
+        GameModel game;
+        PlayerModel player1;
+        PlayerModel player2;
         public RoundFormsTwoPlayers(GameModel currentGame)
         {
             game = currentGame;
+            player1 = game.Players[0];
+            player2 = game.Players[1];
+
             InitializeComponent();
-            lblPlayer1Name.Text = game.Players[0].PlayerName;
-            lblPlayer2Name.Text = game.Players[1].PlayerName;
+
+            lblPlayer1Name.Text = player1.PlayerName;
+            lblPlayer2Name.Text = player2.PlayerName;
+
             game.TotalRounds = 0;
             lblCurrentRoundNumber.Text = game.TotalRounds.ToString();
         }
+        // The event below has conditional statements for validating the users' data entries. Updates the subtotal scores if data is valid
         private void btnEnter_Click(object sender, EventArgs e)
         {
             if (IsUserEntryEmpty() == true)
@@ -44,7 +52,7 @@ namespace WinFormsUI.RoundForms
                 UpdateScoresAllPlayers(game, this);
             }
         }
-
+        // The event below processes what happens if the user wants to finish the game
         private void btnFinishGame_Click(object sender, EventArgs e)
         {
             DialogResult button = MessageBox.Show("Are you sure you want to finish the game?", "Scrabble Scorekeeper", 
@@ -52,21 +60,20 @@ namespace WinFormsUI.RoundForms
 
             if (button == DialogResult.Yes)
             {
-                
-                if (Calculations.IsThereAWinner(game.Players[0], game.Players[1]))
+                if (Calculations.IsThereAWinner(player1, player2) == true)
                 {
-                    game.GameWinner = Calculations.DeterminesWinner(game.Players[0], game.Players[1]);
-
-                    MessageBox.Show($"After { game.TotalRounds } rounds the winner is { game.GameWinner.PlayerName } with " +
-                        $"{ game.GameWinner.ScoreSubtotal } points. Congratulations!!!", "WINNER!!!", MessageBoxButtons.OK); 
+                    game.GameWinner = Calculations.DeterminesWinner(player1, player2);
+                    MessageBox.Show(ScorekeeperLibrary.Models.UIMessages.GameWinnerMessage(game, player1, player2), "WINNER!!!", MessageBoxButtons.OK);
                 }
+                // itsATieScore its the final score of either player1 or player2
                 else
                 {
-                    MessageBox.Show($"After { game.TotalRounds } rounds there is no winner as { game.Players[0].PlayerName } and { game.Players[1].PlayerName } both scored { game.GameWinner.ScoreSubtotal } points.");
+                    int itsATieScore = player1.ScoreSubtotal;
+                    MessageBox.Show($"After { game.TotalRounds } rounds there is no winner as { player1.PlayerName } and { player2.PlayerName } both scored { itsATieScore } points.");
                 }
             }
         }
-        //
+        
         private bool IsUserEntryEmpty()
         {
             bool isEmptyScoreP1 = DataValidation.isEmpty(txtScorePlayer1.Text);
@@ -109,16 +116,20 @@ namespace WinFormsUI.RoundForms
                 return false;
             }
         }
-        public static void UpdateScoresAllPlayers(GameModel game, RoundFormsTwoPlayers form)
+        // Code for updating the players' subtotal scores
+        private static void UpdateScoresAllPlayers(GameModel game, RoundFormsTwoPlayers form)
         {
-            game.Players[0].RoundScore = int.Parse(form.txtScorePlayer1.Text);
-            game.Players[1].RoundScore = int.Parse(form.txtScorePlayer2.Text);
+            PlayerModel player1 = game.Players[0];
+            PlayerModel player2 = game.Players[1];
 
-            game.Players[0].UpdateRoundSubtotal();
-            game.Players[1].UpdateRoundSubtotal();
+            player1.RoundScore = int.Parse(form.txtScorePlayer1.Text);
+            player2.RoundScore = int.Parse(form.txtScorePlayer2.Text);
 
-            form.txtSubtotalPlayer1.Text = game.Players[0].ScoreSubtotal.ToString();
-            form.txtSubtotalPlayer2.Text = game.Players[1].ScoreSubtotal.ToString();
+            player1.UpdateRoundSubtotal();
+            player2.UpdateRoundSubtotal();
+
+            form.txtSubtotalPlayer1.Text = player1.ScoreSubtotal.ToString();
+            form.txtSubtotalPlayer2.Text = player2.ScoreSubtotal.ToString();
 
             game.TotalRounds++;
             form.lblCurrentRoundNumber.Text = game.TotalRounds.ToString();

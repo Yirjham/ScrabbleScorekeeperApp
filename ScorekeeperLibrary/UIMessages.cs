@@ -26,20 +26,23 @@ namespace ScorekeeperLibrary.Models
         }
 
         // Game winner messages for 2, 3 and 4 players
-        public static string GameWinnerMessage(PlayerModel player1, PlayerModel player2)
+        public static string GameWinnerMessage(GameModel game, PlayerModel player1, PlayerModel player2)
         {
             PlayerModel winner = Calculations.DeterminesWinner(player1, player2);
-            return $"{ winner.PlayerName } is today's winner. Congratulations!!!";
+            return $"After { game.TotalRounds } rounds the winner is { winner.PlayerName } with " +
+                        $"{ game.GameWinner.ScoreSubtotal } points. Congratulations!!!";
         }
-        public static string GameWinnerMessage(PlayerModel player1, PlayerModel player2, PlayerModel player3)
+        public static string GameWinnerMessage(GameModel game, PlayerModel player1, PlayerModel player2, PlayerModel player3)
         {
             PlayerModel winner = Calculations.DeterminesWinner(player1, player2, player3);
-            return $"{ winner.PlayerName } is today's winner. Congratulations!!!";
+            return $"After { game.TotalRounds } rounds the winner is { winner.PlayerName } with " +
+                        $"{ game.GameWinner.ScoreSubtotal } points. Congratulations!!!";
         }
-        public static string GameWinnerMessage(PlayerModel player1, PlayerModel player2, PlayerModel player3, PlayerModel player4)
+        public static string GameWinnerMessage(GameModel game, PlayerModel player1, PlayerModel player2, PlayerModel player3, PlayerModel player4)
         {
             PlayerModel winner = Calculations.DeterminesWinner(player1, player2, player3, player4);
-            return $"{ winner.PlayerName } is today's winner. Congratulations!!!";
+            return $"After { game.TotalRounds } rounds the winner is { winner.PlayerName } with " +
+                        $"{ game.GameWinner.ScoreSubtotal } points. Congratulations!!!";
         }
     }
 

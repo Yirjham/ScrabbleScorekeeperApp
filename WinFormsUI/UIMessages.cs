@@ -1,10 +1,13 @@
-﻿using System;
+﻿using ScorekeeperLibrary;
+using ScorekeeperLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ScorekeeperLibrary.Models
+
+namespace WinFormsUI.RoundForms
 {
     public static class UIMessages
     {
@@ -26,10 +29,11 @@ namespace ScorekeeperLibrary.Models
         }
 
         // Game winner messages for 2, 3 and 4 players
-        public static string GameWinnerMessage(PlayerModel player1, PlayerModel player2)
+        public static string GameWinnerMessage(GameModel game, PlayerModel player1, PlayerModel player2)
         {
             PlayerModel winner = Calculations.DeterminesWinner(player1, player2);
-            return $"{ winner.PlayerName } is today's winner. Congratulations!!!";
+            return $"After { game.TotalRounds } rounds the winner is { winner.PlayerName } with " +
+                        $"{ game.GameWinner.ScoreSubtotal } points. Congratulations!!!";
         }
         public static string GameWinnerMessage(PlayerModel player1, PlayerModel player2, PlayerModel player3)
         {
