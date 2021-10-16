@@ -10,37 +10,37 @@ namespace Scorekeeper.Tests
 {
     public class DataValidationTests
     {
-        [Theory]
-        [InlineData("", true)]
-        [InlineData("45", false)]
-        [InlineData("hello", false)]
-        public void ShouldReturnTrueWhenEmptyString(string input, bool expected)
-        {
-            // Arrange
+        //[Theory]
+        //[InlineData("", true)]
+        //[InlineData("45", false)]
+        //[InlineData("hello", false)]
+        //public void ShouldReturnTrueWhenEmptyString(string input, bool expected)
+        //{
+        //    // Arrange
            
-            // Act
-            bool actual = DataValidation.isEmpty(input);
+        //    // Act
+        //    bool actual = DataValidation.isEmpty(input);
 
-            //Assert
-            Assert.Equal(expected, actual);
+        //    //Assert
+        //    Assert.Equal(expected, actual);
             
-        }
-        [Theory]
-        [InlineData("23", true)]
-        [InlineData("0", true)]
-        [InlineData("4", true)]
-        [InlineData("hello", false)]
-        [InlineData("2.1", false)]
-        public void ShouldReturnTrueForNumericData(string input, bool expected)
-        {
-            // Arrange
+        //}
+        //[Theory]
+        //[InlineData("23", true)]
+        //[InlineData("0", true)]
+        //[InlineData("4", true)]
+        //[InlineData("hello", false)]
+        //[InlineData("2.1", false)]
+        //public void ShouldReturnTrueForNumericData(string input, bool expected)
+        //{
+        //    // Arrange
 
-            // Act
-            bool actual = DataValidation.isValidNumericData(input);
+        //    // Act
+        //    bool actual = DataValidation.isValidNumericData(input);
 
-            // Assert
-            Assert.Equal(expected, actual);
-        }
+        //    // Assert
+        //    Assert.Equal(expected, actual);
+        //}
 
         [Theory]
         [InlineData("23", true)]
@@ -49,7 +49,7 @@ namespace Scorekeeper.Tests
         [InlineData("131", false)]
         [InlineData("-1", false)]
         [InlineData("0.3", false)]
-        public void ShouldReturnTrueWhenInValidRange(string input, bool expected)
+        public void ShouldReturnTrueWhenInValidRangeOldMethod(string input, bool expected)
         {
             // Arrange
 
@@ -116,6 +116,24 @@ namespace Scorekeeper.Tests
             bool actual = DataValidation.isValidNumber(input1, input2);
 
             //Assert
+            Assert.Equal(expected, actual);
+        }
+        [Theory]
+        [InlineData("4", "65", "0", "43", true)]
+        [InlineData("0", "130", "35", "43", true)]
+        [InlineData("-1", "5", "0", "43", false)]
+        [InlineData("131", "65", "98", "65", false)]
+        [InlineData("5", "65", "131", "43", false)]
+        [InlineData("0", "0", "0", "0", true)]
+        public void ShouldReturnTrueWhenInValidRange(string input1, string input2, string input3, string input4, bool expected)
+        {
+            // Arrange
+
+            // Act
+            bool actual = DataValidation.isValidRange(input1, input2, input3, input4);
+
+            // Asseert
+
             Assert.Equal(expected, actual);
         }
     }

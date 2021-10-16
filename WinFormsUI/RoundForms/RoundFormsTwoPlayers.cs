@@ -18,6 +18,7 @@ namespace WinFormsUI.RoundForms
         GameModel game;
         PlayerModel player1;
         PlayerModel player2;
+
         public RoundFormsTwoPlayers(GameModel currentGame)
         {
             game = currentGame;
@@ -35,15 +36,15 @@ namespace WinFormsUI.RoundForms
         // The event below has conditional statements for validating the users' data entries. Updates the subtotal scores if data is valid
         private void btnEnter_Click(object sender, EventArgs e)
         {
-            if (IsUserEntryEmpty() == true)
+            if (DataValidation.IsUserEntryEmpty(txtScorePlayer1.Text, txtScorePlayer2.Text) == true)
             {
                 MessageBox.Show("Empty entry. Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (isValidNumber() == false)
+            else if (DataValidation.isValidNumber(txtScorePlayer1.Text, txtScorePlayer2.Text) == false)
             {
                 MessageBox.Show("Invalid entry. Please try whole numbers", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (isValidRange() == false)
+            else if (DataValidation.isValidRange(txtScorePlayer1.Text, txtScorePlayer2.Text) == false)
             {
                 MessageBox.Show("Invalid range. Please try whole numbers between 0 and 130", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -73,49 +74,6 @@ namespace WinFormsUI.RoundForms
                 }
             }
         }
-        
-        private bool IsUserEntryEmpty()
-        {
-            bool isEmptyScoreP1 = DataValidation.isEmpty(txtScorePlayer1.Text);
-            bool isEmptyScoreP2 = DataValidation.isEmpty(txtScorePlayer2.Text);
-
-            if (isEmptyScoreP1 == false && isEmptyScoreP2 == false)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-        private bool isValidNumber()
-        {
-            bool isValidEntryScoreP1 = DataValidation.isValidNumericData(txtScorePlayer1.Text);
-            bool isValidEntryScoreP2 = DataValidation.isValidNumericData(txtScorePlayer2.Text);
-
-            if (isValidEntryScoreP1 == true && isValidEntryScoreP2 == true)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        private bool isValidRange()
-        {
-            bool isValidRangeScoreP1 = DataValidation.isValidRange(txtScorePlayer1.Text);
-            bool isValidRangeScoreP2 = DataValidation.isValidRange(txtScorePlayer2.Text);
-
-            if (isValidRangeScoreP1 == true && isValidRangeScoreP2 == true)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
         // Code for updating the players' subtotal scores
         private static void UpdateScoresAllPlayers(GameModel game, RoundFormsTwoPlayers form)
         {
@@ -136,6 +94,8 @@ namespace WinFormsUI.RoundForms
 
             form.txtScorePlayer1.Clear();
             form.txtScorePlayer2.Clear();
+
+            form.txtScorePlayer1.Focus();
         }
     }
 }
