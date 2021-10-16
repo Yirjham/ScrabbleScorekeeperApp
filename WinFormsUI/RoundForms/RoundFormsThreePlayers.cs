@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace WinFormsUI.RoundForms
 {
-    public partial class RoundFormsThreePlayers : Form
+    public partial class RoundFormsThreePlayers : Form, IForm
     {
         GameModel game;
         PlayerModel player1;
@@ -53,7 +53,8 @@ namespace WinFormsUI.RoundForms
             }
             else
             {
-                UpdateScoresAllPlayers(game, this);
+                Calculations.UpdateScoresAllPlayers(game, this);
+                txtScorePlayer1.Focus();
             }
         }
 
@@ -77,32 +78,31 @@ namespace WinFormsUI.RoundForms
                 } 
             }
         }
-        private static void UpdateScoresAllPlayers(GameModel game, RoundFormsThreePlayers form)
+
+        public void UpdatePlayersRoundScores()
         {
-            PlayerModel player1 = game.Players[0];
-            PlayerModel player2 = game.Players[1];
-            PlayerModel player3 = game.Players[2];
+            player1.RoundScore = int.Parse(txtScorePlayer1.Text);
+            player2.RoundScore = int.Parse(txtScorePlayer2.Text);
+            player3.RoundScore = int.Parse(txtScorePlayer3.Text);
+        }
 
-            player1.RoundScore = int.Parse(form.txtScorePlayer1.Text);
-            player2.RoundScore = int.Parse(form.txtScorePlayer2.Text);
-            player3.RoundScore = int.Parse(form.txtScorePlayer3.Text);
+        public void UpdateDisplayedSubtotals()
+        {
+            txtSubtotalPlayer1.Text = player1.ScoreSubtotal.ToString();
+            txtSubtotalPlayer2.Text = player2.ScoreSubtotal.ToString();
+            txtSubtotalPlayer3.Text = player3.ScoreSubtotal.ToString();
+        }
 
-            player1.UpdateRoundSubtotal();
-            player2.UpdateRoundSubtotal();
-            player3.UpdateRoundSubtotal();
+        public void UpdateDisplayedCurrentRound()
+        {
+            lblCurrentRoundNumber.Text = game.TotalRounds.ToString();
+        }
 
-            form.txtSubtotalPlayer1.Text = player1.ScoreSubtotal.ToString();
-            form.txtSubtotalPlayer2.Text = player2.ScoreSubtotal.ToString();
-            form.txtSubtotalPlayer3.Text = player3.ScoreSubtotal.ToString();
-
-            game.TotalRounds++;
-            form.lblCurrentRoundNumber.Text = game.TotalRounds.ToString();
-
-            form.txtScorePlayer1.Clear();
-            form.txtScorePlayer2.Clear();
-            form.txtScorePlayer3.Clear();
-
-            form.txtScorePlayer1.Focus();
+        public void ClearDisplayedScores()
+        {
+            txtScorePlayer1.Clear();
+            txtScorePlayer2.Clear();
+            txtScorePlayer3.Clear();
         }
     }
 }
