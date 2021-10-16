@@ -57,6 +57,47 @@ namespace ScorekeeperLibrary.DataValidation
                 return false;
             }
         }
+        public static bool IsUserEntryEmpty(params string[] inputPlayers)
+        {
+
+            for (int i = 0; i < inputPlayers.Length; i++)
+            {
+                if (inputPlayers[i] == "")
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        //private static bool isValidNumber()
+        //{
+        //    bool isValidEntryScoreP1 = DataValidation.isValidNumericData(txtScorePlayer1.Text);
+        //    bool isValidEntryScoreP2 = DataValidation.isValidNumericData(txtScorePlayer2.Text);
+
+        //    if (isValidEntryScoreP1 == true && isValidEntryScoreP2 == true)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
+        //private bool isValidRange()
+        //{
+        //    bool isValidRangeScoreP1 = DataValidation.isValidRange(txtScorePlayer1.Text);
+        //    bool isValidRangeScoreP2 = DataValidation.isValidRange(txtScorePlayer2.Text);
+
+        //    if (isValidRangeScoreP1 == true && isValidRangeScoreP2 == true)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
 
     }
 }

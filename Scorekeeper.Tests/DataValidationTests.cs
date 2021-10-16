@@ -59,5 +59,23 @@ namespace Scorekeeper.Tests
             // Assert
             Assert.Equal(expected, actual);
         }
+        [Theory]
+        [InlineData("4","5","3","10", false)]
+        [InlineData("","5","3","10", true)]
+        [InlineData("4","","3","10", true)]
+        [InlineData("4","5","","10", true)]
+        [InlineData("4","5","3","", true)]
+        [InlineData("","5","3","", true)]
+        [InlineData("","","","", true)]
+        public void ShouldReturnTrueWhenEmptyStringForFourEntries(string input1, string input2, string input3, string input4, bool expected)
+        {
+            // Arrange
+
+            // Act 
+            bool actual =DataValidation.IsUserEntryEmpty(input1, input2, input3, input4);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
     }
 }
