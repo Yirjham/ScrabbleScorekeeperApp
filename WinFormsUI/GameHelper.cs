@@ -68,7 +68,6 @@ namespace WinFormsUI
             PlayerModel player4 = new PlayerModel(player4Name);
             return (player1, player2, player3, player4);
         }
-
         private static void AddPlayersToGame(GameModel game, PlayerModel player1, PlayerModel player2)
         {
             game.Players = new List<PlayerModel> { player1, player2 };

@@ -27,43 +27,35 @@ namespace WinFormsUI.RoundForms
         }
         private void btnEnter_Click(object sender, EventArgs e)
         {
-            if (IsDataNotEmpty() == true)
-            {
-                
-                if (isValidNumber() == true)
-                {
-                    if (isValidRange() == true)
-                    {
-                        game.Players[0].RoundScore = int.Parse(txtScorePlayer1.Text);
-                        game.Players[1].RoundScore = int.Parse(txtScorePlayer2.Text);
-
-                        game.Players[0].UpdateRoundSubtotal();
-                        game.Players[1].UpdateRoundSubtotal();
-
-                        txtSubtotalPlayer1.Text = game.Players[0].ScoreSubtotal.ToString();
-                        txtSubtotalPlayer2.Text = game.Players[1].ScoreSubtotal.ToString();
-
-                        game.TotalRounds++;
-                        lblCurrentRoundNumber.Text = game.TotalRounds.ToString();
-
-                        txtScorePlayer1.Clear();
-                        txtScorePlayer2.Clear();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid range. Please try whole numbers between 0 and 130", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Invalid entry. Please try whole numbers","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                } 
-            }
-            else
+            if (IsUserEntryEmpty() == true)
             {
                 MessageBox.Show("Empty entry. Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            txtScorePlayer1.Focus();
+            else if (isValidNumber() == false)
+            {
+                MessageBox.Show("Invalid entry. Please try whole numbers", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (isValidRange() == false)
+            {
+                MessageBox.Show("Invalid range. Please try whole numbers between 0 and 130", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                game.Players[0].RoundScore = int.Parse(txtScorePlayer1.Text);
+                game.Players[1].RoundScore = int.Parse(txtScorePlayer2.Text);
+
+                game.Players[0].UpdateRoundSubtotal();
+                game.Players[1].UpdateRoundSubtotal();
+
+                txtSubtotalPlayer1.Text = game.Players[0].ScoreSubtotal.ToString();
+                txtSubtotalPlayer2.Text = game.Players[1].ScoreSubtotal.ToString();
+
+                game.TotalRounds++;
+                lblCurrentRoundNumber.Text = game.TotalRounds.ToString();
+
+                txtScorePlayer1.Clear();
+                txtScorePlayer2.Clear(); 
+            }
         }
 
         private void btnFinishGame_Click(object sender, EventArgs e)
@@ -87,18 +79,19 @@ namespace WinFormsUI.RoundForms
                 }
             }
         }
-        private bool IsDataNotEmpty()
+        //
+        private bool IsUserEntryEmpty()
         {
             bool isEmptyScoreP1 = DataValidation.isEmpty(txtScorePlayer1.Text);
             bool isEmptyScoreP2 = DataValidation.isEmpty(txtScorePlayer2.Text);
 
             if (isEmptyScoreP1 == false && isEmptyScoreP2 == false)
             {
-                return true;
+                return false;
             }
             else
             {
-                return false;
+                return true;
             }
         }
         private bool isValidNumber()
@@ -128,6 +121,26 @@ namespace WinFormsUI.RoundForms
             {
                 return false;
             }
+        }
+        public static void UpdataScoresAllPlayers(List<PlayerModel> players, Form roundForm)
+        {
+            
+
+
+            //game.Players[0].RoundScore = int.Parse(txtScorePlayer1.Text);
+            //game.Players[1].RoundScore = int.Parse(txtScorePlayer2.Text);
+
+            //game.Players[0].UpdateRoundSubtotal();
+            //game.Players[1].UpdateRoundSubtotal();
+
+            //txtSubtotalPlayer1.Text = game.Players[0].ScoreSubtotal.ToString();
+            //txtSubtotalPlayer2.Text = game.Players[1].ScoreSubtotal.ToString();
+
+            //game.TotalRounds++;
+            //lblCurrentRoundNumber.Text = game.TotalRounds.ToString();
+
+            //txtScorePlayer1.Clear();
+            //txtScorePlayer2.Clear();
         }
     }
 }
