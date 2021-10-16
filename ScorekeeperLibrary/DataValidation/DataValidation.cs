@@ -57,12 +57,12 @@ namespace ScorekeeperLibrary.DataValidation
                 return false;
             }
         }
-        public static bool IsUserEntryEmpty(params string[] inputPlayers)
+        public static bool IsUserEntryEmpty(params string[] inputFromPlayers)
         {
 
-            for (int i = 0; i < inputPlayers.Length; i++)
+            for (int i = 0; i < inputFromPlayers.Length; i++)
             {
-                if (inputPlayers[i] == "")
+                if (inputFromPlayers[i] == "")
                 {
                     return true;
                 }
@@ -70,34 +70,50 @@ namespace ScorekeeperLibrary.DataValidation
 
             return false;
         }
-        //private static bool isValidNumber()
-        //{
-        //    bool isValidEntryScoreP1 = DataValidation.isValidNumericData(txtScorePlayer1.Text);
-        //    bool isValidEntryScoreP2 = DataValidation.isValidNumericData(txtScorePlayer2.Text);
+        public static bool isValidNumber(params string[] inputFromPlayers)
+        {
+            bool isValidNumber = false;
 
-        //    if (isValidEntryScoreP1 == true && isValidEntryScoreP2 == true)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
-        //private bool isValidRange()
-        //{
-        //    bool isValidRangeScoreP1 = DataValidation.isValidRange(txtScorePlayer1.Text);
-        //    bool isValidRangeScoreP2 = DataValidation.isValidRange(txtScorePlayer2.Text);
+            for (int i = 0; i < inputFromPlayers.Length; i++)
+            {
+                isValidNumber = int.TryParse(inputFromPlayers[i], out _);
 
-        //    if (isValidRangeScoreP1 == true && isValidRangeScoreP2 == true)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
+                if (isValidNumber != true)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static bool isValidRange(params string[] inputFromPlayers)
+        {
+            bool isValidNumber = false;
+
+            for (int i = 0; i < inputFromPlayers.Length; i++)
+            {
+                isValidNumber = int.TryParse(inputFromPlayers[i], out _);
+
+                if (isValidNumber != true)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+
+            //bool isValidRangeScoreP1 = DataValidation.isValidRange(txtScorePlayer1.Text);
+            //bool isValidRangeScoreP2 = DataValidation.isValidRange(txtScorePlayer2.Text);
+
+            //if (isValidRangeScoreP1 == true && isValidRangeScoreP2 == true)
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
+        }
 
     }
 }
