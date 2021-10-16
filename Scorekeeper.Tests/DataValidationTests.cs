@@ -10,38 +10,6 @@ namespace Scorekeeper.Tests
 {
     public class DataValidationTests
     {
-        //[Theory]
-        //[InlineData("", true)]
-        //[InlineData("45", false)]
-        //[InlineData("hello", false)]
-        //public void ShouldReturnTrueWhenEmptyString(string input, bool expected)
-        //{
-        //    // Arrange
-           
-        //    // Act
-        //    bool actual = DataValidation.isEmpty(input);
-
-        //    //Assert
-        //    Assert.Equal(expected, actual);
-            
-        //}
-        //[Theory]
-        //[InlineData("23", true)]
-        //[InlineData("0", true)]
-        //[InlineData("4", true)]
-        //[InlineData("hello", false)]
-        //[InlineData("2.1", false)]
-        //public void ShouldReturnTrueForNumericData(string input, bool expected)
-        //{
-        //    // Arrange
-
-        //    // Act
-        //    bool actual = DataValidation.isValidNumericData(input);
-
-        //    // Assert
-        //    Assert.Equal(expected, actual);
-        //}
-
         [Theory]
         [InlineData("23", true)]
         [InlineData("0", true)]
