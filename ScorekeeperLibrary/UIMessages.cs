@@ -9,6 +9,7 @@ namespace ScorekeeperLibrary.Models
     public static class UIMessages
     {
         // Round highest scorer messages for 2, 3 and 4 players
+        // These methods are not used in the initial simple WinForms version but will be used for later versions
         public static string RoundHighestScorerMessage(PlayerModel player1, PlayerModel player2)   
         {
             PlayerModel highestScorer = Calculations.DeterminesRoundHighestScorer(player1, player2);

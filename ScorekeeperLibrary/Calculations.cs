@@ -84,17 +84,6 @@ namespace ScorekeeperLibrary
             }
             return winner;
         }
-        public static bool IsThereAWinner(PlayerModel player1, PlayerModel player2)
-        {
-            if (player1.ScoreSubtotal != player2.ScoreSubtotal)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
         /// <summary>
         /// Takes in as many players' scores as needed and compares the top two scores
         /// </summary>
@@ -106,7 +95,6 @@ namespace ScorekeeperLibrary
             int maxScore = playersScores[playersScores.Length - 1];
             int secondHighestScore = playersScores[playersScores.Length - 2];
             
-
             if (maxScore != secondHighestScore)
             {
                 return true;
