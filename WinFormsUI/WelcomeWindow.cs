@@ -26,19 +26,19 @@ namespace WinFormsUI
             if (rbtnTwoPlayers.Checked == true)
             {
                 GameModel game = new GameModel();
-                game.Players = GameCreation.CreatePlayers(game, txtPlayer1.Text, txtPlayer2.Text);
+                game.Players = GameCreation.CreatePlayers(game, txtPlayer1.Text, txtPlayer2.Text).ToList();
                 GameHelper.InitialiseTwoPlayerForm(game);
             }
             else if (rbtnThreePlayers.Checked == true)
             {
                 GameModel game = new GameModel();
-                game.Players = GameCreation.CreatePlayers(game, txtPlayer1.Text, txtPlayer2.Text, txtPlayer3.Text);
+                game.Players = GameCreation.CreatePlayers(game, txtPlayer1.Text, txtPlayer2.Text, txtPlayer3.Text).ToList();
                 GameHelper.InitialiseThreePlayerForm(game);
             }
             else if (rbtnFourPlayers.Checked == true)
             {
                 GameModel game = new GameModel();
-                game.Players = GameCreation.CreatePlayers(game, txtPlayer1.Text, txtPlayer2.Text, txtPlayer3.Text, txtPlayer4.Text);
+                game.Players = GameCreation.CreatePlayers(game, txtPlayer1.Text, txtPlayer2.Text, txtPlayer3.Text, txtPlayer4.Text).ToList();
                 GameHelper.InitialiseFourPlayerForm(game);
             }
         }

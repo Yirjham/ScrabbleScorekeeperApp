@@ -45,7 +45,6 @@
     <Compile Include="DataValidation\DataValidation.cs" />
     <Compile Include="GameCreation.cs" />
     <Compile Include="IForm.cs" />
-    <Compile Include="IGame.cs" />
     <Compile Include="Models\GameModel.cs" />
     <Compile Include="Models\PlayerModel.cs" />
     <Compile Include="Models\RoundModel.cs" />
