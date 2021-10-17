@@ -1,4 +1,5 @@
-﻿using ScorekeeperLibrary.Models;
+﻿using ScorekeeperLibrary;
+using ScorekeeperLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,23 +23,22 @@ namespace WinFormsUI
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
-
             if (rbtnTwoPlayers.Checked == true)
             {
-                (PlayerModel player1, PlayerModel player2) players = GameHelper.CreatePlayers(txtPlayer1.Text, txtPlayer2.Text);
-                GameModel game = GameHelper.CreateGame(players.player1, players.player2);
+                GameModel game = new GameModel();
+                game.Players = GameCreation.CreatePlayers(game, txtPlayer1.Text, txtPlayer2.Text);
                 GameHelper.InitialiseTwoPlayerForm(game);
             }
             else if (rbtnThreePlayers.Checked == true)
             {
-                (PlayerModel player1, PlayerModel player2, PlayerModel player3) players = GameHelper.CreatePlayers(txtPlayer1.Text, txtPlayer2.Text, txtPlayer3.Text);
-                GameModel game = GameHelper.CreateGame(players.player1, players.player2, players.player3);
+                GameModel game = new GameModel();
+                game.Players = GameCreation.CreatePlayers(game, txtPlayer1.Text, txtPlayer2.Text, txtPlayer3.Text);
                 GameHelper.InitialiseThreePlayerForm(game);
             }
             else if (rbtnFourPlayers.Checked == true)
             {
-                (PlayerModel player1, PlayerModel player2, PlayerModel player3, PlayerModel player4) players = GameHelper.CreatePlayers(txtPlayer1.Text, txtPlayer2.Text, txtPlayer3.Text, txtPlayer4.Text);
-                GameModel game = GameHelper.CreateGame(players.player1, players.player2, players.player3, players.player4);
+                GameModel game = new GameModel();
+                game.Players = GameCreation.CreatePlayers(game, txtPlayer1.Text, txtPlayer2.Text, txtPlayer3.Text, txtPlayer4.Text);
                 GameHelper.InitialiseFourPlayerForm(game);
             }
         }
