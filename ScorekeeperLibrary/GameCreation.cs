@@ -9,6 +9,12 @@ namespace ScorekeeperLibrary
 {
     public static class GameCreation
     {
+        /// <summary>
+        /// Creates an array with empty names and then adds the names sequentially
+        /// </summary>
+        /// <param name="game">The actual game created</param>
+        /// <param name="names">The names of all the players</param>
+        /// <returns>An array with all the players that needs to be conversed to a List</returns>
         public static PlayerModel[] CreatePlayers(GameModel game, params string[] names)
         {
             PlayerModel[] players = new PlayerModel[names.Length];
@@ -26,92 +32,6 @@ namespace ScorekeeperLibrary
             }
 
             return players;
-            
-            
-            
-            
-            
-            
-            //List<PlayerModel> players = new List<PlayerModel>();
-            
-            //switch (names.Length)
-            //{
-            //    case 2:
-            //        players = new List<PlayerModel>() { new PlayerModel(""), new PlayerModel("") };
-            //        int i = 0;
-            //        foreach (PlayerModel player in players)
-            //        {
-            //            player.PlayerName = names[i];
-            //            i++;
-            //        }
-            //        break;
-            //    case 3:
-            //        players = new List<PlayerModel>() { new PlayerModel(""), new PlayerModel(""), new PlayerModel("") };
-            //        i = 0;
-            //        foreach (PlayerModel player in players)
-            //        {
-            //            player.PlayerName = names[i];
-            //            i++;
-            //        }
-            //        break;
-            //    case 4:
-            //        players = new List<PlayerModel>() { new PlayerModel(""), new PlayerModel(""), new PlayerModel(""), new PlayerModel("") };
-            //        i = 0;
-            //        foreach (PlayerModel player in players)
-            //        {
-            //            player.PlayerName = names[i];
-            //            i++;
-            //        }
-            //        break;
-            //    default:
-            //        break;
-            //}
-            //return players;
-
-
-
-
-            //    PlayerModel player1 = new PlayerModel("");
-            //    PlayerModel player2 = new PlayerModel("");
-            //    PlayerModel player3 = new PlayerModel("");
-            //    PlayerModel player4 = new PlayerModel("");
-            //    List<PlayerModel> players = new List<PlayerModel>();
-
-            //    switch (names.Length)
-            //    {
-            //        case 2:
-            //            player1.PlayerName = names[0];
-            //            player2.PlayerName = names[1];
-
-            //            players.Add(player1);
-            //            players.Add(player2);
-            //            break;
-            //        case 3:
-            //            player1.PlayerName = names[0];
-            //            player2.PlayerName = names[1];
-            //            player3.PlayerName = names[2];
-
-            //            players.Add(player1);
-            //            players.Add(player2);
-            //            players.Add(player3);
-            //            break;
-            //        case 4:
-            //            player1.PlayerName = names[0];
-            //            player2.PlayerName = names[1];
-            //            player3.PlayerName = names[2];
-            //            player4.PlayerName = names[3];
-
-            //            players.Add(player1);
-            //            players.Add(player2);
-            //            players.Add(player3);
-            //            players.Add(player4);
-            //            break;
-            //        default:
-            //            break;
-            //    }
-
-            //    return players;
-            //}
         }
     }
 }
