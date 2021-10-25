@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ScorekeeperUniversalLibrary;
+using ScorekeeperUniversalLibrary.Models;
 
 namespace RazorPagesUI.Pages
 {
@@ -17,9 +19,24 @@ namespace RazorPagesUI.Pages
             _logger = logger;
         }
 
+
+        [BindProperty]
+        public PlayerModel Player { get; set; }
         public void OnGet()
         {
 
+        }
+
+        public IActionResult OnPost()
+        {
+            if (ModelState.IsValid == false)
+            {
+                return Page();
+            }
+            else
+            {
+                return RedirectToPage("./Index");
+            }
         }
     }
 }

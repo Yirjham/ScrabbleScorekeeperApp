@@ -8,6 +8,10 @@ namespace ScorekeeperUniversalLibrary.Models
 {
     public class PlayerModel
     {
+        public PlayerModel()
+        {
+
+        }
         public PlayerModel(string name)
         {
             PlayerName = name;
