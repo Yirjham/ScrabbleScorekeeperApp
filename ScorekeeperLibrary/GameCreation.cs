@@ -10,12 +10,12 @@ namespace ScorekeeperLibrary
     public static class GameCreation
     {
         /// <summary>
-        /// Creates an array with empty names and then adds the names sequentially
+        /// Creates an array of players with initial empty names and then adds the names sequentially
         /// </summary>
         /// <param name="game">The actual game created</param>
         /// <param name="names">The names of all the players</param>
-        /// <returns>An array with all the players that needs to be conversed to a List</returns>
-        public static PlayerModel[] CreatePlayers(GameModel game, params string[] names)
+        /// <returns>An array with all the players</returns>
+        public static PlayerModel[] CreatePlayers(params string[] names)
         {
             PlayerModel[] players = new PlayerModel[names.Length];
 
