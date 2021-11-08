@@ -49,7 +49,7 @@ namespace WinFormsUI
             // lblWelcomeMessage
             // 
             this.lblWelcomeMessage.AutoSize = true;
-            this.lblWelcomeMessage.Location = new System.Drawing.Point(38, 85);
+            this.lblWelcomeMessage.Location = new System.Drawing.Point(23, 21);
             this.lblWelcomeMessage.Name = "lblWelcomeMessage";
             this.lblWelcomeMessage.Size = new System.Drawing.Size(390, 29);
             this.lblWelcomeMessage.TabIndex = 0;
@@ -72,13 +72,12 @@ namespace WinFormsUI
             this.groupBoxInitialForm.Controls.Add(this.rbtnFourPlayers);
             this.groupBoxInitialForm.Controls.Add(this.rbtnTwoPlayers);
             this.groupBoxInitialForm.Controls.Add(this.rbtnThreePlayers);
-            this.groupBoxInitialForm.Location = new System.Drawing.Point(28, 181);
+            this.groupBoxInitialForm.Location = new System.Drawing.Point(18, 83);
             this.groupBoxInitialForm.Name = "groupBoxInitialForm";
-            this.groupBoxInitialForm.Size = new System.Drawing.Size(615, 159);
+            this.groupBoxInitialForm.Size = new System.Drawing.Size(542, 159);
             this.groupBoxInitialForm.TabIndex = 3;
             this.groupBoxInitialForm.TabStop = false;
             this.groupBoxInitialForm.Text = "Select the Amount of Players:";
-            
             // 
             // rbtnFourPlayers
             // 
@@ -106,9 +105,9 @@ namespace WinFormsUI
             // 
             // btnEnter
             // 
-            this.btnEnter.Location = new System.Drawing.Point(449, 621);
+            this.btnEnter.Location = new System.Drawing.Point(364, 428);
             this.btnEnter.Name = "btnEnter";
-            this.btnEnter.Size = new System.Drawing.Size(137, 46);
+            this.btnEnter.Size = new System.Drawing.Size(121, 35);
             this.btnEnter.TabIndex = 4;
             this.btnEnter.Text = "Enter";
             this.btnEnter.UseVisualStyleBackColor = true;
@@ -117,7 +116,7 @@ namespace WinFormsUI
             // lblPlayer1
             // 
             this.lblPlayer1.AutoSize = true;
-            this.lblPlayer1.Location = new System.Drawing.Point(57, 360);
+            this.lblPlayer1.Location = new System.Drawing.Point(47, 262);
             this.lblPlayer1.Name = "lblPlayer1";
             this.lblPlayer1.Size = new System.Drawing.Size(106, 29);
             this.lblPlayer1.TabIndex = 5;
@@ -126,7 +125,7 @@ namespace WinFormsUI
             // lblPlayer2
             // 
             this.lblPlayer2.AutoSize = true;
-            this.lblPlayer2.Location = new System.Drawing.Point(57, 417);
+            this.lblPlayer2.Location = new System.Drawing.Point(47, 319);
             this.lblPlayer2.Name = "lblPlayer2";
             this.lblPlayer2.Size = new System.Drawing.Size(106, 29);
             this.lblPlayer2.TabIndex = 6;
@@ -135,7 +134,7 @@ namespace WinFormsUI
             // lblPlayer3
             // 
             this.lblPlayer3.AutoSize = true;
-            this.lblPlayer3.Location = new System.Drawing.Point(57, 473);
+            this.lblPlayer3.Location = new System.Drawing.Point(47, 375);
             this.lblPlayer3.Name = "lblPlayer3";
             this.lblPlayer3.Size = new System.Drawing.Size(106, 29);
             this.lblPlayer3.TabIndex = 7;
@@ -144,7 +143,7 @@ namespace WinFormsUI
             // lblPlayer4
             // 
             this.lblPlayer4.AutoSize = true;
-            this.lblPlayer4.Location = new System.Drawing.Point(60, 529);
+            this.lblPlayer4.Location = new System.Drawing.Point(50, 431);
             this.lblPlayer4.Name = "lblPlayer4";
             this.lblPlayer4.Size = new System.Drawing.Size(106, 29);
             this.lblPlayer4.TabIndex = 8;
@@ -152,28 +151,28 @@ namespace WinFormsUI
             // 
             // txtPlayer1
             // 
-            this.txtPlayer1.Location = new System.Drawing.Point(169, 357);
+            this.txtPlayer1.Location = new System.Drawing.Point(159, 259);
             this.txtPlayer1.Name = "txtPlayer1";
             this.txtPlayer1.Size = new System.Drawing.Size(148, 35);
             this.txtPlayer1.TabIndex = 9;
             // 
             // txtPlayer2
             // 
-            this.txtPlayer2.Location = new System.Drawing.Point(169, 414);
+            this.txtPlayer2.Location = new System.Drawing.Point(159, 316);
             this.txtPlayer2.Name = "txtPlayer2";
             this.txtPlayer2.Size = new System.Drawing.Size(148, 35);
             this.txtPlayer2.TabIndex = 10;
             // 
             // txtPlayer3
             // 
-            this.txtPlayer3.Location = new System.Drawing.Point(169, 470);
+            this.txtPlayer3.Location = new System.Drawing.Point(159, 372);
             this.txtPlayer3.Name = "txtPlayer3";
             this.txtPlayer3.Size = new System.Drawing.Size(148, 35);
             this.txtPlayer3.TabIndex = 11;
             // 
             // txtPlayer4
             // 
-            this.txtPlayer4.Location = new System.Drawing.Point(169, 526);
+            this.txtPlayer4.Location = new System.Drawing.Point(159, 428);
             this.txtPlayer4.Name = "txtPlayer4";
             this.txtPlayer4.Size = new System.Drawing.Size(148, 35);
             this.txtPlayer4.TabIndex = 12;
@@ -182,7 +181,7 @@ namespace WinFormsUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(687, 694);
+            this.ClientSize = new System.Drawing.Size(581, 489);
             this.Controls.Add(this.txtPlayer4);
             this.Controls.Add(this.txtPlayer3);
             this.Controls.Add(this.txtPlayer2);
