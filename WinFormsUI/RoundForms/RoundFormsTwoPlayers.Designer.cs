@@ -46,7 +46,7 @@ namespace WinFormsUI.RoundForms
             // lblPlayer1Name
             // 
             this.lblPlayer1Name.AutoSize = true;
-            this.lblPlayer1Name.Location = new System.Drawing.Point(135, 180);
+            this.lblPlayer1Name.Location = new System.Drawing.Point(12, 117);
             this.lblPlayer1Name.Name = "lblPlayer1Name";
             this.lblPlayer1Name.Size = new System.Drawing.Size(106, 29);
             this.lblPlayer1Name.TabIndex = 0;
@@ -55,7 +55,7 @@ namespace WinFormsUI.RoundForms
             // lblPlayer2Name
             // 
             this.lblPlayer2Name.AutoSize = true;
-            this.lblPlayer2Name.Location = new System.Drawing.Point(135, 237);
+            this.lblPlayer2Name.Location = new System.Drawing.Point(12, 174);
             this.lblPlayer2Name.Name = "lblPlayer2Name";
             this.lblPlayer2Name.Size = new System.Drawing.Size(106, 29);
             this.lblPlayer2Name.TabIndex = 1;
@@ -64,7 +64,7 @@ namespace WinFormsUI.RoundForms
             // lblCurrentRound
             // 
             this.lblCurrentRound.AutoSize = true;
-            this.lblCurrentRound.Location = new System.Drawing.Point(233, 72);
+            this.lblCurrentRound.Location = new System.Drawing.Point(14, 24);
             this.lblCurrentRound.Name = "lblCurrentRound";
             this.lblCurrentRound.Size = new System.Drawing.Size(90, 29);
             this.lblCurrentRound.TabIndex = 2;
@@ -73,7 +73,7 @@ namespace WinFormsUI.RoundForms
             // lblCurrentRoundNumber
             // 
             this.lblCurrentRoundNumber.AutoSize = true;
-            this.lblCurrentRoundNumber.Location = new System.Drawing.Point(318, 72);
+            this.lblCurrentRoundNumber.Location = new System.Drawing.Point(99, 24);
             this.lblCurrentRoundNumber.Name = "lblCurrentRoundNumber";
             this.lblCurrentRoundNumber.Size = new System.Drawing.Size(100, 29);
             this.lblCurrentRoundNumber.TabIndex = 3;
@@ -81,40 +81,40 @@ namespace WinFormsUI.RoundForms
             // 
             // txtScorePlayer1
             // 
-            this.txtScorePlayer1.Location = new System.Drawing.Point(238, 177);
+            this.txtScorePlayer1.Location = new System.Drawing.Point(115, 114);
             this.txtScorePlayer1.Name = "txtScorePlayer1";
             this.txtScorePlayer1.Size = new System.Drawing.Size(100, 35);
             this.txtScorePlayer1.TabIndex = 1;
             // 
             // txtScorePlayer2
             // 
-            this.txtScorePlayer2.Location = new System.Drawing.Point(238, 231);
+            this.txtScorePlayer2.Location = new System.Drawing.Point(115, 168);
             this.txtScorePlayer2.Name = "txtScorePlayer2";
             this.txtScorePlayer2.Size = new System.Drawing.Size(100, 35);
             this.txtScorePlayer2.TabIndex = 2;
             // 
             // txtSubtotalPlayer1
             // 
-            this.txtSubtotalPlayer1.Location = new System.Drawing.Point(391, 177);
+            this.txtSubtotalPlayer1.Location = new System.Drawing.Point(268, 114);
             this.txtSubtotalPlayer1.Name = "txtSubtotalPlayer1";
             this.txtSubtotalPlayer1.ReadOnly = true;
-            this.txtSubtotalPlayer1.Size = new System.Drawing.Size(122, 35);
+            this.txtSubtotalPlayer1.Size = new System.Drawing.Size(100, 35);
             this.txtSubtotalPlayer1.TabIndex = 6;
             this.txtSubtotalPlayer1.TabStop = false;
             // 
             // txtSubtotalPlayer2
             // 
-            this.txtSubtotalPlayer2.Location = new System.Drawing.Point(391, 231);
+            this.txtSubtotalPlayer2.Location = new System.Drawing.Point(268, 168);
             this.txtSubtotalPlayer2.Name = "txtSubtotalPlayer2";
             this.txtSubtotalPlayer2.ReadOnly = true;
-            this.txtSubtotalPlayer2.Size = new System.Drawing.Size(122, 35);
+            this.txtSubtotalPlayer2.Size = new System.Drawing.Size(100, 35);
             this.txtSubtotalPlayer2.TabIndex = 7;
             this.txtSubtotalPlayer2.TabStop = false;
             // 
             // lblScore
             // 
             this.lblScore.AutoSize = true;
-            this.lblScore.Location = new System.Drawing.Point(233, 145);
+            this.lblScore.Location = new System.Drawing.Point(110, 82);
             this.lblScore.Name = "lblScore";
             this.lblScore.Size = new System.Drawing.Size(77, 29);
             this.lblScore.TabIndex = 8;
@@ -123,7 +123,7 @@ namespace WinFormsUI.RoundForms
             // lblSubtotal
             // 
             this.lblSubtotal.AutoSize = true;
-            this.lblSubtotal.Location = new System.Drawing.Point(390, 145);
+            this.lblSubtotal.Location = new System.Drawing.Point(267, 82);
             this.lblSubtotal.Name = "lblSubtotal";
             this.lblSubtotal.Size = new System.Drawing.Size(101, 29);
             this.lblSubtotal.TabIndex = 9;
@@ -131,9 +131,9 @@ namespace WinFormsUI.RoundForms
             // 
             // btnEnter
             // 
-            this.btnEnter.Location = new System.Drawing.Point(238, 303);
+            this.btnEnter.Location = new System.Drawing.Point(115, 229);
             this.btnEnter.Name = "btnEnter";
-            this.btnEnter.Size = new System.Drawing.Size(111, 38);
+            this.btnEnter.Size = new System.Drawing.Size(100, 38);
             this.btnEnter.TabIndex = 3;
             this.btnEnter.Text = "Enter";
             this.btnEnter.UseVisualStyleBackColor = true;
@@ -141,9 +141,9 @@ namespace WinFormsUI.RoundForms
             // 
             // btnFinishGame
             // 
-            this.btnFinishGame.Location = new System.Drawing.Point(391, 305);
+            this.btnFinishGame.Location = new System.Drawing.Point(268, 231);
             this.btnFinishGame.Name = "btnFinishGame";
-            this.btnFinishGame.Size = new System.Drawing.Size(116, 36);
+            this.btnFinishGame.Size = new System.Drawing.Size(100, 36);
             this.btnFinishGame.TabIndex = 4;
             this.btnFinishGame.Text = "Finish";
             this.btnFinishGame.UseVisualStyleBackColor = true;
@@ -153,7 +153,7 @@ namespace WinFormsUI.RoundForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(709, 559);
+            this.ClientSize = new System.Drawing.Size(394, 299);
             this.Controls.Add(this.btnFinishGame);
             this.Controls.Add(this.btnEnter);
             this.Controls.Add(this.lblSubtotal);
