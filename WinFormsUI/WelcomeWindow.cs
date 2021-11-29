@@ -90,5 +90,11 @@ namespace WinFormsUI
             txtPlayer3.ReadOnly = true;
             txtPlayer4.ReadOnly = true;
         }
+
+        private void btnViewScoreboard_Click(object sender, EventArgs e)
+        {
+            Scoreboard scoreboard = new Scoreboard();
+            scoreboard.Show();
+        }
     }
 }

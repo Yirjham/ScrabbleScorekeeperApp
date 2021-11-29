@@ -144,6 +144,12 @@
     <Compile Include="RoundForms\RoundFormsTwoPlayers.Designer.cs">
       <DependentUpon>RoundFormsTwoPlayers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Scoreboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scoreboard.Designer.cs">
+      <DependentUpon>Scoreboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="WelcomeWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RoundForms\RoundFormsTwoPlayers.resx">
       <DependentUpon>RoundFormsTwoPlayers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scoreboard.resx">
+      <DependentUpon>Scoreboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WelcomeWindow.resx">
       <DependentUpon>WelcomeWindow.cs</DependentUpon>
@@ -192,6 +201,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataAccessLibrary\DataAccessLibrary.csproj">
+      <Project>{41206d45-c8c4-4c96-a1f8-90cbdb77de85}</Project>
+      <Name>DataAccessLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ScorekeeperLibrary\ScorekeeperLibrary.csproj">
       <Project>{595f96e7-d29d-441a-b2ec-07063de7c9b6}</Project>
       <Name>ScorekeeperLibrary</Name>
