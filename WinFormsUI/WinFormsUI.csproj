@@ -126,6 +126,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccessHelper.cs" />
     <Compile Include="RoundForms\RoundFormsFourPlayers.cs">
       <SubType>Form</SubType>
     </Compile>

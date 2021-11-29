@@ -19,7 +19,7 @@ namespace WinFormsUI
         public Scoreboard()
         {
             InitializeComponent();
-            _sqlDb = new Crud(GetConnectionString());
+            _sqlDb = new Crud(DataAccessHelper.GetConnectionString());
         }
         private void Scoreboard_Load(object sender, EventArgs e)
         {
@@ -28,7 +28,7 @@ namespace WinFormsUI
         private void DisplayPlayerScoarboard()
         {
             scoreBoardGrid.Columns.Clear();
-            var players = _sqlDb.ReadAllPlayers();
+            var players = _sqlDb.LoadAllPlayers();
 
             scoreBoardGrid.DataSource = players;
             scoreBoardGrid.Columns.RemoveAt(0);
@@ -45,16 +45,16 @@ namespace WinFormsUI
             this.Close();
         }
 
-        private static string GetConnectionString(string connectionStringName = "Default")
-        {
-            string output = "";
+        //public static string GetConnectionString(string connectionStringName = "Default")
+        //{
+        //    string output = "";
 
-            var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
-            var config = builder.Build();
+        //    var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
+        //    var config = builder.Build();
 
-            output = config.GetConnectionString(connectionStringName);
-            return output;
-        }
+        //    output = config.GetConnectionString(connectionStringName);
+        //    return output;
+        //}
 
 
     }

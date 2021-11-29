@@ -1,4 +1,6 @@
-﻿using ScorekeeperLibrary;
+﻿using DataAccessLibrary;
+using DataAccessLibrary.Models;
+using ScorekeeperLibrary;
 using ScorekeeperLibrary.DataValidation;
 using ScorekeeperLibrary.Models;
 using System;
@@ -18,9 +20,16 @@ namespace WinFormsUI.RoundForms
         GameModel game;
         PlayerModel player1;
         PlayerModel player2;
+        private Crud _sqlDb;
+        private List<PlayerMapperModel> _players;
+        private List<string> _playersNames;
 
         public RoundFormsTwoPlayers(GameModel currentGame)
         {
+            _sqlDb = new Crud(DataAccessHelper.GetConnectionString());
+            _players = _sqlDb.LoadAllPlayers();
+            _playersNames = _players.Select(p => p.Name).ToList();
+
             game = currentGame;
             player1 = game.Players[0];
             player2 = game.Players[1];
@@ -62,6 +71,8 @@ namespace WinFormsUI.RoundForms
 
             if (button == DialogResult.Yes)
             {
+                PlayerModel gameNotWinner = null; 
+                
                 if (Calculations.isThereAWinner(game.Players[0].ScoreSubtotal, game.Players[1].ScoreSubtotal))
                 {
                     game.GameWinner = Calculations.DeterminesWinner(player1, player2);
@@ -75,6 +86,59 @@ namespace WinFormsUI.RoundForms
                     int itsATieScore = player1.ScoreSubtotal;
                     MessageBox.Show($"After { game.TotalRounds } rounds there is no winner as { player1.PlayerName } and { player2.PlayerName } both scored { itsATieScore } points.");
                 }
+                // New code for assigning a loser and hence updating details
+                if (game.GameWinner == player1)
+                {
+                    gameNotWinner = player2;    
+                }
+                else
+                {
+                    gameNotWinner = player1;
+                }
+
+                // New code for updating the database with data from new game 
+                if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, game.GameWinner))
+                {
+                    //Load player by name
+                    PlayerMapperModel winnerMapper = _sqlDb.ReadPlayer(game.GameWinner.PlayerName);
+
+                    // check if score is higher and add one to games played and won
+                    if (winnerMapper != null)
+                    {
+                        winnerMapper.GamesPlayed++;
+                        winnerMapper.GamesWon++;
+
+                        if (game.GameWinner.TotalScore > winnerMapper.HighestScore)
+                        {
+                            winnerMapper.HighestScore = game.GameWinner.TotalScore;
+                        }
+
+                    }
+
+                    // update the database 
+                    _sqlDb.UpdatePlayerData(winnerMapper.Id, winnerMapper);
+                }
+                if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, gameNotWinner))
+                {
+                    //Load player by name
+                    PlayerMapperModel notWinnerMapper = _sqlDb.ReadPlayer(gameNotWinner.PlayerName);
+
+                    // check if score is higher
+                    if (notWinnerMapper != null)
+                    {
+                        notWinnerMapper.GamesPlayed++;
+
+                        if (gameNotWinner.TotalScore > notWinnerMapper.HighestScore)
+                        {
+                            notWinnerMapper.HighestScore = gameNotWinner.TotalScore;
+                        }
+
+                    }
+
+                    // update the database by adding one to games played and update score if highest than recorded
+                    _sqlDb.UpdatePlayerData(notWinnerMapper.Id, notWinnerMapper);
+                }
+
             }
         }
         public void UpdatePlayersRoundScores()
