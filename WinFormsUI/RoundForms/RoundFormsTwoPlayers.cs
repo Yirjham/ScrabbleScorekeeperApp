@@ -142,54 +142,7 @@ namespace WinFormsUI.RoundForms
                     }
                 }
 
-                           
-
-                //// New code for updating the database with data from new game 
-                //if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, game.GameWinner) == true)
-                //{
-                //    //Load player by name
-                //    PlayerMapperModel winnerMapper = _crud.ReadPlayer(game.GameWinner.PlayerName);
-
-                //    // check if score is higher and add one to games played and won
-                //    if (winnerMapper != null)
-                //    {
-                //        winnerMapper.GamesPlayed++;
-                //        winnerMapper.GamesWon++;
-
-                //        if (game.GameWinner.TotalScore > winnerMapper.HighestScore)
-                //        {
-                //            winnerMapper.HighestScore = game.GameWinner.TotalScore;
-                //        }
-
-                //    }
-
-                //    // update the database 
-                //    _crud.UpdatePlayerData(winnerMapper.Id, winnerMapper);
-                //}
-                
-                //if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, loser) == true)
-                //{
-                //    //Load player by name
-                //    PlayerMapperModel notWinnerMapper = _crud.ReadPlayer(loser.PlayerName);
-
-                //    // check if score is higher
-                //    if (notWinnerMapper != null)
-                //    {
-                //        notWinnerMapper.GamesPlayed++;
-
-                //        if (loser.TotalScore > notWinnerMapper.HighestScore)
-                //        {
-                //            notWinnerMapper.HighestScore = loser.TotalScore;
-                //        }
-
-                //    }
-
-                //    // update the database by adding one to games played and update score if highest than recorded
-                //    _crud.UpdatePlayerData(notWinnerMapper.Id, notWinnerMapper);
-                //}
-                
-             
-
+                this.Close();
             }
         }
         public void UpdatePlayersRoundScores()
