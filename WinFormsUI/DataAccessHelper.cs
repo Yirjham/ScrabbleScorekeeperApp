@@ -1,5 +1,7 @@
-﻿using DataAccessLibrary.Models;
+﻿using DataAccessLibrary;
+using DataAccessLibrary.Models;
 using Microsoft.Extensions.Configuration;
+using ScorekeeperLibrary;
 using ScorekeeperLibrary.Models;
 using System;
 using System.Collections.Generic;
@@ -10,8 +12,14 @@ using System.Threading.Tasks;
 
 namespace WinFormsUI
 {
-    public static class DataAccessHelper
+    public class DataAccessHelper
     {
+        private readonly Crud _crud;
+
+        public DataAccessHelper(Crud crud)
+        {
+            _crud = crud;
+        }
         public static string GetConnectionString(string connectionStringName = "Default")
         {
             string output = "";
@@ -42,22 +50,54 @@ namespace WinFormsUI
             return false;
         }
 
-        //public static PlayerModel ReturnGameLoser(PlayerModel gameWinner, PlayerModel player1, PlayerModel player2)
-        //{
+        public void UpdateExistingPlayerData(List<string> playerNames, PlayerModel player, GameModel game)
+        {
 
-        //    //PlayerModel output = null;
-        //    //if (gameWinner == player1)
-        //    //{
-        //    //    output = player2;
-        //    //}
-        //    //else
-        //    //{
-        //    //    output = player1;
-        //    //}
+            // New code for updating the database with data from new game 
+            if (DataAccessHelper.PlayerAlreadyInDB(playerNames, player) == true)
+            {
+                //Load player by name
+                PlayerMapperModel playerDbMapper = _crud.ReadPlayer(player.PlayerName);
 
-        //    //return output;
-        //}
+                // check if score is higher and add one to games played and won
+                if (playerDbMapper != null)
+                {
+                    playerDbMapper.GamesPlayed++;
 
+                    if (game.GameWinner.PlayerName.ToLower() == playerDbMapper.Name.ToLower())
+                    {
+                        playerDbMapper.GamesWon++;
+                    }
+
+                    Calculations.UpdatePlayerHighestScore(player, playerDbMapper);
+                }
+ 
+                _crud.UpdatePlayerData(playerDbMapper.Id, playerDbMapper);
+            }
+        }
+
+      
+        public void AddNewPlayerToDb(PlayerModel player)
+        {
+            PlayerMapperModel playerDbMapper = new PlayerMapperModel();
+
+            playerDbMapper.Name = player.PlayerName;
+            playerDbMapper.GamesPlayed = 1;
+
+            if (nameof(player).ToLower() == "game.gamewinner")
+            {
+                playerDbMapper.GamesWon++;
+            }
+            else
+            {
+                playerDbMapper.GamesWon = 0;
+            }
+
+            playerDbMapper.HighestScore = player.TotalScore;
+
+            _crud.CreatePlayer(playerDbMapper);
+            
+        }
 
 
     }

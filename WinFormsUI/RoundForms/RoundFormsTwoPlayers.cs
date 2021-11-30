@@ -17,27 +17,29 @@ namespace WinFormsUI.RoundForms
 {
     public partial class RoundFormsTwoPlayers : Form, IForm
     {
-        GameModel game;
-        PlayerModel player1;
-        PlayerModel player2;
-        private Crud _sqlDb;
+        private GameModel game;
+        private PlayerModel _player1;
+        private PlayerModel _player2;
+        private readonly Crud _crud;
         private List<PlayerMapperModel> _players;
         private List<string> _playersNames;
+        private readonly DataAccessHelper _dataAccessHelper;
 
         public RoundFormsTwoPlayers(GameModel currentGame)
         {
-            _sqlDb = new Crud(DataAccessHelper.GetConnectionString());
-            _players = _sqlDb.LoadAllPlayers();
+            _crud = new Crud(DataAccessHelper.GetConnectionString());
+            _dataAccessHelper = new DataAccessHelper(_crud);
+            _players = _crud.LoadAllPlayers();
             _playersNames = _players.Select(p => p.Name).ToList();
 
             game = currentGame;
-            player1 = game.Players[0];
-            player2 = game.Players[1];
+            _player1 = game.Players[0];
+            _player2 = game.Players[1];
 
             InitializeComponent();
 
-            lblPlayer1Name.Text = player1.PlayerName;
-            lblPlayer2Name.Text = player2.PlayerName;
+            lblPlayer1Name.Text = _player1.PlayerName;
+            lblPlayer2Name.Text = _player2.PlayerName;
 
             game.TotalRounds = 0;
             lblCurrentRoundNumber.Text = game.TotalRounds.ToString();
@@ -71,102 +73,136 @@ namespace WinFormsUI.RoundForms
 
             if (button == DialogResult.Yes)
             {
-                PlayerModel loser = null; 
+                PlayerModel loser = null;
+
                 
-                if (Calculations.IsThereAWinner(game.Players[0].ScoreSubtotal, game.Players[1].ScoreSubtotal))
+
+
+                if (Calculations.IsThereAWinner(game.Players[0].ScoreSubtotal, game.Players[1].ScoreSubtotal) == true)
                 {
-                    game.GameWinner = Calculations.DeterminesWinner(player1, player2);
+                    game.GameWinner = Calculations.DeterminesWinner(_player1, _player2);
                     game.GameWinner.UpdateFinalScore();
 
-                    MessageBox.Show(ScorekeeperLibrary.Models.UIMessages.GameWinnerMessage(game, player1, player2), "WINNER!!!", MessageBoxButtons.OK);
+                    loser = Calculations.ReturnsLosers(_player1, _player2);
+                    loser.UpdateFinalScore();
+
+                    MessageBox.Show(ScorekeeperLibrary.Models.UIMessages.GameWinnerMessage(game, _player1, _player2), "WINNER!!!", MessageBoxButtons.OK);
+
+                    if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, game.GameWinner) == true)
+                    {
+                        _dataAccessHelper.UpdateExistingPlayerData(_playersNames, game.GameWinner, game);
+                    }
+                    else
+                    {
+                        _dataAccessHelper.AddNewPlayerToDb(game.GameWinner);
+                        
+                    }
+
+                    if ((DataAccessHelper.PlayerAlreadyInDB(_playersNames, loser) == true))
+                    {
+                        _dataAccessHelper.UpdateExistingPlayerData(_playersNames, loser, game);
+                    }
+                    else
+                    {
+                        _dataAccessHelper.AddNewPlayerToDb(loser);
+                    }
+                    
+                    
                 }
-                // itsATieScore its the final score of either player1 or player2
+                // No winner, players in a tie
                 else
                 {
-                    int itsATieScore = player1.ScoreSubtotal;
-                    MessageBox.Show($"After { game.TotalRounds } rounds there is no winner as { player1.PlayerName } and { player2.PlayerName } both scored { itsATieScore } points.");
-                }
+                    int itsATieScore = _player1.ScoreSubtotal;
+                    MessageBox.Show($"After { game.TotalRounds } rounds there is no winner as { _player1.PlayerName } and { _player2.PlayerName } both scored { itsATieScore } points.");
 
-                // New code for assigning a loser and hence updating details
-                loser = Calculations.ReturnsLowestScorer(player1, player2);
+                    // No winners
+                    _player1.UpdateFinalScore();
+                    _player2.UpdateFinalScore();
 
-                if (Calculations.IsThereAWinner(player1.TotalScore, player2.TotalScore) == true)
-                {
-                    // All the code below
-                }
-              
-
-                // New code for updating the database with data from new game 
-                if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, game.GameWinner))
-                {
-                    //Load player by name
-                    PlayerMapperModel winnerMapper = _sqlDb.ReadPlayer(game.GameWinner.PlayerName);
-
-                    // check if score is higher and add one to games played and won
-                    if (winnerMapper != null)
+                    if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, _player1) == true)
                     {
-                        winnerMapper.GamesPlayed++;
-                        winnerMapper.GamesWon++;
-
-                        if (game.GameWinner.TotalScore > winnerMapper.HighestScore)
-                        {
-                            winnerMapper.HighestScore = game.GameWinner.TotalScore;
-                        }
-
+                        PlayerMapperModel player1Mapper = _crud.ReadPlayer(_player1.PlayerName);
+                        player1Mapper.GamesPlayed++;
+                        Calculations.UpdatePlayerHighestScore(_player1, player1Mapper);
+                        _crud.UpdatePlayerData(player1Mapper.Id, player1Mapper);
+                    }
+                    else
+                    {
+                        _dataAccessHelper.AddNewPlayerToDb(_player1);
                     }
 
-                    // update the database 
-                    _sqlDb.UpdatePlayerData(winnerMapper.Id, winnerMapper);
-                }
-                else if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, loser))
-                {
-                    //Load player by name
-                    PlayerMapperModel notWinnerMapper = _sqlDb.ReadPlayer(loser.PlayerName);
-
-                    // check if score is higher
-                    if (notWinnerMapper != null)
+                    if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, _player1) == true)
                     {
-                        notWinnerMapper.GamesPlayed++;
-
-                        if (loser.TotalScore > notWinnerMapper.HighestScore)
-                        {
-                            notWinnerMapper.HighestScore = loser.TotalScore;
-                        }
-
+                        PlayerMapperModel player2Mapper = _crud.ReadPlayer(_player2.PlayerName);
+                        player2Mapper.GamesPlayed++;
+                        Calculations.UpdatePlayerHighestScore(_player2, player2Mapper);
+                        _crud.UpdatePlayerData(player2Mapper.Id, player2Mapper);
                     }
-
-                    // update the database by adding one to games played and update score if highest than recorded
-                    _sqlDb.UpdatePlayerData(notWinnerMapper.Id, notWinnerMapper);
+                    else
+                    {
+                        _dataAccessHelper.AddNewPlayerToDb(_player2);
+                    }
                 }
+
+                           
+
+                //// New code for updating the database with data from new game 
+                //if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, game.GameWinner) == true)
+                //{
+                //    //Load player by name
+                //    PlayerMapperModel winnerMapper = _crud.ReadPlayer(game.GameWinner.PlayerName);
+
+                //    // check if score is higher and add one to games played and won
+                //    if (winnerMapper != null)
+                //    {
+                //        winnerMapper.GamesPlayed++;
+                //        winnerMapper.GamesWon++;
+
+                //        if (game.GameWinner.TotalScore > winnerMapper.HighestScore)
+                //        {
+                //            winnerMapper.HighestScore = game.GameWinner.TotalScore;
+                //        }
+
+                //    }
+
+                //    // update the database 
+                //    _crud.UpdatePlayerData(winnerMapper.Id, winnerMapper);
+                //}
                 
-                // no winner, hence players null
-                if(Calculations.IsThereAWinner(player1.TotalScore, player2.TotalScore) == false)
-                {
-                    PlayerMapperModel winnerMapper = _sqlDb.ReadPlayer(game.GameWinner.PlayerName);
-                    PlayerMapperModel notWinnerMapper = _sqlDb.ReadPlayer(loser.PlayerName);
+                //if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, loser) == true)
+                //{
+                //    //Load player by name
+                //    PlayerMapperModel notWinnerMapper = _crud.ReadPlayer(loser.PlayerName);
 
-                    if (winnerMapper != null || notWinnerMapper != null)
-                    {
-                        winnerMapper.GamesPlayed++;
-                        notWinnerMapper.GamesPlayed++;
-                    }
+                //    // check if score is higher
+                //    if (notWinnerMapper != null)
+                //    {
+                //        notWinnerMapper.GamesPlayed++;
 
-                    _sqlDb.UpdatePlayerData(winnerMapper.Id, winnerMapper);
-                    _sqlDb.UpdatePlayerData(notWinnerMapper.Id, notWinnerMapper);
+                //        if (loser.TotalScore > notWinnerMapper.HighestScore)
+                //        {
+                //            notWinnerMapper.HighestScore = loser.TotalScore;
+                //        }
 
-                }
+                //    }
+
+                //    // update the database by adding one to games played and update score if highest than recorded
+                //    _crud.UpdatePlayerData(notWinnerMapper.Id, notWinnerMapper);
+                //}
+                
+             
 
             }
         }
         public void UpdatePlayersRoundScores()
         {
-            player1.RoundScore = int.Parse(txtScorePlayer1.Text);
-            player2.RoundScore = int.Parse(txtScorePlayer2.Text);
+            _player1.RoundScore = int.Parse(txtScorePlayer1.Text);
+            _player2.RoundScore = int.Parse(txtScorePlayer2.Text);
         }
         public void UpdateDisplayedSubtotals()
         {
-            txtSubtotalPlayer1.Text = player1.ScoreSubtotal.ToString();
-            txtSubtotalPlayer2.Text = player2.ScoreSubtotal.ToString();
+            txtSubtotalPlayer1.Text = _player1.ScoreSubtotal.ToString();
+            txtSubtotalPlayer2.Text = _player2.ScoreSubtotal.ToString();
         }
 
         public void UpdateDisplayedCurrentRound()

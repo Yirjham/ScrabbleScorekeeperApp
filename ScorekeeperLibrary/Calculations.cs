@@ -1,4 +1,5 @@
-﻿using ScorekeeperLibrary.Models;
+﻿using DataAccessLibrary.Models;
+using ScorekeeperLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -124,7 +125,7 @@ namespace ScorekeeperLibrary
         }
 
         // Not unit tested
-        public static PlayerModel ReturnsLowestScorer(PlayerModel player1, PlayerModel player2)
+        public static PlayerModel ReturnsLosers(PlayerModel player1, PlayerModel player2)
         {
             PlayerModel loser = null;
 
@@ -137,6 +138,16 @@ namespace ScorekeeperLibrary
                 loser = player2;
             }
             return loser;
+        }
+
+        // Not unit tested
+        public static void UpdatePlayerHighestScore(PlayerModel player, PlayerMapperModel playerDbMapper)
+        {
+
+            if (player.TotalScore > playerDbMapper.HighestScore)
+            {
+                playerDbMapper.HighestScore = player.TotalScore;
+            }
         }
     }
 }
