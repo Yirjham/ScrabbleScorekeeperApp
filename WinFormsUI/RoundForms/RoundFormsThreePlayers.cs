@@ -65,7 +65,7 @@ namespace WinFormsUI.RoundForms
 
             if (button == DialogResult.Yes)
             {
-                if (Calculations.isThereAWinner(game.Players[0].ScoreSubtotal, game.Players[1].ScoreSubtotal, game.Players[2].ScoreSubtotal))
+                if (Calculations.IsThereAWinner(game.Players[0].ScoreSubtotal, game.Players[1].ScoreSubtotal, game.Players[2].ScoreSubtotal))
                 {
                     game.GameWinner = Calculations.DeterminesWinner(player1, player2, player3);
                     game.GameWinner.UpdateFinalScore();

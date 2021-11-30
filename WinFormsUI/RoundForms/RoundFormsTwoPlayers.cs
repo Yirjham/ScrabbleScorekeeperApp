@@ -71,9 +71,9 @@ namespace WinFormsUI.RoundForms
 
             if (button == DialogResult.Yes)
             {
-                PlayerModel gameNotWinner = null; 
+                PlayerModel loser = null; 
                 
-                if (Calculations.isThereAWinner(game.Players[0].ScoreSubtotal, game.Players[1].ScoreSubtotal))
+                if (Calculations.IsThereAWinner(game.Players[0].ScoreSubtotal, game.Players[1].ScoreSubtotal))
                 {
                     game.GameWinner = Calculations.DeterminesWinner(player1, player2);
                     game.GameWinner.UpdateFinalScore();
@@ -86,15 +86,15 @@ namespace WinFormsUI.RoundForms
                     int itsATieScore = player1.ScoreSubtotal;
                     MessageBox.Show($"After { game.TotalRounds } rounds there is no winner as { player1.PlayerName } and { player2.PlayerName } both scored { itsATieScore } points.");
                 }
+
                 // New code for assigning a loser and hence updating details
-                if (game.GameWinner == player1)
+                loser = Calculations.ReturnsLowestScorer(player1, player2);
+
+                if (Calculations.IsThereAWinner(player1.TotalScore, player2.TotalScore) == true)
                 {
-                    gameNotWinner = player2;    
+                    // All the code below
                 }
-                else
-                {
-                    gameNotWinner = player1;
-                }
+              
 
                 // New code for updating the database with data from new game 
                 if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, game.GameWinner))
@@ -118,25 +118,42 @@ namespace WinFormsUI.RoundForms
                     // update the database 
                     _sqlDb.UpdatePlayerData(winnerMapper.Id, winnerMapper);
                 }
-                if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, gameNotWinner))
+                else if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, loser))
                 {
                     //Load player by name
-                    PlayerMapperModel notWinnerMapper = _sqlDb.ReadPlayer(gameNotWinner.PlayerName);
+                    PlayerMapperModel notWinnerMapper = _sqlDb.ReadPlayer(loser.PlayerName);
 
                     // check if score is higher
                     if (notWinnerMapper != null)
                     {
                         notWinnerMapper.GamesPlayed++;
 
-                        if (gameNotWinner.TotalScore > notWinnerMapper.HighestScore)
+                        if (loser.TotalScore > notWinnerMapper.HighestScore)
                         {
-                            notWinnerMapper.HighestScore = gameNotWinner.TotalScore;
+                            notWinnerMapper.HighestScore = loser.TotalScore;
                         }
 
                     }
 
                     // update the database by adding one to games played and update score if highest than recorded
                     _sqlDb.UpdatePlayerData(notWinnerMapper.Id, notWinnerMapper);
+                }
+                
+                // no winner, hence players null
+                if(Calculations.IsThereAWinner(player1.TotalScore, player2.TotalScore) == false)
+                {
+                    PlayerMapperModel winnerMapper = _sqlDb.ReadPlayer(game.GameWinner.PlayerName);
+                    PlayerMapperModel notWinnerMapper = _sqlDb.ReadPlayer(loser.PlayerName);
+
+                    if (winnerMapper != null || notWinnerMapper != null)
+                    {
+                        winnerMapper.GamesPlayed++;
+                        notWinnerMapper.GamesPlayed++;
+                    }
+
+                    _sqlDb.UpdatePlayerData(winnerMapper.Id, winnerMapper);
+                    _sqlDb.UpdatePlayerData(notWinnerMapper.Id, notWinnerMapper);
+
                 }
 
             }

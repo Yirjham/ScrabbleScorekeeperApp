@@ -42,5 +42,23 @@ namespace WinFormsUI
             return false;
         }
 
+        //public static PlayerModel ReturnGameLoser(PlayerModel gameWinner, PlayerModel player1, PlayerModel player2)
+        //{
+
+        //    //PlayerModel output = null;
+        //    //if (gameWinner == player1)
+        //    //{
+        //    //    output = player2;
+        //    //}
+        //    //else
+        //    //{
+        //    //    output = player1;
+        //    //}
+
+        //    //return output;
+        //}
+
+
+
     }
 }
