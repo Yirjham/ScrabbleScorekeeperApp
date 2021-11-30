@@ -28,34 +28,17 @@ namespace WinFormsUI
         private void DisplayPlayerScoarboard()
         {
             scoreBoardGrid.Columns.Clear();
-            var players = _sqlDb.LoadAllPlayers();
+            var players = _sqlDb.LoadAllPlayers().OrderByDescending(s => s.HighestScore).ToList();
+
 
             scoreBoardGrid.DataSource = players;
             scoreBoardGrid.Columns.RemoveAt(0);
             scoreBoardGrid.AutoResizeColumns();
         }
 
-        private void scoreBoardGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        //public static string GetConnectionString(string connectionStringName = "Default")
-        //{
-        //    string output = "";
-
-        //    var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
-        //    var config = builder.Build();
-
-        //    output = config.GetConnectionString(connectionStringName);
-        //    return output;
-        //}
-
-
     }
 }

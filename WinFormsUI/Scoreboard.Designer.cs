@@ -57,7 +57,7 @@
             this.scoreBoardGrid.RowTemplate.Height = 28;
             this.scoreBoardGrid.Size = new System.Drawing.Size(414, 212);
             this.scoreBoardGrid.TabIndex = 0;
-            this.scoreBoardGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.scoreBoardGrid_CellContentClick);
+            
             // 
             // btnClose
             // 
