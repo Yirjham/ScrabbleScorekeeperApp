@@ -75,9 +75,6 @@ namespace WinFormsUI.RoundForms
             {
                 PlayerModel loser = null;
 
-                
-
-
                 if (Calculations.IsThereAWinner(game.Players[0].ScoreSubtotal, game.Players[1].ScoreSubtotal) == true)
                 {
                     game.GameWinner = Calculations.DeterminesWinner(_player1, _player2);
@@ -94,7 +91,8 @@ namespace WinFormsUI.RoundForms
                     }
                     else
                     {
-                        _dataAccessHelper.AddNewPlayerToDb(game.GameWinner);
+                        
+                        _dataAccessHelper.AddNewPlayerToDb(game.GameWinner, true);
                         
                     }
 
@@ -104,7 +102,7 @@ namespace WinFormsUI.RoundForms
                     }
                     else
                     {
-                        _dataAccessHelper.AddNewPlayerToDb(loser);
+                        _dataAccessHelper.AddNewPlayerToDb(loser, false);
                     }
                     
                     
@@ -128,7 +126,7 @@ namespace WinFormsUI.RoundForms
                     }
                     else
                     {
-                        _dataAccessHelper.AddNewPlayerToDb(_player1);
+                        _dataAccessHelper.AddNewPlayerToDb(_player1, false);
                     }
 
                     if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, _player1) == true)
@@ -140,7 +138,7 @@ namespace WinFormsUI.RoundForms
                     }
                     else
                     {
-                        _dataAccessHelper.AddNewPlayerToDb(_player2);
+                        _dataAccessHelper.AddNewPlayerToDb(_player2, false);
                     }
                 }
 

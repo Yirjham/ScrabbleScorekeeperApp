@@ -77,14 +77,14 @@ namespace WinFormsUI
         }
 
       
-        public void AddNewPlayerToDb(PlayerModel player)
+        public void AddNewPlayerToDb(PlayerModel player, bool isWinner)
         {
             PlayerMapperModel playerDbMapper = new PlayerMapperModel();
 
             playerDbMapper.Name = player.PlayerName;
             playerDbMapper.GamesPlayed = 1;
 
-            if (nameof(player).ToLower() == "game.gamewinner")
+            if (isWinner ==  true)
             {
                 playerDbMapper.GamesWon++;
             }
