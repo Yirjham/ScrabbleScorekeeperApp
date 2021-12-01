@@ -17,7 +17,7 @@ namespace WinFormsUI.RoundForms
 {
     public partial class RoundFormsThreePlayers : Form, IForm
     {
-        GameModel game;
+        private GameModel game;
         private PlayerModel _player1;
         private PlayerModel _player2;
         private PlayerModel _player3;
