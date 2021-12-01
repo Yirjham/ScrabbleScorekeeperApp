@@ -39,9 +39,14 @@ namespace WinFormsUI
 
         public static bool PlayerAlreadyInDB(List<string> playersNames, PlayerModel player)
         {
-            foreach (var playerName in playersNames)
+            foreach (var name in playersNames)
             {
-                if (playerName.ToLower() == player.PlayerName.ToLower())
+                name.ToLower();
+            }
+
+            foreach (var name in playersNames)
+            {
+                if (name == player.PlayerName.ToLower())
                 {
                     return true;
                 }
