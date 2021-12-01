@@ -80,7 +80,7 @@ namespace WinFormsUI.RoundForms
                     game.GameWinner = Calculations.DeterminesWinner(_player1, _player2);
                     game.GameWinner.UpdateFinalScore();
 
-                    //loser = Calculations.ReturnsLosers(_player1, _player2);
+                    loser = Calculations.ReturnsLosers(_player1, _player2)[0]; // new line added, test that it works with the new logic
                     loser.UpdateFinalScore();
 
                     MessageBox.Show(ScorekeeperLibrary.Models.UIMessages.GameWinnerMessage(game, _player1, _player2), "WINNER!!!", MessageBoxButtons.OK);
@@ -129,7 +129,7 @@ namespace WinFormsUI.RoundForms
                         _dataAccessHelper.AddNewPlayerToDb(_player1, false);
                     }
 
-                    if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, _player1) == true)
+                    if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, _player2) == true)
                     {
                         PlayerMapperModel player2Mapper = _crud.ReadPlayer(_player2.PlayerName);
                         player2Mapper.GamesPlayed++;

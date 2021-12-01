@@ -79,18 +79,104 @@ namespace WinFormsUI.RoundForms
                 PlayerModel loser1 = null;
                 PlayerModel loser2 = null;
 
-                if (Calculations.IsThereAWinner(game.Players[0].ScoreSubtotal, game.Players[1].ScoreSubtotal, game.Players[2].ScoreSubtotal))
+                if (Calculations.IsThereAWinner(game.Players[0].ScoreSubtotal, game.Players[1].ScoreSubtotal, game.Players[2].ScoreSubtotal) == true)
                 {
                     game.GameWinner = Calculations.DeterminesWinner(_player1, _player2, _player3);
                     game.GameWinner.UpdateFinalScore();
 
+                    loser1 = Calculations.ReturnsLosers(_player1, _player2)[0];
+                    loser2 = Calculations.ReturnsLosers(_player1, _player2)[1];
+
                     MessageBox.Show(ScorekeeperLibrary.Models.UIMessages.GameWinnerMessage(game, _player1, _player2, _player3), 
                         "WINNER!!!", MessageBoxButtons.OK);
+
+                    // New section to adapt, code originally from RoundFormsTwoPlayers
+
+
+                    //Checks if the winner is already in the DB or not
+                    if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, game.GameWinner) == true)
+                    {
+                        _dataAccessHelper.UpdateExistingPlayerData(_playersNames, game.GameWinner, game);
+                    }
+                    else
+                    {
+
+                        _dataAccessHelper.AddNewPlayerToDb(game.GameWinner, true);
+
+                    }
+
+                    //Checks if loser1 is already in the DB or not
+                    if ((DataAccessHelper.PlayerAlreadyInDB(_playersNames, loser1) == true))
+                    {
+                        _dataAccessHelper.UpdateExistingPlayerData(_playersNames, loser1, game);
+                    }
+                    else
+                    {
+                        _dataAccessHelper.AddNewPlayerToDb(loser1, false);
+                    }
+
+                    //Checks if loser2 is already in the DB or not
+                    if ((DataAccessHelper.PlayerAlreadyInDB(_playersNames, loser2) == true))
+                    {
+                        _dataAccessHelper.UpdateExistingPlayerData(_playersNames, loser2, game);
+                    }
+                    else
+                    {
+                        _dataAccessHelper.AddNewPlayerToDb(loser2, false);
+                    }
                 }
+                // No winner, players in a tie
                 else
                 {
                     MessageBox.Show($"After { game.TotalRounds } rounds there is no winner as the top score is shared by two or more players.");
-                } 
+
+                    // New code to adapt, code originally from RoundFormsTwoPlayers
+
+                    _player1.UpdateFinalScore();
+                    _player2.UpdateFinalScore();
+                    _player3.UpdateFinalScore();
+
+                    //If player1 exists in DB update details
+                    if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, _player1) == true)
+                    {
+                        PlayerMapperModel player1Mapper = _crud.ReadPlayer(_player1.PlayerName);
+                        player1Mapper.GamesPlayed++;
+                        Calculations.UpdatePlayerHighestScore(_player1, player1Mapper);
+                        _crud.UpdatePlayerData(player1Mapper.Id, player1Mapper);
+                    }
+                    else // if not add player1 to DB
+                    {
+                        _dataAccessHelper.AddNewPlayerToDb(_player1, false);
+                    }
+
+                    //If player2 exists in DB update details
+                    if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, _player2) == true)
+                    {
+                        PlayerMapperModel player2Mapper = _crud.ReadPlayer(_player2.PlayerName);
+                        player2Mapper.GamesPlayed++;
+                        Calculations.UpdatePlayerHighestScore(_player2, player2Mapper);
+                        _crud.UpdatePlayerData(player2Mapper.Id, player2Mapper);
+                    }
+                    else // if not add player2 to DB
+                    {
+                        _dataAccessHelper.AddNewPlayerToDb(_player2, false);
+                    }
+
+                    //If player3 exists in DB update details
+                    if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, _player3) == true)
+                    {
+                        PlayerMapperModel player3Mapper = _crud.ReadPlayer(_player3.PlayerName);
+                        player3Mapper.GamesPlayed++;
+                        Calculations.UpdatePlayerHighestScore(_player3, player3Mapper);
+                        _crud.UpdatePlayerData(player3Mapper.Id, player3Mapper);
+                    }
+                    else // if not add player3 to DB
+                    {
+                        _dataAccessHelper.AddNewPlayerToDb(_player3, false);
+                    }
+                }
+
+                this.Close();
             }
         }
 
