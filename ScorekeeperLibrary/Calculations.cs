@@ -125,19 +125,27 @@ namespace ScorekeeperLibrary
         }
 
         // Not unit tested
-        public static PlayerModel ReturnsLosers(PlayerModel player1, PlayerModel player2)
+        public static List<PlayerModel> ReturnsLosers(PlayerModel player1, PlayerModel player2)
         {
-            PlayerModel loser = null;
+            List<PlayerModel> allPlayers = new List<PlayerModel> { player1, player2};
 
-            if (player1.TotalScore < player2.TotalScore)
-            {
-                loser = player1;
-            }
-            else
-            {
-                loser = player2;
-            }
-            return loser;
+            allPlayers = allPlayers.OrderByDescending(t => t.TotalScore).ToList();
+
+
+            // Removes winner from list
+            allPlayers.RemoveAt(0);
+            List<PlayerModel> losers = allPlayers;
+
+            //if (player1.TotalScore < player2.TotalScore)
+            //{
+            //    losers. = player1;
+            //}
+            //else
+            //{
+            //    loser = player2;
+            //}
+
+            return losers;
         }
 
         // Not unit tested

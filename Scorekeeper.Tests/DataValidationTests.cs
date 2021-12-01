@@ -16,7 +16,7 @@ namespace Scorekeeper.Tests
         [InlineData("4", true)]
         [InlineData("131", false)]
         [InlineData("-1", false)]
-        [InlineData("0.3", false)]
+        [InlineData("0.3", true)] //valid range but invalid type
         public void ShouldReturnTrueWhenInValidRangeOldMethod(string input, bool expected)
         {
             // Arrange

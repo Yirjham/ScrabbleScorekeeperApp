@@ -80,7 +80,7 @@ namespace WinFormsUI.RoundForms
                     game.GameWinner = Calculations.DeterminesWinner(_player1, _player2);
                     game.GameWinner.UpdateFinalScore();
 
-                    loser = Calculations.ReturnsLosers(_player1, _player2);
+                    //loser = Calculations.ReturnsLosers(_player1, _player2);
                     loser.UpdateFinalScore();
 
                     MessageBox.Show(ScorekeeperLibrary.Models.UIMessages.GameWinnerMessage(game, _player1, _player2), "WINNER!!!", MessageBoxButtons.OK);

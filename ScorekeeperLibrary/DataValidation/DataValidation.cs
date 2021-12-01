@@ -39,11 +39,11 @@ namespace ScorekeeperLibrary.DataValidation
 
         public static bool isValidRange(params string[] inputFromPlayers)
         {
-            int inputNumber = 0;
+            double inputNumber = 0;
 
             for (int i = 0; i < inputFromPlayers.Length; i++)
             {
-                inputNumber = int.Parse(inputFromPlayers[i]);
+                inputNumber = double.Parse(inputFromPlayers[i]);
 
                 if (inputNumber < 0 || inputNumber > 130)
                 {
