@@ -23,7 +23,6 @@ namespace WinFormsUI
 
             SeedData.SeedData seed =  new SeedData.SeedData();
             seed.InitialiseDatabase();
-
         }
     }
 }
