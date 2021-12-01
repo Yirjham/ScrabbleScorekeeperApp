@@ -57,7 +57,6 @@ namespace WinFormsUI
 
         public void UpdateExistingPlayerData(List<string> playerNames, PlayerModel player, GameModel game)
         {
-
             // New code for updating the database with data from new game 
             if (DataAccessHelper.PlayerAlreadyInDB(playerNames, player) == true)
             {
@@ -80,7 +79,6 @@ namespace WinFormsUI
                 _crud.UpdatePlayerData(playerDbMapper.Id, playerDbMapper);
             }
         }
-
       
         public void AddNewPlayerToDb(PlayerModel player, bool isWinner)
         {
@@ -103,7 +101,5 @@ namespace WinFormsUI
             _crud.CreatePlayer(playerDbMapper);
             
         }
-
-
     }
 }

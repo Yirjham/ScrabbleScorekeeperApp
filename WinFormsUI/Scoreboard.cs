@@ -16,7 +16,7 @@ namespace WinFormsUI
 {
     public partial class Scoreboard : Form
     {
-        private Crud _crud;
+        private readonly Crud _crud;
         public Scoreboard()
         {
             _crud = new Crud(DataAccessHelper.GetConnectionString());
@@ -30,7 +30,6 @@ namespace WinFormsUI
         {
             scoreBoardGrid.Columns.Clear();
             var players = _crud.LoadAllPlayers().OrderByDescending(s => s.HighestScore).ToList();
-
 
             scoreBoardGrid.DataSource = players;
             scoreBoardGrid.Columns.RemoveAt(0);
@@ -67,16 +66,10 @@ namespace WinFormsUI
                         }
                     }
 
-                        _crud.DeletePlayer(playerMapper.Name);
+                    _crud.DeletePlayer(playerMapper.Name);
                     this.Close();
                 }
-
             }
-
-          
-
-            
-
         }
     }
 }

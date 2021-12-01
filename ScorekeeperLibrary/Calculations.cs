@@ -72,6 +72,7 @@ namespace ScorekeeperLibrary
             return winner;
         }
 
+        // not unit tested
         private static PlayerModel ReturnsHighestScorer(PlayerModel player1, PlayerModel player2, int scorePlayer1, int scorePlayer2)
         {
             PlayerModel winner = null;
@@ -85,12 +86,13 @@ namespace ScorekeeperLibrary
             }
             return winner;
         }
+        
         /// <summary>
         /// Takes in as many players' scores as needed and compares the top two scores
         /// </summary>
         /// <param name="playersScores">Scores go into an array that gets sorted</param>
         /// <returns>True if there is a winner or false if the top score is shared by at least two players</returns>
-        public static bool IsThereAWinner(params int[] playersScores)
+        public static bool IsThereAWinner(params int[] playersScores)     // not unit tested
         {
             Array.Sort(playersScores);
             int maxScore = playersScores[playersScores.Length - 1];
@@ -106,6 +108,7 @@ namespace ScorekeeperLibrary
             }
         }
 
+        // not unit tested
         public static void UpdateScoresAllPlayers(GameModel game, IForm form)
         {
             form.UpdatePlayersRoundScores();

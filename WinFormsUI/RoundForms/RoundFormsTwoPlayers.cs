@@ -105,7 +105,6 @@ namespace WinFormsUI.RoundForms
                         _dataAccessHelper.AddNewPlayerToDb(loser, false);
                     }
                     
-                    
                 }
                 // No winner, players in a tie
                 else

@@ -15,7 +15,7 @@ namespace ScorekeeperLibrary
         /// <param name="game">The actual game created</param>
         /// <param name="names">The names of all the players</param>
         /// <returns>An array with all the players</returns>
-        public static PlayerModel[] CreatePlayers(params string[] names)
+        public static PlayerModel[] CreatePlayers(params string[] names) //not unit tested
         {
             PlayerModel[] players = new PlayerModel[names.Length];
 

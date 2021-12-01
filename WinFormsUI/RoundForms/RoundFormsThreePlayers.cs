@@ -93,9 +93,6 @@ namespace WinFormsUI.RoundForms
                     MessageBox.Show(ScorekeeperLibrary.Models.UIMessages.GameWinnerMessage(game, _player1, _player2, _player3), 
                         "WINNER!!!", MessageBoxButtons.OK);
 
-                    // New section to adapt, code originally from RoundFormsTwoPlayers
-
-
                     //Checks if the winner is already in the DB or not
                     if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, game.GameWinner) == true)
                     {
@@ -133,8 +130,6 @@ namespace WinFormsUI.RoundForms
                 {
                     MessageBox.Show($"After { game.TotalRounds } rounds there is no winner as the top score is shared by two or more players.");
 
-                    // New code to adapt, code originally from RoundFormsTwoPlayers
-
                     _player1.UpdateFinalScore();
                     _player2.UpdateFinalScore();
                     _player3.UpdateFinalScore();
@@ -147,7 +142,7 @@ namespace WinFormsUI.RoundForms
                         Calculations.UpdatePlayerHighestScore(_player1, player1Mapper);
                         _crud.UpdatePlayerData(player1Mapper.Id, player1Mapper);
                     }
-                    else // if not add player1 to DB
+                    else 
                     {
                         _dataAccessHelper.AddNewPlayerToDb(_player1, false);
                     }
@@ -160,7 +155,7 @@ namespace WinFormsUI.RoundForms
                         Calculations.UpdatePlayerHighestScore(_player2, player2Mapper);
                         _crud.UpdatePlayerData(player2Mapper.Id, player2Mapper);
                     }
-                    else // if not add player2 to DB
+                    else 
                     {
                         _dataAccessHelper.AddNewPlayerToDb(_player2, false);
                     }
@@ -173,7 +168,7 @@ namespace WinFormsUI.RoundForms
                         Calculations.UpdatePlayerHighestScore(_player3, player3Mapper);
                         _crud.UpdatePlayerData(player3Mapper.Id, player3Mapper);
                     }
-                    else // if not add player3 to DB
+                    else 
                     {
                         _dataAccessHelper.AddNewPlayerToDb(_player3, false);
                     }
