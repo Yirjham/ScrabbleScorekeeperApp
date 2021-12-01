@@ -134,6 +134,30 @@ namespace Scorekeeper.Tests
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public void ShouldReturnTheLoserForThreePlayer()
+        {
+            // Arrange
+            PlayerModel player1 = new PlayerModel("testUser1") { RoundScore = 13, ScoreSubtotal = 154 }; //167 item at index 1
+            PlayerModel player2 = new PlayerModel("testUser2") { RoundScore = 20, ScoreSubtotal = 200 }; // winner 220
+            PlayerModel player3 = new PlayerModel("testUser3") { RoundScore = 1, ScoreSubtotal = 218 }; //219 item at index 0
+
+            player1.UpdateFinalScore();
+            player2.UpdateFinalScore();
+            player3.UpdateFinalScore();
+
+            List<PlayerModel> expected = new List<PlayerModel>();
+            expected.Add(player3);
+            expected.Add(player1);
+
+
+            // Act
+            List<PlayerModel> actual = Calculations.ReturnsLosers(player1, player2, player3);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
 
 
     }

@@ -130,20 +130,29 @@ namespace ScorekeeperLibrary
             List<PlayerModel> allPlayers = new List<PlayerModel> { player1, player2};
 
             allPlayers = allPlayers.OrderByDescending(t => t.TotalScore).ToList();
-
-
-            // Removes winner from list
-            allPlayers.RemoveAt(0);
+            allPlayers.RemoveAt(0); // Removes winner from list
             List<PlayerModel> losers = allPlayers;
 
-            //if (player1.TotalScore < player2.TotalScore)
-            //{
-            //    losers. = player1;
-            //}
-            //else
-            //{
-            //    loser = player2;
-            //}
+            return losers;
+        }
+        public static List<PlayerModel> ReturnsLosers(PlayerModel player1, PlayerModel player2, PlayerModel player3)
+        {
+            List<PlayerModel> allPlayers = new List<PlayerModel> { player1, player2, player3 };
+
+            allPlayers = allPlayers.OrderByDescending(t => t.TotalScore).ToList();
+            allPlayers.RemoveAt(0); // Removes winner from list
+            List<PlayerModel> losers = allPlayers;
+
+            return losers;
+        }
+
+        public static List<PlayerModel> ReturnsLosers(PlayerModel player1, PlayerModel player2, PlayerModel player3, PlayerModel player4)
+        {
+            List<PlayerModel> allPlayers = new List<PlayerModel> { player1, player2, player3, player4 };
+
+            allPlayers = allPlayers.OrderByDescending(t => t.TotalScore).ToList();
+            allPlayers.RemoveAt(0); // Removes winner from list
+            List<PlayerModel> losers = allPlayers;
 
             return losers;
         }
