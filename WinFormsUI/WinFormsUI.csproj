@@ -151,6 +151,7 @@
     <Compile Include="Scoreboard.Designer.cs">
       <DependentUpon>Scoreboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="SeedData\SeedData.cs" />
     <Compile Include="WelcomeWindow.cs">
       <SubType>Form</SubType>
     </Compile>

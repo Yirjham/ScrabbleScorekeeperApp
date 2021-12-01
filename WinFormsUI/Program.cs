@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsUI.SeedData;
 
 namespace WinFormsUI
 {
@@ -19,6 +20,10 @@ namespace WinFormsUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmWelcomeWindow());
+
+            SeedData.SeedData seed =  new SeedData.SeedData();
+            seed.InitialiseDatabase();
+
         }
     }
 }
