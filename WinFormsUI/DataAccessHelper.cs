@@ -31,30 +31,19 @@ namespace WinFormsUI
             return output;
         }
 
-        //public static void MapsPlayerForDb(PlayerModel gameWinner)
-        //{
-        //    PlayerMapperModel player = new PlayerMapperModel();
-        //    player.Name = gameWinner.Player
-        //}
-
         public static bool PlayerAlreadyInDB(List<string> playersNames, PlayerModel player)
-        {
+        {           
             foreach (var name in playersNames)
             {
-                name.ToLower();
-            }
-
-            foreach (var name in playersNames)
-            {
-                if (name == player.PlayerName.ToLower())
+                if (name.ToLower() == player.PlayerName.ToLower())
                 {
                     return true;
                 }
-                
+
             }
             return false;
         }
-
+        // Needs mocking
         public void UpdateExistingPlayerData(List<string> playerNames, PlayerModel player, GameModel game)
         {
             // New code for updating the database with data from new game 
@@ -79,7 +68,7 @@ namespace WinFormsUI
                 _crud.UpdatePlayerData(playerDbMapper.Id, playerDbMapper);
             }
         }
-      
+      // Needs mocking 
         public void AddNewPlayerToDb(PlayerModel player, bool isWinner)
         {
             PlayerMapperModel playerDbMapper = new PlayerMapperModel();
@@ -99,7 +88,6 @@ namespace WinFormsUI
             playerDbMapper.HighestScore = player.TotalScore;
 
             _crud.CreatePlayer(playerDbMapper);
-            
         }
     }
 }

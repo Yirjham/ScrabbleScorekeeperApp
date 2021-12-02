@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ScorekeeperLibrary\ScorekeeperLibrary.csproj" />
+    <ProjectReference Include="..\WinFormsUI\WinFormsUI.csproj" />
   </ItemGroup>
 
 </Project>
