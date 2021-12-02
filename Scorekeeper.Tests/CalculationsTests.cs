@@ -233,7 +233,23 @@ namespace Scorekeeper.Tests
             Assert.Equal(expected3, actual3);
             Assert.Equal(expected4, actual4);
             Assert.Equal(expected5, actual5);
+        }
 
+        [Theory]
+        [InlineData(134, 140, 111, 200, true)]
+        [InlineData(134, 134, 299, 200, true)]
+        [InlineData(0, 23, 320, 320, false)]
+        [InlineData(45 , 140, 200, 200, false)]
+        [InlineData(200, 140, 200, 201, true)]
+        public void ShouldReturnTrueIfThereIsATopScore(int input1, int input2, int input3, int input4, bool expected)
+        {
+            // Arrange
+
+            // Act 
+            bool actual = Calculations.IsThereAWinner(input1, input2, input3, input4);
+
+            // Assert
+            Assert.Equal(expected, actual);
         }
 
 
