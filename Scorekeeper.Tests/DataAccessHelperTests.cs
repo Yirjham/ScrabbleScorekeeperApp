@@ -52,5 +52,32 @@ namespace Scorekeeper.Tests
 
         }
 
+        [Fact]
+        public void ShouldReturnFalseIfPlayerNameIsNotInTheList()
+        {
+            // Arrange
+            List<string> playersNames = new List<string>() { "dan", "Pete", "Tom", "LiSa", "sue" };
+
+            PlayerModel player1 = new PlayerModel("Danny");
+            PlayerModel player2 = new PlayerModel("Peter");
+            PlayerModel player3 = new PlayerModel("toMhas");
+            PlayerModel player4 = new PlayerModel("lis");
+            PlayerModel player5 = new PlayerModel("Timmy");
+
+            // Act
+            bool actual1 = DataAccessHelper.PlayerAlreadyInDB(playersNames, player1);
+            bool actual2 = DataAccessHelper.PlayerAlreadyInDB(playersNames, player2);
+            bool actual3 = DataAccessHelper.PlayerAlreadyInDB(playersNames, player3);
+            bool actual4 = DataAccessHelper.PlayerAlreadyInDB(playersNames, player4);
+            bool actual5 = DataAccessHelper.PlayerAlreadyInDB(playersNames, player5);
+
+            //Assert
+            Assert.False(actual1);
+            Assert.False(actual2);
+            Assert.False(actual3);
+            Assert.False(actual4);
+            Assert.False(actual5);
+
+        }
     }
 }

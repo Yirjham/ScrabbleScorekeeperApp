@@ -1,4 +1,5 @@
-﻿using ScorekeeperLibrary;
+﻿using DataAccessLibrary.Models;
+using ScorekeeperLibrary;
 using ScorekeeperLibrary.Models;
 using System;
 using System.Collections.Generic;
@@ -183,6 +184,56 @@ namespace Scorekeeper.Tests
 
             // Assert
             Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void ShouldUpdatePlayersScoreIfHigher()
+        {
+            //Arrange
+            PlayerModel player1 = new PlayerModel("test1") { ScoreSubtotal = 330, RoundScore = 11}; // TotalScore = 341
+            PlayerModel player2 = new PlayerModel("test1") { ScoreSubtotal = 245, RoundScore = 5}; // TotalScore = 250
+            PlayerModel player3 = new PlayerModel("test1") { ScoreSubtotal = 143, RoundScore = 6}; // TotalScore = 149
+            PlayerModel player4 = new PlayerModel("test1") { ScoreSubtotal = 200, RoundScore = 11}; // TotalScore = 211
+            PlayerModel player5 = new PlayerModel("test1") { ScoreSubtotal = 167, RoundScore = 4}; // TotalScore = 171
+
+            player1.UpdateFinalScore();
+            player2.UpdateFinalScore();
+            player3.UpdateFinalScore();
+            player4.UpdateFinalScore();
+            player5.UpdateFinalScore();
+
+            PlayerMapperModel playerMapper1 = new PlayerMapperModel() { HighestScore = 300 };
+            PlayerMapperModel playerMapper2 = new PlayerMapperModel() { HighestScore = 250};
+            PlayerMapperModel playerMapper3 = new PlayerMapperModel() { HighestScore = 150 };
+            PlayerMapperModel playerMapper4 = new PlayerMapperModel() { HighestScore = 210 };
+            PlayerMapperModel playerMapper5 = new PlayerMapperModel() { HighestScore = 80 };
+
+            int expected1 = 341; 
+            int expected2 = 250; 
+            int expected3 = 150; 
+            int expected4 = 211; 
+            int expected5 = 171;
+
+            // Act
+            Calculations.UpdatePlayerHighestScore(player1, playerMapper1);
+            Calculations.UpdatePlayerHighestScore(player2, playerMapper2);
+            Calculations.UpdatePlayerHighestScore(player3, playerMapper3);
+            Calculations.UpdatePlayerHighestScore(player4, playerMapper4);
+            Calculations.UpdatePlayerHighestScore(player5, playerMapper5);
+
+            int actual1 = playerMapper1.HighestScore;
+            int actual2 = playerMapper2.HighestScore;
+            int actual3 = playerMapper3.HighestScore;
+            int actual4 = playerMapper4.HighestScore;
+            int actual5 = playerMapper5.HighestScore;
+
+            // Arrange
+            Assert.Equal(expected1, actual1);
+            Assert.Equal(expected2, actual2);
+            Assert.Equal(expected3, actual3);
+            Assert.Equal(expected4, actual4);
+            Assert.Equal(expected5, actual5);
+
         }
 
 

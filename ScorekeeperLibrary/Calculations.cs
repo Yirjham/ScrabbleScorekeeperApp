@@ -72,7 +72,7 @@ namespace ScorekeeperLibrary
             return winner;
         }
 
-        // not unit tested
+        // private method tested through the other two methods that calls it
         private static PlayerModel ReturnsHighestScorer(PlayerModel player1, PlayerModel player2, int scorePlayer1, int scorePlayer2)
         {
             PlayerModel winner = null;
@@ -107,8 +107,7 @@ namespace ScorekeeperLibrary
                 return false;
             }
         }
-
-        // not unit tested
+        // needs mocking
         public static void UpdateScoresAllPlayers(GameModel game, IForm form)
         {
             form.UpdatePlayersRoundScores();
@@ -126,8 +125,7 @@ namespace ScorekeeperLibrary
 
             form.ClearDisplayedScores();
         }
-
-        // Not unit tested
+        
         public static List<PlayerModel> ReturnsLosers(PlayerModel player1, PlayerModel player2)
         {
             List<PlayerModel> allPlayers = new List<PlayerModel> { player1, player2};
@@ -159,11 +157,9 @@ namespace ScorekeeperLibrary
 
             return losers;
         }
-
-        // Not unit tested
+        
         public static void UpdatePlayerHighestScore(PlayerModel player, PlayerMapperModel playerDbMapper)
         {
-
             if (player.TotalScore > playerDbMapper.HighestScore)
             {
                 playerDbMapper.HighestScore = player.TotalScore;
