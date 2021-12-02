@@ -28,12 +28,21 @@ namespace WinFormsUI
         }
         private void DisplayPlayerScoarboard()
         {
-            scoreBoardGrid.Columns.Clear();
-            var players = _crud.LoadAllPlayers().OrderByDescending(s => s.HighestScore).ToList();
+            try
+            {
+                scoreBoardGrid.Columns.Clear();
+                var players = _crud.LoadAllPlayers().OrderByDescending(s => s.HighestScore).ToList();
 
-            scoreBoardGrid.DataSource = players;
-            scoreBoardGrid.Columns.RemoveAt(0);
-            scoreBoardGrid.AutoResizeColumns();
+                scoreBoardGrid.DataSource = players;
+                scoreBoardGrid.Columns.RemoveAt(0);
+                scoreBoardGrid.AutoResizeColumns();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Something went wrong when accessing the database: { ex.Message }", 
+                    "Database access error", MessageBoxButtons.OK, MessageBoxIcon.Error );
+                this.Close();
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -48,27 +57,40 @@ namespace WinFormsUI
             if (scoreBoardGrid.SelectedRows.Count > 1)
             {
                 MessageBox.Show("You can only delete one player at the time. Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            if (scoreBoardGrid.SelectedRows.Count == 1)
+            if (scoreBoardGrid.CurrentRow != null)
             {
                 DialogResult button = MessageBox.Show("Are you sure you want to delete this player?", "Scrabble Scorekeeper",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
-                if (button == DialogResult.Yes)
+                if (button == DialogResult.Yes && scoreBoardGrid.CurrentRow.Selected == true)
                 {
-                    if (scoreBoardGrid.CurrentRow.Selected == true)
+                    try
                     {
                         object rowObject = scoreBoardGrid.CurrentRow.DataBoundItem;
-                        if (rowObject is PlayerMapperModel)
-                        {
-                            playerMapper = (PlayerMapperModel)rowObject;
-                        }
-                    }
 
-                    _crud.DeletePlayer(playerMapper.Name);
-                    this.Close();
+                        playerMapper = (PlayerMapperModel)rowObject;
+
+                        _crud.DeletePlayer(playerMapper.Name);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Something went wrong when accessing the database: { ex.Message }",
+                    "Database access error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        this.Close();
+                    }
                 }
+            }
+
+            else 
+            {
+                MessageBox.Show("Error, there are no players left to delete", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
             }
         }
     }

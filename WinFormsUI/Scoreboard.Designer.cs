@@ -35,7 +35,6 @@
             this.GamesPlayed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HighestScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClose = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnDeleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.scoreBoardGrid)).BeginInit();
             this.SuspendLayout();
@@ -105,15 +104,6 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // btnDeleteButton
             // 
             this.btnDeleteButton.Location = new System.Drawing.Point(423, 380);
@@ -130,7 +120,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(675, 431);
             this.Controls.Add(this.btnDeleteButton);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.scoreBoardGrid);
             this.Name = "Scoreboard";
@@ -149,7 +138,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GamesWon;
         private System.Windows.Forms.DataGridViewTextBoxColumn GamesPlayed;
         private System.Windows.Forms.DataGridViewTextBoxColumn HighestScore;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnDeleteButton;
     }
 }
