@@ -17,7 +17,7 @@ namespace WinFormsUI.RoundForms
 {
     public partial class RoundFormsTwoPlayers : Form, IForm
     {
-        private GameModel game;
+        private GameModel _game;
         private PlayerModel _player1;
         private PlayerModel _player2;
         private readonly Crud _crud;
@@ -29,22 +29,33 @@ namespace WinFormsUI.RoundForms
         {
             _crud = new Crud(DataAccessHelper.GetConnectionString());
             _dataAccessHelper = new DataAccessHelper(_crud);
-            _players = _crud.LoadAllPlayers();
-            _playersNames = _players.Select(p => p.Name).ToList();
 
-            game = currentGame;
-            _player1 = game.Players[0];
-            _player2 = game.Players[1];
+            try
+            {
+                _players = _crud.LoadAllPlayers();
+                _playersNames = _players.Select(p => p.Name).ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Something went wrong when accessing the database: { ex.Message }",
+                                "Database access error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //this.Close();
+            }
+            
+
+            _game = currentGame;
+            _player1 = _game.Players[0];
+            _player2 = _game.Players[1];
 
             InitializeComponent();
 
             lblPlayer1Name.Text = _player1.PlayerName;
             lblPlayer2Name.Text = _player2.PlayerName;
 
-            game.TotalRounds = 0;
-            lblCurrentRoundNumber.Text = game.TotalRounds.ToString();
+            _game.TotalRounds = 0;
+            lblCurrentRoundNumber.Text = _game.TotalRounds.ToString();
         }
-        // The event below has conditional statements for validating the users' data entries. Updates the subtotal scores if data is valid
+        
         private void btnEnter_Click(object sender, EventArgs e)
         {
             if (DataValidation.IsUserEntryEmpty(txtScorePlayer1.Text, txtScorePlayer2.Text) == true)
@@ -61,11 +72,11 @@ namespace WinFormsUI.RoundForms
             }
             else
             {
-                Calculations.UpdateScoresAllPlayers(game, this);
+                Calculations.UpdateScoresAllPlayers(_game, this);
                 txtScorePlayer1.Focus();
             }
         }
-        // The event below processes what happens if the user wants to finish the game
+
         private void btnFinishGame_Click(object sender, EventArgs e)
         {
             DialogResult button = MessageBox.Show("Are you sure you want to finish the game?", "Scrabble Scorekeeper", 
@@ -75,69 +86,82 @@ namespace WinFormsUI.RoundForms
             {
                 PlayerModel loser = null;
 
-                if (Calculations.IsThereAWinner(game.Players[0].ScoreSubtotal, game.Players[1].ScoreSubtotal) == true)
+                if (Calculations.IsThereAWinner(_game.Players[0].ScoreSubtotal, _game.Players[1].ScoreSubtotal) == true)
                 {
-                    game.GameWinner = Calculations.DeterminesWinner(_player1, _player2);
-                    game.GameWinner.UpdateFinalScore();
+                    _game.GameWinner = Calculations.DeterminesWinner(_player1, _player2);
+                    _game.GameWinner.UpdateFinalScore();
 
-                    loser = Calculations.ReturnsLosers(_player1, _player2)[0]; // new line added, test that it works with the new logic
-                    loser.UpdateFinalScore();
+                    loser = Calculations.ReturnsLosers(_player1, _player2)[0]; 
 
-                    MessageBox.Show(ScorekeeperLibrary.Models.UIMessages.GameWinnerMessage(game, _player1, _player2), "WINNER!!!", MessageBoxButtons.OK);
+                    MessageBox.Show(ScorekeeperLibrary.Models.UIMessages.GameWinnerMessage(_game, _player1, _player2), "WINNER!!!", MessageBoxButtons.OK);
 
-                    if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, game.GameWinner) == true)
+                    try
                     {
-                        _dataAccessHelper.UpdateExistingPlayerData(_playersNames, game.GameWinner, game);
-                    }
-                    else
-                    {
-                        
-                        _dataAccessHelper.AddNewPlayerToDb(game.GameWinner, true);
-                        
-                    }
+                        if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, _game.GameWinner) == true)
+                        {
+                            _dataAccessHelper.UpdateExistingPlayerData(_playersNames, _game.GameWinner, _game);
+                        }
+                        else
+                        {
+                            _dataAccessHelper.AddNewPlayerToDb(_game.GameWinner, true);
+                        }
 
-                    if ((DataAccessHelper.PlayerAlreadyInDB(_playersNames, loser) == true))
-                    {
-                        _dataAccessHelper.UpdateExistingPlayerData(_playersNames, loser, game);
+                        if ((DataAccessHelper.PlayerAlreadyInDB(_playersNames, loser) == true))
+                        {
+                            _dataAccessHelper.UpdateExistingPlayerData(_playersNames, loser, _game);
+                        }
+                        else
+                        {
+                            _dataAccessHelper.AddNewPlayerToDb(loser, false);
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        _dataAccessHelper.AddNewPlayerToDb(loser, false);
+                        MessageBox.Show($"Something went wrong when accessing the database: { ex.Message }",
+                                        "Database access error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Close();
                     }
-                    
                 }
                 // No winner, players in a tie
                 else
                 {
                     int itsATieScore = _player1.ScoreSubtotal;
-                    MessageBox.Show($"After { game.TotalRounds } rounds there is no winner as { _player1.PlayerName } and { _player2.PlayerName } both scored { itsATieScore } points.");
+                    MessageBox.Show($"After { _game.TotalRounds } rounds there is no winner as { _player1.PlayerName } and { _player2.PlayerName } both scored { itsATieScore } points.");
 
-                    // No winners
                     _player1.UpdateFinalScore();
                     _player2.UpdateFinalScore();
 
-                    if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, _player1) == true)
+                    try
                     {
-                        PlayerMapperModel player1Mapper = _crud.ReadPlayer(_player1.PlayerName);
-                        player1Mapper.GamesPlayed++;
-                        Calculations.UpdatePlayerHighestScore(_player1, player1Mapper);
-                        _crud.UpdatePlayerData(player1Mapper.Id, player1Mapper);
-                    }
-                    else
-                    {
-                        _dataAccessHelper.AddNewPlayerToDb(_player1, false);
-                    }
+                        if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, _player1) == true)
+                        {
+                            PlayerMapperModel player1Mapper = _crud.ReadPlayer(_player1.PlayerName);
+                            player1Mapper.GamesPlayed++;
+                            Calculations.UpdatePlayerHighestScore(_player1, player1Mapper);
+                            _crud.UpdatePlayerData(player1Mapper.Id, player1Mapper);
+                        }
+                        else
+                        {
+                            _dataAccessHelper.AddNewPlayerToDb(_player1, false);
+                        }
 
-                    if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, _player2) == true)
-                    {
-                        PlayerMapperModel player2Mapper = _crud.ReadPlayer(_player2.PlayerName);
-                        player2Mapper.GamesPlayed++;
-                        Calculations.UpdatePlayerHighestScore(_player2, player2Mapper);
-                        _crud.UpdatePlayerData(player2Mapper.Id, player2Mapper);
+                        if (DataAccessHelper.PlayerAlreadyInDB(_playersNames, _player2) == true)
+                        {
+                            PlayerMapperModel player2Mapper = _crud.ReadPlayer(_player2.PlayerName);
+                            player2Mapper.GamesPlayed++;
+                            Calculations.UpdatePlayerHighestScore(_player2, player2Mapper);
+                            _crud.UpdatePlayerData(player2Mapper.Id, player2Mapper);
+                        }
+                        else
+                        {
+                            _dataAccessHelper.AddNewPlayerToDb(_player2, false);
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        _dataAccessHelper.AddNewPlayerToDb(_player2, false);
+                        MessageBox.Show($"Something went wrong when accessing the database: { ex.Message }",
+                                           "Database access error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Close();
                     }
                 }
 
@@ -157,7 +181,7 @@ namespace WinFormsUI.RoundForms
 
         public void UpdateDisplayedCurrentRound()
         {
-            lblCurrentRoundNumber.Text = game.TotalRounds.ToString();
+            lblCurrentRoundNumber.Text = _game.TotalRounds.ToString();
         }
 
         public void ClearDisplayedScores()
