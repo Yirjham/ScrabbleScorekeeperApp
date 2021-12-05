@@ -24,7 +24,7 @@ namespace WinFormsUI.SeedData
                 return;
             }
 
-            List<PlayerMapperModel> testData = new List<PlayerMapperModel>() { 
+            List<PlayerMapperModel> seedDataList = new List<PlayerMapperModel>() { 
                 new PlayerMapperModel() { Name = "Ray", GamesWon = 3, GamesPlayed = 5, HighestScore = 198 }, 
                 new PlayerMapperModel() { Name = "Jodi", GamesWon = 6, GamesPlayed = 9, HighestScore = 210 }, 
                 new PlayerMapperModel() { Name = "Jessica", GamesWon = 2, GamesPlayed = 6, HighestScore = 259 }, 
@@ -37,16 +37,16 @@ namespace WinFormsUI.SeedData
                 new PlayerMapperModel() { Name = "Ian", GamesWon = 1, GamesPlayed = 7, HighestScore = 213 } 
             };
 
-            _crud.CreatePlayer(testData[0]);
-            _crud.CreatePlayer(testData[1]);
-            _crud.CreatePlayer(testData[2]);
-            _crud.CreatePlayer(testData[3]);
-            _crud.CreatePlayer(testData[4]);
-            _crud.CreatePlayer(testData[5]);
-            _crud.CreatePlayer(testData[6]);
-            _crud.CreatePlayer(testData[7]);
-            _crud.CreatePlayer(testData[8]);
-            _crud.CreatePlayer(testData[9]);
+            _crud.CreatePlayer(seedDataList[0]);
+            _crud.CreatePlayer(seedDataList[1]);
+            _crud.CreatePlayer(seedDataList[2]);
+            _crud.CreatePlayer(seedDataList[3]);
+            _crud.CreatePlayer(seedDataList[4]);
+            _crud.CreatePlayer(seedDataList[5]);
+            _crud.CreatePlayer(seedDataList[6]);
+            _crud.CreatePlayer(seedDataList[7]);
+            _crud.CreatePlayer(seedDataList[8]);
+            _crud.CreatePlayer(seedDataList[9]);
         }
 
      
