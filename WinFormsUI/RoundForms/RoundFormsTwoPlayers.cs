@@ -91,7 +91,8 @@ namespace WinFormsUI.RoundForms
                     _game.GameWinner = Calculations.DeterminesWinner(_player1, _player2);
                     _game.GameWinner.UpdateFinalScore();
 
-                    loser = Calculations.ReturnsLosers(_player1, _player2)[0]; 
+                    loser = Calculations.ReturnsLosers(_player1, _player2)[0];
+                    loser.UpdateFinalScore();
 
                     MessageBox.Show(ScorekeeperLibrary.Models.UIMessages.GameWinnerMessage(_game, _player1, _player2), "WINNER!!!", MessageBoxButtons.OK);
 

@@ -42,8 +42,6 @@ namespace WinFormsUI
                 MessageBox.Show($"Something went wrong when accessing the database: { ex.Message }\n\nStack Trace:{ex.StackTrace}", "Database access error (Exception)", MessageBoxButtons.OK, MessageBoxIcon.Error );
                 this.Close();
             }
- //           ex.Message + "\n\n" + ex.GetType().ToString() + "\n" +
- //ex.StackTrace, "Exception")
         }
 
         private void btnClose_Click(object sender, EventArgs e)
