@@ -30,8 +30,17 @@ namespace WinFormsUI.RoundForms
         {
             _crud = new Crud(DataAccessHelper.GetConnectionString());
             _dataAccessHelper = new DataAccessHelper(_crud);
-            _players = _crud.LoadAllPlayers();
-            _playersNames = _players.Select(p => p.Name).ToList();
+
+            try
+            {
+                _players = _crud.LoadAllPlayers();
+                _playersNames = _players.Select(p => p.Name).ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Something went wrong when accessing the database: { ex.Message }\n\nStack Trace:{ex.StackTrace}",
+                    "Database access error (Exception)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             game = currentGame;
             _player1 = game.Players[0];

@@ -39,7 +39,8 @@ namespace WinFormsUI
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Something went wrong when accessing the database: { ex.Message }\n\nStack Trace:{ex.StackTrace}", "Database access error (Exception)", MessageBoxButtons.OK, MessageBoxIcon.Error );
+                MessageBox.Show($"Something went wrong when accessing the database: { ex.Message }\n\nStack Trace:{ex.StackTrace}",
+                    "Database access error (Exception)", MessageBoxButtons.OK, MessageBoxIcon.Error );
                 this.Close();
             }
         }
@@ -76,8 +77,8 @@ namespace WinFormsUI
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Something went wrong when accessing the database: { ex.Message }",
-                    "Database access error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"Something went wrong when accessing the database: { ex.Message }\n\nStack Trace:{ex.StackTrace}",
+                    "Database access error (Exception)", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     finally
                     {
