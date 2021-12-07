@@ -191,10 +191,10 @@ namespace Scorekeeper.Tests
         {
             //Arrange
             PlayerModel player1 = new PlayerModel("test1") { ScoreSubtotal = 330, RoundScore = 11}; // TotalScore = 341
-            PlayerModel player2 = new PlayerModel("test1") { ScoreSubtotal = 245, RoundScore = 5}; // TotalScore = 250
-            PlayerModel player3 = new PlayerModel("test1") { ScoreSubtotal = 143, RoundScore = 6}; // TotalScore = 149
-            PlayerModel player4 = new PlayerModel("test1") { ScoreSubtotal = 200, RoundScore = 11}; // TotalScore = 211
-            PlayerModel player5 = new PlayerModel("test1") { ScoreSubtotal = 167, RoundScore = 4}; // TotalScore = 171
+            PlayerModel player2 = new PlayerModel("test2") { ScoreSubtotal = 245, RoundScore = 5}; // TotalScore = 250
+            PlayerModel player3 = new PlayerModel("test3") { ScoreSubtotal = 143, RoundScore = 6}; // TotalScore = 149
+            PlayerModel player4 = new PlayerModel("test4") { ScoreSubtotal = 200, RoundScore = 11}; // TotalScore = 211
+            PlayerModel player5 = new PlayerModel("test5") { ScoreSubtotal = 167, RoundScore = 4}; // TotalScore = 171
 
             player1.UpdateFinalScore();
             player2.UpdateFinalScore();
