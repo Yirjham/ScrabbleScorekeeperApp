@@ -45,9 +45,12 @@ namespace WinFormsUI
                     MessageBox.Show("Empty entry. Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                GameModel game = new GameModel();
-                game.Players = GameCreation.CreatePlayers(txtPlayer1.Text, txtPlayer2.Text, txtPlayer3.Text).ToList();
-                GameHelper.InitialiseThreePlayerForm(game);
+                else
+                {
+                    GameModel game = new GameModel();
+                    game.Players = GameCreation.CreatePlayers(txtPlayer1.Text, txtPlayer2.Text, txtPlayer3.Text).ToList();
+                    GameHelper.InitialiseThreePlayerForm(game); 
+                }
             }
             else if (rbtnFourPlayers.Checked == true)
             {
@@ -56,9 +59,12 @@ namespace WinFormsUI
                     MessageBox.Show("Empty entry. Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                GameModel game = new GameModel();
-                game.Players = GameCreation.CreatePlayers(txtPlayer1.Text, txtPlayer2.Text, txtPlayer3.Text, txtPlayer4.Text).ToList();
-                GameHelper.InitialiseFourPlayerForm(game);
+                else
+                {
+                    GameModel game = new GameModel();
+                    game.Players = GameCreation.CreatePlayers(txtPlayer1.Text, txtPlayer2.Text, txtPlayer3.Text, txtPlayer4.Text).ToList();
+                    GameHelper.InitialiseFourPlayerForm(game); 
+                }
             }
         }
 
