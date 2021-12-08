@@ -42,9 +42,7 @@ namespace Scorekeeper.Tests
             PlayerModel actual = roundWinner;
 
             // Assert
-
             Assert.Equal(expected, actual);
-
         }
 
         [Fact]
@@ -62,7 +60,6 @@ namespace Scorekeeper.Tests
             PlayerModel actual = roundWinner;
 
             // Assert
-
             Assert.Equal(expected, actual);
         }
 
@@ -82,6 +79,7 @@ namespace Scorekeeper.Tests
             // Assert
             Assert.Equal(expected, actual);
         }
+
         [Fact]
         public void ShouldReturnTheWinnerOfTheGameAtAnyStageForThreePlayers()
         {
@@ -98,6 +96,7 @@ namespace Scorekeeper.Tests
             // Assert
             Assert.Equal(expected, actual);
         }
+
         [Fact]
         public void ShouldReturnTheWinnerOfTheGameAtAnyStageForFourPlayers()
         {
@@ -126,7 +125,6 @@ namespace Scorekeeper.Tests
             player2.UpdateFinalScore();
             List<PlayerModel> expected = new List<PlayerModel>();
             expected.Add(player1);
-
 
             // Act
             List<PlayerModel> actual = Calculations.ReturnsLosers(player1, player2);
@@ -177,7 +175,6 @@ namespace Scorekeeper.Tests
             expected.Add(player2);
             expected.Add(player3);
             expected.Add(player1);
-
 
             // Act
             List<PlayerModel> actual = Calculations.ReturnsLosers(player1, player2, player3, player4);
@@ -244,15 +241,11 @@ namespace Scorekeeper.Tests
         public void ShouldReturnTrueIfThereIsATopScore(int input1, int input2, int input3, int input4, bool expected)
         {
             // Arrange
-
             // Act 
             bool actual = Calculations.IsThereAWinner(input1, input2, input3, input4);
 
             // Assert
             Assert.Equal(expected, actual);
         }
-
-
-
     }
 }

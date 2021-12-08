@@ -20,13 +20,13 @@ namespace Scorekeeper.Tests
         public void ShouldReturnTrueWhenInValidRangeOldMethod(string input, bool expected)
         {
             // Arrange
-
             // Act
             bool actual = DataValidation.isValidRange(input);
 
             // Assert
             Assert.Equal(expected, actual);
         }
+
         [Theory]
         [InlineData("4","5","3","10", false)]
         [InlineData("","5","3","10", true)]
@@ -38,11 +38,9 @@ namespace Scorekeeper.Tests
         [InlineData("","3","","5", true)]
         [InlineData("4","","","5", true)]
         [InlineData("4","3","4","5", false)]
-       
         public void ShouldReturnTrueWhenEmptyStringForFourEntries(string input1, string input2, string input3, string input4, bool expected)
         {
             // Arrange
-
             // Act 
             bool actualFourEntries = DataValidation.IsUserEntryEmpty(input1, input2, input3, input4);
             bool actualThreeEntries = DataValidation.IsUserEntryEmpty(input1, input2, input3);
@@ -61,13 +59,13 @@ namespace Scorekeeper.Tests
         public void ShouldReturnTrueWhenValidParseFourEntries(string input1, string input2, string input3, string input4, bool expected)
         {
             // Arrange
-
             // Act
             bool actual = DataValidation.isValidNumber(input1, input2, input3, input4);
 
             //Assert
             Assert.Equal(expected, actual);
         }
+
         [Theory]
         [InlineData("4", "65", true)]
         [InlineData("4r", "65", false)]
@@ -79,13 +77,13 @@ namespace Scorekeeper.Tests
         public void ShouldReturnTrueWhenValidParseTwoEntries(string input1, string input2, bool expected)
         {
             // Arrange
-
             // Act
             bool actual = DataValidation.isValidNumber(input1, input2);
 
             //Assert
             Assert.Equal(expected, actual);
         }
+
         [Theory]
         [InlineData("4", "65", "0", "43", true)]
         [InlineData("0", "130", "35", "43", true)]
@@ -96,12 +94,10 @@ namespace Scorekeeper.Tests
         public void ShouldReturnTrueWhenInValidRange(string input1, string input2, string input3, string input4, bool expected)
         {
             // Arrange
-
             // Act
             bool actual = DataValidation.isValidRange(input1, input2, input3, input4);
 
             // Asseert
-
             Assert.Equal(expected, actual);
         }
     }

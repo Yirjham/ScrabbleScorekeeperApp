@@ -61,6 +61,7 @@ namespace WinFormsUI
                 GameHelper.InitialiseFourPlayerForm(game);
             }
         }
+
         private void DefaultToTwoPlayerOption()
         {
             txtPlayer3.ReadOnly = true;

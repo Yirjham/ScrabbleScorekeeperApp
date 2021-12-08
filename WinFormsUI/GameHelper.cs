@@ -19,11 +19,13 @@ namespace WinFormsUI
             RoundFormsFourPlayers roundForm = new RoundFormsFourPlayers(game);
             roundForm.Show();
         }
+
         public static void InitialiseThreePlayerForm(GameModel game)
         {
             RoundFormsThreePlayers roundForm = new RoundFormsThreePlayers(game);
             roundForm.Show();
         }
+
         public static void InitialiseTwoPlayerForm(GameModel game)
         {
             RoundFormsTwoPlayers roundForm = new RoundFormsTwoPlayers(game);

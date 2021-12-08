@@ -20,6 +20,7 @@ namespace WinFormsUI
         {
             _crud = crud;
         }
+
         public static string GetConnectionString(string connectionStringName = "Default")
         {
             string output = "";
@@ -43,16 +44,14 @@ namespace WinFormsUI
             }
             return false;
         }
+
         // Needs mocking
         public void UpdateExistingPlayerData(List<string> playerNames, PlayerModel player, GameModel game)
         {
-            // New code for updating the database with data from new game 
             if (DataAccessHelper.PlayerAlreadyInDB(playerNames, player) == true)
             {
-                //Load player by name
                 PlayerMapperModel playerDbMapper = _crud.ReadPlayer(player.PlayerName);
 
-                // check if score is higher and add one to games played and won
                 if (playerDbMapper != null)
                 {
                     playerDbMapper.GamesPlayed++;
@@ -64,10 +63,10 @@ namespace WinFormsUI
 
                     Calculations.UpdatePlayerHighestScore(player, playerDbMapper);
                 }
- 
                 _crud.UpdatePlayerData(playerDbMapper.Id, playerDbMapper);
             }
         }
+
       // Needs mocking 
         public void AddNewPlayerToDb(PlayerModel player, bool isWinner)
         {

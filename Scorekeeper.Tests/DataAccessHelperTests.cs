@@ -49,7 +49,6 @@ namespace Scorekeeper.Tests
             Assert.True(actual3);
             Assert.True(actual4);
             Assert.True(actual5);
-
         }
 
         [Fact]
@@ -77,7 +76,6 @@ namespace Scorekeeper.Tests
             Assert.False(actual3);
             Assert.False(actual4);
             Assert.False(actual5);
-
         }
     }
 }

@@ -22,10 +22,12 @@ namespace WinFormsUI
             _crud = new Crud(DataAccessHelper.GetConnectionString());
             InitializeComponent();
         }
+
         private void Scoreboard_Load(object sender, EventArgs e)
         {
             DisplayPlayerScoarboard();
         }
+
         private void DisplayPlayerScoarboard()
         {
             try

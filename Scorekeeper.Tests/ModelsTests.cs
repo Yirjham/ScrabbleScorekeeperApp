@@ -28,10 +28,7 @@ namespace Scorekeeper.Tests
             int actual = player.TotalScore;
 
             // Assert
-
             Assert.Equal(expected, actual);
         }
-
-
     }
 }

@@ -18,7 +18,6 @@ namespace ScorekeeperLibrary.DataValidation
                     return true;
                 }
             }
-
             return false;
         }
         public static bool isValidNumber(params string[] inputFromPlayers)
@@ -50,10 +49,7 @@ namespace ScorekeeperLibrary.DataValidation
                     return false;
                 }
             }
-
-            return true;
-            
+            return true; 
         }
-
     }
 }

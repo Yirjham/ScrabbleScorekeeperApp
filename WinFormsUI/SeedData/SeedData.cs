@@ -48,7 +48,5 @@ namespace WinFormsUI.SeedData
             _crud.CreatePlayer(seedDataList[8]);
             _crud.CreatePlayer(seedDataList[9]);
         }
-
-     
     }
 }

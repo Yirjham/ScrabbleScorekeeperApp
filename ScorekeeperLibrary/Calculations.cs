@@ -12,12 +12,6 @@ namespace ScorekeeperLibrary
 /// </summary>
     public static class Calculations
     {
-        /// <summary>
-        /// Determines the round highest scorer, it has 3 overloads: 2, 3 and 4 players
-        /// </summary>
-        /// <param name="player1">First Player</param>
-        /// <param name="player2">Second Player</param>
-        /// <returns>Returns a PlayerModel instance</returns>
         public static PlayerModel DeterminesRoundHighestScorer(PlayerModel player1, PlayerModel player2)
         {
             PlayerModel roundWinner = null;
@@ -40,12 +34,6 @@ namespace ScorekeeperLibrary
             return winner;
         }
 
-        /// <summary>
-        /// Determines the game winner, it has 3 overloads: 2, 3 and 4 players
-        /// </summary>
-        /// <param name="player1">First Player</param>
-        /// <param name="player2">Second Player</param>
-        /// <returns></returns>
         public static PlayerModel DeterminesWinner(PlayerModel player1, PlayerModel player2)
         {
 
@@ -72,7 +60,7 @@ namespace ScorekeeperLibrary
             return winner;
         }
 
-        // private method tested through the other two methods that calls it
+        
         private static PlayerModel ReturnsHighestScorer(PlayerModel player1, PlayerModel player2, int scorePlayer1, int scorePlayer2)
         {
             PlayerModel winner = null;
@@ -87,12 +75,7 @@ namespace ScorekeeperLibrary
             return winner;
         }
         
-        /// <summary>
-        /// Takes in as many players' scores as needed and compares the top two scores
-        /// </summary>
-        /// <param name="playersScores">Scores go into an array that gets sorted</param>
-        /// <returns>True if there is a winner or false if the top score is shared by at least two players</returns>
-        public static bool IsThereAWinner(params int[] playersScores)     // not unit tested
+        public static bool IsThereAWinner(params int[] playersScores)     
         {
             Array.Sort(playersScores);
             int maxScore = playersScores[playersScores.Length - 1];
@@ -107,7 +90,7 @@ namespace ScorekeeperLibrary
                 return false;
             }
         }
-        // needs mocking
+       
         public static void UpdateScoresAllPlayers(GameModel game, IForm form)
         {
             form.UpdatePlayersRoundScores();
@@ -136,6 +119,7 @@ namespace ScorekeeperLibrary
 
             return losers;
         }
+
         public static List<PlayerModel> ReturnsLosers(PlayerModel player1, PlayerModel player2, PlayerModel player3)
         {
             List<PlayerModel> allPlayers = new List<PlayerModel> { player1, player2, player3 };

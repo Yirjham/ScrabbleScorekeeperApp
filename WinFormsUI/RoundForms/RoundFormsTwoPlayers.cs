@@ -122,6 +122,7 @@ namespace WinFormsUI.RoundForms
                         this.Close();
                     }
                 }
+
                 // No winner, players in a tie
                 else
                 {
@@ -164,10 +165,10 @@ namespace WinFormsUI.RoundForms
                         this.Close();
                     }
                 }
-
                 this.Close();
             }
         }
+
         public void UpdatePlayersRoundScores()
         {
             _player1.RoundScore = int.Parse(txtScorePlayer1.Text);
