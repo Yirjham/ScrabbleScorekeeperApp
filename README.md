@@ -25,7 +25,7 @@
 
 ## Overview
 
-* ### Add players and their scores during each round. Tally the results and display them in the scoreboard
+* ### Add players and their scores during each round. Tally up the results and display them in the scoreboard
 
 ![Main Functionality](WinFormsGifs/AddingPlayers.gif)
 
