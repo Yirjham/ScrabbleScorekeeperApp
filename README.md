@@ -44,7 +44,7 @@
 ![Empty data not allowed](WinFormsGifs/EmptyEmtryVal.gif)
 
 
-* ### Negative scores and non-numerical entries are not allowed
+* ### Users can't enter negative scores or non-numerical entries
 
 ![Bad data validation](WinFormsGifs/InvalidRangeAndDataVal.gif)
 
