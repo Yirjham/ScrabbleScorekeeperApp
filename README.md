@@ -6,6 +6,8 @@
 * It is a CRUD desktop application developed in WinForms that targets .NET Framework 4.7.2
 * This is the desktop version of Scrabble Scorekeeper
 
+![Main Functionality](WinFormsGifs/Functionality.gif)
+
 ## Built With
 * C#
 * SQL Server
