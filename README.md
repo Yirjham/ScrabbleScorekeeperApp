@@ -12,16 +12,22 @@
 * C#
 * SQL Server
 * Dapper
+* T-SQL queries
 * LINQ queries
 * xUnit for Unit Testing 
 * Visual Studio 2019
-* The solution has 3 projects: UI, class library and data access layers
+
+## Design Features
+* The solution is organised in 3 projects: the UI, a class library and the data access layer
+* Dapper, LINQ and SQL queries are used to map objects and manipulate data
+* The class library was built using a Test-Driven Development approach
+* Robust data validation preserves the system from manipulating bad data
 
 ## Overview
 
 * ### Add players and their scores during each round. Tally the results and display them in the scoreboard
 
-![Main Functionality](AppGifs/RazorPagesScorekeeper.gif)
+![Main Functionality](WinFormsGifs/EnteringScores.gif)
 
 * ### Edit players' names
 ##### (Editing scores without playing would be cheating so it is not allowed)
